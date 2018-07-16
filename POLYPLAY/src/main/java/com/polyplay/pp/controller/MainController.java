@@ -8,7 +8,7 @@ public class MainController {
 	
 	
 	@RequestMapping(value="/MainListController")
-	public String MainList() {
+	public String mainList() {
 		
 		//selectRecentList
 		//selectViewCntList

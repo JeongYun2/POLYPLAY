@@ -9,7 +9,7 @@ public class MemberController {
 	//delKeepLogin , selectAutoLogin , updateAutoLogin은 로그인인터셉터에서
 	
 	@RequestMapping(value="/MemberLogin")
-	public String MemberLoginController() {
+	public String memberLoginController() {
 		
 		//selectLogin
 		
@@ -17,7 +17,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/MemberJoin")
-	public String MemberJoinController() {
+	public String memberJoinController() {
 		
 		//
 		
@@ -26,7 +26,7 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="/MemberIdCheck")
-	public String MemberIdCheckController() {
+	public String memberIdCheckController() {
 		
 		//selectIdCheck
 		
@@ -34,7 +34,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/MemberNickCheck")
-	public String MemberNickCheckController() {
+	public String memberNickCheckController() {
 		
 		//selectNicknameCheck
 		
@@ -42,7 +42,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/MemberEmailCheck")
-	public String MemberEmailCheckController() {
+	public String memberEmailCheckController() {
 		
 		//selectEmailCheck
 		
@@ -53,7 +53,7 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="/MemberJoinAction")
-	public String MemberJoinActionController() {
+	public String memberJoinActionController() {
 		
 		//insertMember
 		
@@ -63,7 +63,7 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="/MemberIdFind")
-	public String MemberIdFindController() {
+	public String memberIdFindController() {
 		
 		//selectIdFind
 		
@@ -72,7 +72,7 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="/MemberPwFind")
-	public String MemberPwFindController() {
+	public String memberPwFindController() {
 		
 		//selectPwFind
 		

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OrderController {
 	
 	
-	@RequestMapping(value="/Order")
-	public String OrderController() {
+	@RequestMapping(value="/OrderPay")
+	public String orderPayController() {
 		
 		//insertOrderPay
 		
@@ -17,7 +17,7 @@ public class OrderController {
 	
 	
 	@RequestMapping(value="/OrderComplete")
-	public String OrderCompleteController() {
+	public String orderCompleteController() {
 		
 		//selectCheckOrder
 		

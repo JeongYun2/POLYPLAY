@@ -3,6 +3,7 @@ package com.polyplay.pp.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.polyplay.pp.domain.AdReviewListVo;
 import com.polyplay.pp.domain.BoardVo;
 import com.polyplay.pp.domain.ContentsVo;
 import com.polyplay.pp.domain.MemberVo;
@@ -32,7 +33,7 @@ public interface AdminService {
 	
 	public int updateAdPay(PayVo pv);
 	
-	public ArrayList<ReviewVo> selectAdReview(SearchCriteria scri); 
+	public ArrayList<AdReviewListVo> selectAdReview(SearchCriteria scri); 
 	
 	public int deleteAdReview(ReviewVo rv);
 	

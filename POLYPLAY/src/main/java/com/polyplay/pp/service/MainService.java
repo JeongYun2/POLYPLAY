@@ -3,9 +3,9 @@ package com.polyplay.pp.service;
 import java.util.ArrayList;
 
 
-import com.polyplay.pp.domain.ContentsOrderPayVo;
-import com.polyplay.pp.domain.ContentsReviewVo;
 import com.polyplay.pp.domain.ContentsVo;
+import com.polyplay.pp.domain.SalesListVo;
+import com.polyplay.pp.domain.StarPointListVo;
 
 
 
@@ -15,9 +15,9 @@ public interface MainService {
 	
 	public ArrayList<ContentsVo> selectViewCntList();
 	
-	public ArrayList<ContentsReviewVo> selectStarPointList();
+	public ArrayList<StarPointListVo> selectStarPointList();
 	
-	public ArrayList<ContentsOrderPayVo> selectSalesList();
+	public ArrayList<SalesListVo> selectSalesList();
 	
 	
 }

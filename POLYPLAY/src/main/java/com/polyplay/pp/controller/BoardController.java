@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BoardController {
 
 	@RequestMapping(value="/BoardNoticeList")
-	   public String BoardNoticeListController() {
+	   public String boardNoticeListController() {
 	      
 	      //selectNoticeList 
 	      
@@ -13,7 +13,7 @@ public class BoardController {
 	   }
 	
 	@RequestMapping(value="/BoardNoticeContent")
-	   public String BoardNoticeContentController() {
+	   public String boardNoticeContentController() {
 	      
 	       
 	      //selectNoticeContent
@@ -22,14 +22,14 @@ public class BoardController {
 	
 	
 	@RequestMapping(value="/BoardFAQList")
-	   public String BoardFAQListController() {
+	   public String boardFAQListController() {
 	      
 	      //selectFAQList 
 	      return "";
 	   }
 	
 	@RequestMapping(value="/BoardFAQContent")
-	   public String BoardFAQContentController() {
+	   public String boardFAQContentController() {
 	      
 	       
 	      //selectFAQContent
@@ -37,7 +37,7 @@ public class BoardController {
 	   }
 	
 	@RequestMapping(value="/BoardInquiryList")
-	   public String BoardInquiryListController() {
+	   public String boardInquiryListController() {
 	      
 	      //selectInquiryList 
 	      
@@ -45,7 +45,7 @@ public class BoardController {
 	   }
 	
 	@RequestMapping(value="/BoardInquiryWrite")
-	   public String BoardInquiryWriteController() {
+	   public String boardInquiryWriteController() {
 	      
 	      //
 	      
@@ -53,7 +53,7 @@ public class BoardController {
 	   }
 	
 	@RequestMapping(value="/BoardInquiryWriteAction")
-	   public String BoardInquiryWriteActionController() {
+	   public String boardInquiryWriteActionController() {
 	      
 	      //insertInquiry 
 	      
@@ -61,7 +61,7 @@ public class BoardController {
 	   }
 	
 	@RequestMapping(value="/BoardInquiryContent")
-	   public String BoardInquiryContentController() {
+	   public String boardInquiryContentController() {
 	      
 	      //selectInquiryContent
 		  
@@ -70,7 +70,7 @@ public class BoardController {
 	   }
 	
 	@RequestMapping(value="/BoardInquiryContentDelete")
-	   public String BoardInquiryContentDeleteController() {
+	   public String boardInquiryContentDeleteController() {
 	      
 	      
 		  //deleteInquiry
@@ -79,7 +79,7 @@ public class BoardController {
 	   }
 	
 	@RequestMapping(value="/BoardInquiryModify")
-	   public String BoardInquiryModifyController() {
+	   public String boardInquiryModifyController() {
 	      
 	      //selectInquiryContent
 	      
@@ -87,7 +87,7 @@ public class BoardController {
 	   }
 	
 	@RequestMapping(value="/BoardInquiryModifyAction")
-	   public String BoardInquiryModifyActionController() {
+	   public String boardInquiryModifyActionController() {
 	      
 	      //updateInquiry 
 	      

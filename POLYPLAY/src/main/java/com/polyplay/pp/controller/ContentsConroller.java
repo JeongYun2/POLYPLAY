@@ -8,7 +8,7 @@ public class ContentsConroller {
 
 	
 	@RequestMapping(value="/ContentsList")
-	public String ContentsListController() {
+	public String contentsListController() {
 		
 		//selectGenreList
 		//selectSearchList
@@ -18,7 +18,7 @@ public class ContentsConroller {
 	
 	
 	@RequestMapping(value="/ContentsInfo")
-	public String ContentsInfoController() {
+	public String contentsInfoController() {
 		
 		//selectContentsInfo
 	
@@ -28,7 +28,7 @@ public class ContentsConroller {
 
 	
 	@RequestMapping(value="/ContentsSimilarController")
-	public String ContentsSimilar() {
+	public String contentsSimilar() {
 		
 		//selectSimilarList
 		
@@ -36,7 +36,7 @@ public class ContentsConroller {
 	}
 	
 	@RequestMapping(value="/ContentsPlayController")
-	public String ContentsPlay() {
+	public String contentsPlay() {
 		
 		//playVideo
 		

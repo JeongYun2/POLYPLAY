@@ -9,7 +9,7 @@ public class ReviewController {
 
 	
 	@RequestMapping(value="/ReviewList")
-	public String ReviewListController() {
+	public String reviewListController() {
 		
 		//selectMyReview	
 		//selectLikeReview
@@ -18,7 +18,7 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="/ReviewDelete")
-	public String ReviewDeleteController() {
+	public String reviewDeleteController() {
 		
 		
 		//deleteMyReview
@@ -28,7 +28,7 @@ public class ReviewController {
 		return "";
 	}
 	@RequestMapping(value="/ReviewLikePlus")
-	public String ReviewLikePlusController() {
+	public String reviewLikePlusController() {
 		
 		
 		//updateLikePlus
@@ -38,7 +38,7 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="/ReviewLikeMinus")
-	public String ReviewLikeMinusController() {
+	public String reviewLikeMinusController() {
 		
 		
 		//updateLikeMinus	
@@ -49,7 +49,7 @@ public class ReviewController {
 			
 	
 	@RequestMapping(value="/ReviewWrite")
-	public String ReviewWriteController() {
+	public String reviewWriteController() {
 		
 		// 
 		
@@ -57,7 +57,7 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="/ReviewWriteAction")
-	public String ReviewWriteActionController() {
+	public String reviewWriteActionController() {
 		
 		//insertReview
 		

@@ -8,7 +8,7 @@ public class MyPageController {
 	
 	
 	@RequestMapping(value="/AddToBasket")
-	public String AddToBasketController() {
+	public String addToBasketController() {
 		
 		//addToBasket
 		
@@ -17,7 +17,7 @@ public class MyPageController {
 	
 	
 	@RequestMapping(value="/AddToWishList")
-	public String AddToWishListController() {
+	public String addToWishListController() {
 
 		//addToWishList
 		
@@ -26,7 +26,7 @@ public class MyPageController {
 	
 	
 	@RequestMapping(value="/MyBasketList")
-	public String MyBasketListController() {
+	public String myBasketListController() {
 		
 		//selectBasketList
 		
@@ -35,7 +35,7 @@ public class MyPageController {
 	
 	
 	@RequestMapping(value="/FromBaToWish")
-	public String FromBaToWishController() {
+	public String fromBaToWishController() {
 		
 		//fromBaToWish
 		
@@ -44,7 +44,7 @@ public class MyPageController {
 	
 	
 	@RequestMapping(value="/MyBasketDelete")
-	public String MyBasketDeleteController() {
+	public String myBasketDeleteController() {
 		
 		//deleteBasket
 		
@@ -53,7 +53,7 @@ public class MyPageController {
 	
 	
 	@RequestMapping(value="/MyContents")
-	public String MyContentsController() {
+	public String myContentsController() {
 		
 		//selectMyContents
 		
@@ -61,7 +61,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value="/MyContentsPlay")
-	public String MyContentsPlayController() {
+	public String myContentsPlayController() {
 		
 		//selectMyVideo
 		
@@ -69,7 +69,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value="/MyOrder")
-	public String MyOrderController() {
+	public String myOrderController() {
 		
 		//selectMyOrder
 		
@@ -77,7 +77,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value="/MyOrderContent")
-	public String MyOrderContentController() {
+	public String myOrderContentController() {
 		
 		//selectMyOrderContent
 		
@@ -85,7 +85,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value="/MyMemberModify")
-	public String MyMemberModifyController() {
+	public String myMemberModifyController() {
 		
 		//selectMyMember
 		
@@ -93,7 +93,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value="/MyMemberNickCheck")
-	public String MyMemberNickCheckController() {
+	public String myMemberNickCheckController() {
 		
 		//selectMyMember
 		
@@ -102,7 +102,7 @@ public class MyPageController {
 	
 	
 	@RequestMapping(value="/MyMemberModifyAction")
-	public String MyMemberModifyActionController() {
+	public String myMemberModifyActionController() {
 		
 		//modiDelMember
 		

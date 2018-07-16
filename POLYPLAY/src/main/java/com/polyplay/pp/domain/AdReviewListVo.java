@@ -1,37 +1,49 @@
 package com.polyplay.pp.domain;
 
-public class ReviewVo {
+public class AdReviewListVo { // 관리자 selectAdReview에서 쓰는 것. 
 
-	private int ridx;
 	private int midx;
+	private int ridx;
 	private int cidx;
+	private String cSubject;
+	private String mNickname;
 	private int rPoint;
 	private String rContent;
 	private int rLike;
 	private String rWriteday;
 	private String rDel_yn;
-	private String rDeleteday;
-	private String rIp;
 	
 	
 	
-	public int getRidx() {
-		return ridx;
-	}
-	public void setRidx(int ridx) {
-		this.ridx = ridx;
-	}
 	public int getMidx() {
 		return midx;
 	}
 	public void setMidx(int midx) {
 		this.midx = midx;
 	}
+	public int getRidx() {
+		return ridx;
+	}
+	public void setRidx(int ridx) {
+		this.ridx = ridx;
+	}
 	public int getCidx() {
 		return cidx;
 	}
 	public void setCidx(int cidx) {
 		this.cidx = cidx;
+	}
+	public String getcSubject() {
+		return cSubject;
+	}
+	public void setcSubject(String cSubject) {
+		this.cSubject = cSubject;
+	}
+	public String getmNickname() {
+		return mNickname;
+	}
+	public void setmNickname(String mNickname) {
+		this.mNickname = mNickname;
 	}
 	public int getrPoint() {
 		return rPoint;
@@ -63,18 +75,7 @@ public class ReviewVo {
 	public void setrDel_yn(String rDel_yn) {
 		this.rDel_yn = rDel_yn;
 	}
-	public String getrDeleteday() {
-		return rDeleteday;
-	}
-	public void setrDeleteday(String rDeleteday) {
-		this.rDeleteday = rDeleteday;
-	}
-	public String getrIp() {
-		return rIp;
-	}
-	public void setrIp(String rIp) {
-		this.rIp = rIp;
-	}
-	
+
+
 	
 }
