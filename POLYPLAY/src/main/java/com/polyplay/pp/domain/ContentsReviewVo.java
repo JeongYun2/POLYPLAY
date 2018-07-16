@@ -1,6 +1,6 @@
 package com.polyplay.pp.domain;
 
-public class ContentsVo {
+public class ContentsReviewVo {
 
 	private int cidx;
 	private int gidx;
@@ -18,4 +18,17 @@ public class ContentsVo {
 	private String cImage;
 	private int cViewCnt;
 	private String cPreVideo;
+	
+	private int ridx;
+	private int midx;
+	private int rPoint;
+	private String rContent;
+	private int rLike;
+	private String rWriteday;
+	private String rDel_yn;
+	private String rDeleteday;
+	private String rIp;
+
+	
+	
 }

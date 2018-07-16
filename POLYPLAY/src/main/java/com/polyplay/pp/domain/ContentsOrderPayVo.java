@@ -1,7 +1,7 @@
 package com.polyplay.pp.domain;
 
-public class ContentsVo {
-
+public class ContentsOrderPayVo {
+	
 	private int cidx;
 	private int gidx;
 	private String cSubject;
@@ -18,4 +18,19 @@ public class ContentsVo {
 	private String cImage;
 	private int cViewCnt;
 	private String cPreVideo;
+	
+	private int oidx;
+	private int midx;
+	private String oid;
+	private int oPrice;
+	private String oWriteday;
+	private String oIp;
+	
+	private int pidx;
+	private String pMethod;
+	private int pPrice;
+	private String pStatus;
+	private String pDepositor;
+	private String pWriteday;
+
 }

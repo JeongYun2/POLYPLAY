@@ -1,7 +1,7 @@
 package com.polyplay.pp.domain;
 
-public class MemberVo {
-	
+public class MemberReviewVo {
+
 	private int midx;
 	private String mName;
 	private String mNickname;
@@ -17,4 +17,14 @@ public class MemberVo {
 	private String mSessionId;
 	private String mSessionLimit;
 
+	private int ridx;
+	private int cidx;
+	private int rPoint;
+	private String rContent;
+	private int rLike;
+	private String rWriteday;
+	private String rDel_yn;
+	private String rDeleteday;
+	private String rIp;
+	
 }
