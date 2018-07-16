@@ -9,9 +9,9 @@ public interface ReviewService {
 
 	public ArrayList<ReviewVo> selectMyReview(); 
 	
-	public int deleteMyReview(ReviewVo wv);
-	
 	public ArrayList<ReviewVo> selectLikeReview();
+	
+	public int deleteMyReview(ReviewVo wv);
 	
 	public int updateLikePlus(ReviewVo wv);
 	

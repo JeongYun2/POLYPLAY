@@ -69,8 +69,8 @@ public class BoardController {
 	      return "";
 	   }
 	
-	@RequestMapping(value="/BoardInquiryContentDeleteAction")
-	   public String BoardInquiryContentDeleteActionController() {
+	@RequestMapping(value="/BoardInquiryContentDelete")
+	   public String BoardInquiryContentDeleteController() {
 	      
 	      
 		  //deleteInquiry

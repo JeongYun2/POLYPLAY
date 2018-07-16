@@ -42,9 +42,9 @@ public interface AdminService {
 	
 	public int deleteAdBoard(BoardVo bv);
 	
-	public int insertAdReplyBoard(BoardVo bv);
+	public int insertAdBoard(BoardVo bv);
 	
-	public int updateReplyBoard(BoardVo bv);
+	public int adReplyBoard(BoardVo bv);
 	
 	public int updateAdBoard(BoardVo bv);
 	

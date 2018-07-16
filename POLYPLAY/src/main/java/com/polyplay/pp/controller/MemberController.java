@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MemberController {
 
+	//delKeepLogin , selectAutoLogin , updateAutoLogin은 로그인인터셉터에서
 	
 	@RequestMapping(value="/MemberLogin")
 	public String MemberLoginController() {
@@ -64,7 +65,7 @@ public class MemberController {
 	@RequestMapping(value="/MemberIdFind")
 	public String MemberIdFindController() {
 		
-		
+		//selectIdFind
 		
 		return "";
 	}
@@ -73,7 +74,7 @@ public class MemberController {
 	@RequestMapping(value="/MemberPwFind")
 	public String MemberPwFindController() {
 		
-		
+		//selectPwFind
 		
 		return "";
 	}

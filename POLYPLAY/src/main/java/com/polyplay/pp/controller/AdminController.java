@@ -12,15 +12,15 @@ public class AdminController {
 	
 	
 	@RequestMapping(value="/AdminMember", method=RequestMethod.GET)
-	public String adminMemberController() {
+	public String AdminMemberController() {
 		
 //		selectAdMember
 		
 		return "";
 	}
 	
-	@RequestMapping(value="/AdminMemberAuthAction", method=RequestMethod.POST)
-	public String adminMemberAuthActionController() {
+	@RequestMapping(value="/AdminMemberUpdateAuth", method=RequestMethod.POST)
+	public String AdminMemberUpdateAuthController() {
 		
 		//	updateAuthMember
 		
@@ -28,7 +28,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/AdminContents", method=RequestMethod.GET)
-	public String adminContentsController() {
+	public String AdminContentsController() {
 		
 		//	selectAdContents
 		
@@ -36,13 +36,13 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/AdminContentsWrite", method=RequestMethod.GET)
-	public String adminContentsWriteController() {
+	public String AdminContentsWriteController() {
 		
 		return "";
 	}
 	
 	@RequestMapping(value="/AdminContentsWriteAction", method=RequestMethod.POST)
-	public String adminContentsWriteActionController() {
+	public String AdminContentsWriteActionController() {
 		
 		//	 insertContents
 		
@@ -50,13 +50,13 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/AdminContentsModify", method=RequestMethod.GET)
-	public String adminContentsModifyController() {
+	public String AdminContentsModifyController() {
 
 		return "";
 	}
 	
 	@RequestMapping(value="/AdminContentsModifyAction", method=RequestMethod.POST)
-	public String adminContentsModifyActionController() {
+	public String AdminContentsModifyActionController() {
 		
 		//	updateContents
 
@@ -64,13 +64,13 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/AdminContentsDelete", method=RequestMethod.GET)
-	public String adminContentsDeleteController() {
+	public String AdminContentsDeleteController() {
 		
 		return "";
 	}
 	
 	@RequestMapping(value="/AdminContentsDeleteAction", method=RequestMethod.POST)
-	public String adminContentsDeleteActionController() {
+	public String AdminContentsDeleteActionController() {
 		
 		//	 deleteContents
 		
@@ -78,31 +78,43 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/AdminOrderPay", method=RequestMethod.GET)
-	public String adminOrderPayController() {
+	public String AdminOrderPayController() {
 		
 		//	 selectAdOrder
 		
 		return "";
 	}
 	
-	@RequestMapping(value="/AdminOrderPayAction", method=RequestMethod.POST)
-	public String adminOrderPayActionController() {
+	@RequestMapping(value="/AdminOrderPayDelete", method=RequestMethod.POST)
+	public String AdminOrderPayDeleteController() {
 		
 		//	deleteAdOrder
 		
 		return "";
 	}
 	
+	@RequestMapping(value="/AdminUpdatePay", method=RequestMethod.GET)
+	public String AdminUpdatePayController() {
+		
+		//	 updateAdPay
+		
+		return "";
+	}
+	
+
+	
+
+	
 	@RequestMapping(value="/AdminReview", method=RequestMethod.GET)
-	public String adminReviewController() {
+	public String AdminReviewController() {
 		
 		//	 selectAdReview 
 		
 		return "";
 	}
 	
-	@RequestMapping(value="/AdminReviewAction", method=RequestMethod.POST)
-	public String adminReviewActionController() {
+	@RequestMapping(value="/AdminReviewDelete", method=RequestMethod.POST)
+	public String AdminReviewDeleteController() {
 		
 		//	 deleteAdReview  
 		
@@ -168,8 +180,7 @@ public class AdminController {
 	@RequestMapping(value="/AdminBoardReplyWriteAction")
 	   public String AdminBoardReplyWriteActionController() {
 	      
-		 //insertAdReplyBoard
-		 //updateReplyBoard
+	
 		 //∆Æ∑£¿Ëº« adReplyBoard
 	      
 	      return "";

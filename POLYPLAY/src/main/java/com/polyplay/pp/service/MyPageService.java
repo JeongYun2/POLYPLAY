@@ -12,19 +12,16 @@ import com.polyplay.pp.domain.WishListVo;
 
 public interface MyPageService {
 
+	
+	public int addToBasket(BasketVo bav);
+	
+	public int addToWishList(WishListVo wv);
+	
 	public ArrayList<BasketVo> selectBasketList();
 	
-	public int deleteBasket(BasketVo mv);
+	public int fromBaToWish(WishListVo wv);
 	
-	public int insertWishList(BasketVo mv);
-	
-	public WishListVo selectWishListCheck(int midx, int cidx);
-	
-	public WishListVo selectMyWishList(int midx);
-	
-	public int deleteWishList(WishListVo mv);
-	
-	public int insertWishList(WishListVo mv);
+	public int deleteBasket(BasketVo bav);
 	
 	public OrderPayVo selectMyContents(String pStatus, int midx);
 	
@@ -36,11 +33,11 @@ public interface MyPageService {
 	
 	public MemberVo selectMyMember(int midx);
 	
-	public MemberVo selectPwConfirm(int midx, String mPassword);
+	public MemberVo selectNicknameCheck(String mNickname);
 	
-	public int updateMember(MemberVo mv);
+	public int modiDelMember(MemberVo mv);
 	
-	public int deleteMember(MemberVo mv);
+	
 	
 	
 }
