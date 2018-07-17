@@ -7,13 +7,27 @@
 	<name>polyplay</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
+	
+	
+	<!-- (추가) jdbc다운받는곳설정함 -->
+	<repositories>
+		<repository>
+    		<id>oracle</id>
+    		<name>ORACLE JDBC Repository</name>
+    		<url>http://code.lds.org/nexus/content/groups/main-repo</url>
+		</repository>
+	</repositories>
+	
+	
+	<!-- 자바버전변경, 스프링버전변경 -->
 	<properties>
-		<java-version>1.6</java-version>
-		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
+		<java-version>1.8</java-version>
+		<org.springframework-version>4.3.3.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+	
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -33,12 +47,39 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 				
-		<!-- AspectJ -->
+		<!-- aop를 사용하기 위한 문법 AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>	
+		
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>	
+		
+		<!-- aop,tx추가 -->
+		<dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-aop</artifactId>
+	        <version>${org.springframework-version}</version>
+ 		</dependency>
+ 		
+ 		<dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-tx</artifactId>
+	        <version>${org.springframework-version}</version>
+ 		</dependency>
+ 		
+ 		<dependency>
+ 		<!-- cglib : 프록시 -->
+ 			<groupId>cglib</groupId>
+		   <artifactId>cglib</artifactId>
+		   <version>2.2</version>
+		</dependency>
+ 		
 		
 		<!-- Logging -->
 		<dependency>
@@ -111,11 +152,107 @@
 	
 		<!-- Test -->
 		<dependency>
+		<!-- junit : 개발자 단위 테스트용 (기본내장) -->
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>        
+		</dependency>   
+		
+		
+<!--  mybatis추가	 -->	
+		<!-- myBatis -->     
+
+	    <dependency>
+	     <groupId>org.mybatis</groupId>
+	     <artifactId>mybatis</artifactId>
+	     <version>3.4.1</version>
+	 	</dependency>
+<!-- mybatis연동 추가 -->
+    	<dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>1.3.0</version>
+   		</dependency>
+   		
+   		<!-- (추가) https://mvnrepository.com/artifact/commons-pool/commons-pool -->
+		<dependency>
+		<!-- 접속할때 로드가 제일 많이걸려
+				디비커넥션풀 - 접속할때 사용할수있는자원많이 확보해놔
+				풀:여유공간
+				그 기능 사용하는 드라이버 commons-pool 
+		 -->
+		    <groupId>commons-pool</groupId>
+		    <artifactId>commons-pool</artifactId>
+		    <version>1.6</version>
+		</dependency>
+	
+	<!-- (추가) https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+		<!-- 스프링jdbc 변수에는 위에 지정해놓은 버전이 들어가 -->
+		
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
+	<!--  (추가) jdbc -->	
+		<dependency>
+  		  <groupId>com.oracle</groupId>
+    		  <artifactId>ojdbc7</artifactId>
+  		  <version>12.1.0.2</version>
+		</dependency> 	
+		
+		
+		<!--(추가) 파일업로드시 필요 -->
+		<dependency>
+		   <groupId>org.imgscalr</groupId>
+		   <artifactId>imgscalr-lib</artifactId>
+		   <version>4.2</version>
+		</dependency>
+		
+		<!--(추가) 파일업로드시 필요 -->
+		<dependency>
+		   <groupId>commons-fileupload</groupId>
+		   <artifactId>commons-fileupload</artifactId>
+		   <version>1.3.2</version>
+		</dependency>
+		
+		<!--(추가) ajax사용시 -->
+		<dependency>
+		<!-- jackson-databind :  ajax사용할때 씀 -->
+		   <groupId>com.fasterxml.jackson.core</groupId>
+		   <artifactId>jackson-databind</artifactId>
+		   <version>2.8.4</version>
+		</dependency>		
+		        
+	
+	
+	
+
+
+<!--  스프링jdbc 추가 다운 -->
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+<!-- 스프링테스트 추가 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>3.1.0.RELEASE</version>
+		</dependency>	
+<!-- log(기록)	접속기록남기는것.. 로그남기기위한 드라이버 추가	 -->
+		<dependency>
+			<groupId>org.bgee.log4jdbc-log4j2</groupId>
+			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+			<version>1.16</version>
+		</dependency>	     
+		     
+		     
+		     
 	</dependencies>
     <build>
         <plugins>

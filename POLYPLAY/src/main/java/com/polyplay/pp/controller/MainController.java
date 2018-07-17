@@ -7,8 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 	
 	
-	@RequestMapping(value="/MainListController")
-	public String mainList() {
+	@RequestMapping(value="/GoToHome")
+	public String HomeController() {
+		
+		
+		
+		return "home";
+	}
+	
+	
+	
+	@RequestMapping(value="/MainList")
+	public String mainListController() {
 		
 		//selectRecentList
 		//selectViewCntList
