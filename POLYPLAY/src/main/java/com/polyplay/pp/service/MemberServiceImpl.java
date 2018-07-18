@@ -1,67 +1,68 @@
 package com.polyplay.pp.service;
 
-import com.polyplay.pp.domain.MemberVo;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.polyplay.pp.domain.MemberVo;
+import com.polyplay.pp.persistence.MemberService_Mapper;
+
+@Service("memberServiceImpl")
 public class MemberServiceImpl implements MemberService {
 
+	@Autowired
+	SqlSession sqlSession;
+	
+	
+	
 	@Override
-	public MemberVo selectLogin() {
-		// TODO Auto-generated method stub
-		return null;
+	public int selectLogin(MemberVo mvo) {
+		
+		MemberService_Mapper msm = sqlSession.getMapper(MemberService_Mapper.class);
+		int midx = msm.selectLogin(mvo);
+		
+		return midx;
 	}
 
 	@Override
-	public int delKeepLogin(String msessionid, String sessionLimit, int midx) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectIdCheck(String userID) {
+
+		MemberService_Mapper msm = sqlSession.getMapper(MemberService_Mapper.class);
+		int cnt = msm.selectIdCheck(userID);
+		System.out.println("impl 아이디 개수 "+cnt);
+		
+		return cnt;
+	}
+
+
+	@Override
+	public int selectNicknameCheck(String mNickname) {
+
+		MemberService_Mapper msm = sqlSession.getMapper(MemberService_Mapper.class);
+		int cnt = msm.selectNicknameCheck(mNickname);
+		
+		return cnt;
+	}
+
+
+	@Override
+	public int selectEmailCheck(String mEmail) {
+		
+		MemberService_Mapper msm = sqlSession.getMapper(MemberService_Mapper.class);
+		int cnt = msm.selectEmailCheck(mEmail);
+		
+		return cnt;
 	}
 
 	@Override
-	public MemberVo selectAutoLogin(String sessionkey) {
-		// TODO Auto-generated method stub
-		return null;
+	public int insertMember(MemberVo mvo) {
+		
+		MemberService_Mapper msm = sqlSession.getMapper(MemberService_Mapper.class);
+		int res = msm.insertMember(mvo);
+		
+		return res;
 	}
 
-	@Override
-	public MemberVo updateAutoLogin(String sessionkey) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public MemberVo selectIdCheck(String mId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MemberVo selectNicknameCheck(String mNickname) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MemberVo selectEmailCheck(String mEmail) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int insertMember(MemberVo mv) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public MemberVo selectIdFind(String mName, String mEmail, String mDel_yn) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MemberVo selectPwFind(int mId, String mEmail, String mPhone, String mDel_yn) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

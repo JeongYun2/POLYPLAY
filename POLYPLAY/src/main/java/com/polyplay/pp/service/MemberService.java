@@ -4,23 +4,16 @@ import com.polyplay.pp.domain.MemberVo;
 
 public interface MemberService {
 
-	public MemberVo selectLogin();
+	public int selectLogin(MemberVo mvo);
 	
-	public int delKeepLogin(String msessionid, String sessionLimit, int midx);
 	
-	public MemberVo selectAutoLogin(String sessionkey);
 	
-	public MemberVo updateAutoLogin(String sessionkey);
+	public int selectIdCheck(String mId);
 	
-	public MemberVo selectIdCheck(String mId);
+	public int selectNicknameCheck(String mNickname);
 	
-	public MemberVo selectNicknameCheck(String mNickname);
+	public int selectEmailCheck(String mEmail);
 	
-	public MemberVo selectEmailCheck(String mEmail);
+	public int insertMember(MemberVo mvo);
 	
-	public int insertMember(MemberVo mv);
-	
-	public MemberVo selectIdFind(String mName, String mEmail, String mDel_yn);
-	
-	public MemberVo selectPwFind(int mId, String mEmail, String mPhone, String mDel_yn);
 }

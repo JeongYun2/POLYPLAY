@@ -1,7 +1,6 @@
 package com.polyplay.pp.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.polyplay.pp.domain.AdReviewListVo;
 import com.polyplay.pp.domain.BoardVo;
