@@ -1,12 +1,12 @@
 package com.polyplay.pp.domain;
 
-public class Criteria { //Äõ¸®¸¦ »ç¿ëÇÏ±âÀ§ÇØ ÇÊ¿äÇÑ¸¸Å­ »Ì¾Æ³»±â À§ÇÑ Å¬·¡½º 
+public class Criteria { //ì¿¼ë¦¬ë¥¼ ì‚¬ìš©í•˜ê¸°ìœ„í•´ í•„ìš”í•œë§Œí¼ ë½‘ì•„ë‚´ê¸° ìœ„í•œ í´ë˜ìŠ¤ 
 	
-	private int page; //°Ô½Ã¹° È®ÀÎ¿ë ÆäÀÌÁö. ÇöÀç ÆäÀÌÁö. ´­·¶À»¶§ ÀÌµ¿ÇÒ ÆäÀÌÁö
-	private int perPageNum; //ÇÑ ÆäÀÌÁö¿¡ °Ô½Ã¹°À» ¸î°³º¸¿©ÁÙ°ÍÀÎ°¡? 
+	private int page; //ê²Œì‹œë¬¼ í™•ì¸ìš© í˜ì´ì§€. í˜„ì¬ í˜ì´ì§€. ëˆŒë €ì„ë•Œ ì´ë™í•  í˜ì´ì§€
+	private int perPageNum; //í•œ í˜ì´ì§€ì— ê²Œì‹œë¬¼ì„ ëª‡ê°œë³´ì—¬ì¤„ê²ƒì¸ê°€? 
 	
 
-	//»ı¼ºÀÚ¸¦ ÅëÇØ page¿Í perPageNum ÁöÁ¤
+	//ìƒì„±ìë¥¼ í†µí•´ pageì™€ perPageNum ì§€ì •
 	public Criteria() {
 		this.page = 1;
 		this.perPageNum = 10;
@@ -17,7 +17,7 @@ public class Criteria { //Äõ¸®¸¦ »ç¿ëÇÏ±âÀ§ÇØ ÇÊ¿äÇÑ¸¸Å­ »Ì¾Æ³»±â À§ÇÑ Å¬·¡½º
 		return page;
 	}
 
-	//1ÀÌ¸é 1ÆäÀÌÁö·Î °íÁ¤
+	//1ì´ë©´ 1í˜ì´ì§€ë¡œ ê³ ì •
 	public void setPage(int page) {
 		if(page <=1){
 			this.page = 1;
@@ -26,12 +26,12 @@ public class Criteria { //Äõ¸®¸¦ »ç¿ëÇÏ±âÀ§ÇØ ÇÊ¿äÇÑ¸¸Å­ »Ì¾Æ³»±â À§ÇÑ Å¬·¡½º
 		this.page = page;
 	}
 
-	//ÇÑ ÆäÀÌÁö´ç º¸¿©Áö´Â ÆäÀÌÁö °³¼ö
+	//í•œ í˜ì´ì§€ë‹¹ ë³´ì—¬ì§€ëŠ” í˜ì´ì§€ ê°œìˆ˜
 	public int getPerPageNum() {
 		return perPageNum;
 	}
 
-	//Æ¯ÀÌ»çÇ× PerPageNumÀ» 0ÀÌ³ª 100À¸·Î ÇßÀ»°æ¿ì 10À¸·Î Ã³¸®ÇÏ°Ú´Ù
+	//íŠ¹ì´ì‚¬í•­ PerPageNumì„ 0ì´ë‚˜ 100ìœ¼ë¡œ í–ˆì„ê²½ìš° 10ìœ¼ë¡œ ì²˜ë¦¬í•˜ê² ë‹¤
 	public void setPerPageNum(int perPageNum) {
 		if(perPageNum <=0 || perPageNum > 100){ 		
 			this.perPageNum = 10;
@@ -41,24 +41,24 @@ public class Criteria { //Äõ¸®¸¦ »ç¿ëÇÏ±âÀ§ÇØ ÇÊ¿äÇÑ¸¸Å­ »Ì¾Æ³»±â À§ÇÑ Å¬·¡½º
 	}
 	
 	
-	//ÆäÀÌÁöÀÇ °Ô½Ã¹° ½ÃÀÛ¹øÈ£
+	//í˜ì´ì§€ì˜ ê²Œì‹œë¬¼ ì‹œì‘ë²ˆí˜¸
 	public int  getPageStart(){
 		return(this.page-1)*perPageNum+1;
 	}
-	//¿¹¸¦µé¾î 2ÆäÀÌÁö¸¦ ´­·¶À»°æ¿ì (2-1)*15+1 ->16¹øºÎÅÍ ½ÃÀÛ
+	//ì˜ˆë¥¼ë“¤ì–´ 2í˜ì´ì§€ë¥¼ ëˆŒë €ì„ê²½ìš° (2-1)*15+1 ->16ë²ˆë¶€í„° ì‹œì‘
 	
 	
 
-	//ÆäÀÌÁöÀÇ °Ô½Ã¹° ³¡¹øÈ£
+	//í˜ì´ì§€ì˜ ê²Œì‹œë¬¼ ëë²ˆí˜¸
 	public int  getPageEnd(){
 		return (this.page-1)*perPageNum + perPageNum;
 	}
-	//¿¹¸¦µé¾î 2ÆäÀÌÁö¸¦ ´­·¶À»°æ¿ì (2-1)*15+15 ->30¹ø±îÁö Ãâ·Â
+	//ì˜ˆë¥¼ë“¤ì–´ 2í˜ì´ì§€ë¥¼ ëˆŒë €ì„ê²½ìš° (2-1)*15+15 ->30ë²ˆê¹Œì§€ ì¶œë ¥
 	
 	
 	
 	
-	//ObjectÅ¬·¡½º¿¡ ÀÖ´Â StringÀÇ ¸Ş¼Òµå¸¦ ¿À¹ö¶óÀÌµùÇÑ°Í. ÆäÀÌÁö°ª Âï¾îº¸±âÀ§ÇØ¼­ ¼³Á¤ÇÔ
+	//Objectí´ë˜ìŠ¤ì— ìˆëŠ” Stringì˜ ë©”ì†Œë“œë¥¼ ì˜¤ë²„ë¼ì´ë”©í•œê²ƒ. í˜ì´ì§€ê°’ ì°ì–´ë³´ê¸°ìœ„í•´ì„œ ì„¤ì •í•¨
 	@Override
 	public String toString() {
 		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";

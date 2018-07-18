@@ -1,6 +1,6 @@
 package com.polyplay.pp.domain;
 
-public class StarPointListVo { //¸ŞÀÎ selectStarPointList¿¡¼­ ¾²´Â °Í. 
+public class StarPointListVo { //ë©”ì¸ selectStarPointListì—ì„œ ì“°ëŠ” ê²ƒ. 
 
 	private int cidx;
 	private String cSubject;

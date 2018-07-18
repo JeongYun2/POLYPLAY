@@ -2,7 +2,7 @@ package com.polyplay.pp.domain;
 
 import com.polyplay.pp.domain.Criteria;
 
-public class SearchCriteria extends Criteria { //°Ë»öÀ» À§ÇØ ÇÊ¿äÇÑ º¯¼ö ÁöÁ¤ÇÑ Å¬·¡½º. Criteria¸¦ »ó¼Ó¹ŞÀ½
+public class SearchCriteria extends Criteria { //ê²€ìƒ‰ì„ ìœ„í•´ í•„ìš”í•œ ë³€ìˆ˜ ì§€ì •í•œ í´ë˜ìŠ¤. Criteriaë¥¼ ìƒì†ë°›ìŒ
 	
 	private String searchType;
 	private String keyword;

@@ -6,17 +6,17 @@ import java.net.URLEncoder;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class PageMaker { //¸®½ºÆ® ÇÏ´Ü¿¡ ÆäÀÌÂ¡Ç¥ÇöÀ» À§ÇÑ Å¬·¡½º
+public class PageMaker { //ë¦¬ìŠ¤íŠ¸ í•˜ë‹¨ì— í˜ì´ì§•í‘œí˜„ì„ ìœ„í•œ í´ë˜ìŠ¤
 	
 	
-	private int totalCount; //ÃÑ °Ô½Ã¹° °³¼ö
+	private int totalCount; //ì´ ê²Œì‹œë¬¼ ê°œìˆ˜
 	private int startPage; 
 	private int endPage;
 	private boolean prev;
 	private boolean next;
-	private int displayPageNum = 10; //ÇÏ´Ü¿¡ º¸¿©Áö´Â ÆäÀÌÁö¼ö
-//	private Criteria cri; //°¡Áö°í´Ù´Ï´Â¾Ö
-	private SearchCriteria scri; //°Ë»öÇÒ¶§ ¾²´Â¾Ö·Î º¯°æ
+	private int displayPageNum = 10; //í•˜ë‹¨ì— ë³´ì—¬ì§€ëŠ” í˜ì´ì§€ìˆ˜
+//	private Criteria cri; //ê°€ì§€ê³ ë‹¤ë‹ˆëŠ”ì• 
+	private SearchCriteria scri; //ê²€ìƒ‰í• ë•Œ ì“°ëŠ”ì• ë¡œ ë³€ê²½
 	
 	
 	public SearchCriteria getScri() {
@@ -46,7 +46,7 @@ public class PageMaker { //¸®½ºÆ® ÇÏ´Ü¿¡ ÆäÀÌÂ¡Ç¥ÇöÀ» À§ÇÑ Å¬·¡½º
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
-	//¿Ö getPrev°¡ ¾Æ´Ï¶ó is? ºÒ¸°Å¸ÀÔÀº °ªÀÌ ¾Æ´Ï¶ó true false·Î ³ªÅ¸³ª´Ï±î ÀÌ¹Ì Á¤ÇØÁ®ÀÖ´Â°ªÀ» ²¨³»´Â°Å¶ó¼­
+	//ì™œ getPrevê°€ ì•„ë‹ˆë¼ is? ë¶ˆë¦°íƒ€ì…ì€ ê°’ì´ ì•„ë‹ˆë¼ true falseë¡œ ë‚˜íƒ€ë‚˜ë‹ˆê¹Œ ì´ë¯¸ ì •í•´ì ¸ìˆëŠ”ê°’ì„ êº¼ë‚´ëŠ”ê±°ë¼ì„œ
 	public boolean isPrev() {
 		return prev;
 	}
@@ -68,15 +68,15 @@ public class PageMaker { //¸®½ºÆ® ÇÏ´Ü¿¡ ÆäÀÌÂ¡Ç¥ÇöÀ» À§ÇÑ Å¬·¡½º
 	
 
 	
-	//¸Ş¼Òµå¸¦ ÅëÇØ 4º¯¼ö ±¸ÇÔ 
+	//ë©”ì†Œë“œë¥¼ í†µí•´ 4ë³€ìˆ˜ êµ¬í•¨ 
 	private void calcData() {
 		
-		//¿¹¸¦µé¾î °Ô½Ã¹°ÀÌ 100°³¸é  7ÆäÀÌÁö±îÁö ÀÖ´Â°ÍÀ» ±¸ÇÏ´Â°Í		 //Math.ceil:¿Ã¸²/ ¹İ¿Ã¸² round
+		//ì˜ˆë¥¼ë“¤ì–´ ê²Œì‹œë¬¼ì´ 100ê°œë©´  7í˜ì´ì§€ê¹Œì§€ ìˆëŠ”ê²ƒì„ êµ¬í•˜ëŠ”ê²ƒ		 //Math.ceil:ì˜¬ë¦¼/ ë°˜ì˜¬ë¦¼ round
 		endPage = (int) (Math.ceil(scri.getPage()/
 				(double)displayPageNum) * displayPageNum);
 		
-		// Math Å¬·¡½º ¾È¿¡ ¸Ş¼Òµå°¡ public static final ·Î ¿Ã¶ó¿ÍÀÖ¾î¼­ ¸Ş¸ğ¸® Å¬·¡½º ¿µ¿ª¿¡ ¶°ÀÖÀ¸¹Ç·Î °´Ã¼»ı¼º¾ÈÇÏ°í ¹Ù·Î »ç¿ë°¡´ÉÇÑ°Í Math.¸Ş¼Òµå
-		// Math ma = new Math(); °´Ã¼»ı¼ºÇÑ´Ù¸é ma.¸Ş¼Òµå ÀÌ·¸°Ô È£Ãâ....
+		// Math í´ë˜ìŠ¤ ì•ˆì— ë©”ì†Œë“œê°€ public static final ë¡œ ì˜¬ë¼ì™€ìˆì–´ì„œ ë©”ëª¨ë¦¬ í´ë˜ìŠ¤ ì˜ì—­ì— ë– ìˆìœ¼ë¯€ë¡œ ê°ì²´ìƒì„±ì•ˆí•˜ê³  ë°”ë¡œ ì‚¬ìš©ê°€ëŠ¥í•œê²ƒ Math.ë©”ì†Œë“œ
+		// Math ma = new Math(); ê°ì²´ìƒì„±í•œë‹¤ë©´ ma.ë©”ì†Œë“œ ì´ë ‡ê²Œ í˜¸ì¶œ....
 		
 		
 		
@@ -90,24 +90,24 @@ public class PageMaker { //¸®½ºÆ® ÇÏ´Ü¿¡ ÆäÀÌÂ¡Ç¥ÇöÀ» À§ÇÑ Å¬·¡½º
 		
 		int tempEndPage = (int) (Math.ceil(totalCount)/(double) scri.getPerPageNum());
 		
-		//¸¶Áö¸·ÆäÀÌÁö
+		//ë§ˆì§€ë§‰í˜ì´ì§€
 		if(endPage>tempEndPage) {
 			endPage = tempEndPage+1;
 		}	
 		
 		prev = startPage == 1 ? false : true;		
-		// ÀÚ¹ÙÀÇ ÀÌÇ×¿¬»ê½Ä.. prev¿¡ stratPage°¡ 1ÀÌ¸é false, 1ÀÌ ¾Æ´Ï¸é true ´ëÀÔ
+		// ìë°”ì˜ ì´í•­ì—°ì‚°ì‹.. prevì— stratPageê°€ 1ì´ë©´ false, 1ì´ ì•„ë‹ˆë©´ true ëŒ€ì…
 		
 		next = endPage * scri.getPerPageNum() >= totalCount ? false : true;
 	}	
 	
 	
-	//UriComponentsBuilder¹æ½ÄÀ¸·Î pageÆÄ¶ó¹ÌÅÍ ³Ñ±â±âÀ§ÇÑ ¸Ş¼Òµå Ãß°¡
+	//UriComponentsBuilderë°©ì‹ìœ¼ë¡œ pageíŒŒë¼ë¯¸í„° ë„˜ê¸°ê¸°ìœ„í•œ ë©”ì†Œë“œ ì¶”ê°€
 	public String makeQuery(int page) {
 		
 		UriComponents uriComponents = UriComponentsBuilder.newInstance()
 				.queryParam("page", page)
-//				.queryParam("perPageNum", cri.getPerPageNum()) ¹Ù²ÜÇÊ¿ä¾ø¾î¼­...
+//				.queryParam("perPageNum", cri.getPerPageNum()) ë°”ê¿€í•„ìš”ì—†ì–´ì„œ...
 				.build();
 		
 		return uriComponents.toUriString();
@@ -116,15 +116,15 @@ public class PageMaker { //¸®½ºÆ® ÇÏ´Ü¿¡ ÆäÀÌÂ¡Ç¥ÇöÀ» À§ÇÑ Å¬·¡½º
 
 	
 	
-	//ÆäÀÌÁö,¼­Ä¡Å¸ÀÔ,Å°¿öµå¸¦ °¡Áö°í ´Ù´Ï±â À§ÇÑ ¸Ş¼Òµå Ãß°¡
+	//í˜ì´ì§€,ì„œì¹˜íƒ€ì…,í‚¤ì›Œë“œë¥¼ ê°€ì§€ê³  ë‹¤ë‹ˆê¸° ìœ„í•œ ë©”ì†Œë“œ ì¶”ê°€
 	public String makeSearch(int page) {
 		
 		UriComponents uriComponents = UriComponentsBuilder.newInstance()
 				.queryParam("page", page)
 				//.queryParam("searchType", ((SearchCriteria) scri).getSearchType())
 				.queryParam("searchType", scri.getSearchType())
-				//  ((SearchCriteria) scri).getSearchType() ¿Ö ÀÌ·¸°Ô ¾²´ÂÁö ¸ğ¸£°Ô¾©...
-				//Ã¥¿¡¼­´Â ±×³Écri¸¦ Çüº¯È¯ÇØ¼­ ¾´°Å¾ä  ºÎ¸ğÅ¸ÀÔÀÌ ÀÚ½ÄÅ¸ÀÔÀ¸·Î ´Ù¿îÄ³½ºÆÃÇÑ°ÅÀÓ Å°¿öµå¶ó´Â º¯¼ö°¡ ¼­Ä¡¾È¿¡ µé¾î°¡Á®ÀÖÀ¸´Ï±î °¡´ÉÇÑ°Í
+				//  ((SearchCriteria) scri).getSearchType() ì™œ ì´ë ‡ê²Œ ì“°ëŠ”ì§€ ëª¨ë¥´ê²Œì‘´...
+				//ì±…ì—ì„œëŠ” ê·¸ëƒ¥crië¥¼ í˜•ë³€í™˜í•´ì„œ ì“´ê±°ì–Œ  ë¶€ëª¨íƒ€ì…ì´ ìì‹íƒ€ì…ìœ¼ë¡œ ë‹¤ìš´ìºìŠ¤íŒ…í•œê±°ì„ í‚¤ì›Œë“œë¼ëŠ” ë³€ìˆ˜ê°€ ì„œì¹˜ì•ˆì— ë“¤ì–´ê°€ì ¸ìˆìœ¼ë‹ˆê¹Œ ê°€ëŠ¥í•œê²ƒ
 				
 				//.queryParam("keyword", ((SearchCriteria) scri).getKeyword())
 				.queryParam("keyword", scri.getKeyword())
@@ -135,16 +135,16 @@ public class PageMaker { //¸®½ºÆ® ÇÏ´Ü¿¡ ÆäÀÌÂ¡Ç¥ÇöÀ» À§ÇÑ Å¬·¡½º
 	}
 	
 	
-	//Å°¿öµå ±ÛÀÚ ÀÎÄÚµù ¸Ş¼Òµå Ãß°¡
+	//í‚¤ì›Œë“œ ê¸€ì ì¸ì½”ë”© ë©”ì†Œë“œ ì¶”ê°€
 	private String encoding(String keyword) {
 		
 		if(keyword==null||keyword.trim().length()==0) {
-			//Å°¿öµå°¡ ³ÎÀÌ°Å³ª Æ®¸²(°ø¹éÁ¦°Å)ÇÏ°í ±æÀÌ°¡ 0ÀÎ°ÍÀº ¸®ÅÏÀ» ºó°ªÀ¸·ÎÁÖ°Ú´Ù
+			//í‚¤ì›Œë“œê°€ ë„ì´ê±°ë‚˜ íŠ¸ë¦¼(ê³µë°±ì œê±°)í•˜ê³  ê¸¸ì´ê°€ 0ì¸ê²ƒì€ ë¦¬í„´ì„ ë¹ˆê°’ìœ¼ë¡œì£¼ê² ë‹¤
 			return "";
 		}
 		try {
 			return URLEncoder.encode(keyword, "UTF-8");
-			//URLEncoder¾È¿¡ ÀÖ´Â encode¸¦ »ç¿ëÇØ¼­ Å°¿öµå¸¦ UTF-8·Î ÀÔÈ÷°Ú´Ù
+			//URLEncoderì•ˆì— ìˆëŠ” encodeë¥¼ ì‚¬ìš©í•´ì„œ í‚¤ì›Œë“œë¥¼ UTF-8ë¡œ ì…íˆê² ë‹¤
 		}catch(UnsupportedEncodingException e) {
 			return "";
 		}

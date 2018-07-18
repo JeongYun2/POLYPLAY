@@ -1,6 +1,6 @@
 package com.polyplay.pp.domain;
 
-public class AdReviewListVo { // °ü¸®ÀÚ selectAdReview¿¡¼­ ¾²´Â °Í. 
+public class AdReviewListVo { // ê´€ë¦¬ì selectAdReviewì—ì„œ ì“°ëŠ” ê²ƒ. 
 
 	private int midx;
 	private int ridx;

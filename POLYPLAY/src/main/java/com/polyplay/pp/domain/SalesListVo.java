@@ -1,6 +1,6 @@
 package com.polyplay.pp.domain;
 
-public class SalesListVo { //¸ŞÀÎ selectSalesList¿¡¼­ ¾²´Â°Í
+public class SalesListVo { //ë©”ì¸ selectSalesListì—ì„œ ì“°ëŠ”ê²ƒ
 	
 	private int cidx;
 	private String cSubject;
