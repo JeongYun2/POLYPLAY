@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
 		
 		OrderService_Mapper mpsm = sqlSession.getMapper(com.polyplay.pp.persistence.OrderService_Mapper.class);
 		int result1 = mpsm.insertOrder(opv);
-		System.out.println("insertOrder°á°ú°ª: "+result1);
+		System.out.println("insertOrderê²°ê³¼ê°’: "+result1);
 		
 
 		
@@ -56,7 +56,7 @@ public class OrderServiceImpl implements OrderService {
 		OrderService_Mapper mpsm = sqlSession.getMapper(com.polyplay.pp.persistence.OrderService_Mapper.class);
 		ArrayList<OrderPayVo> olist = mpsm.selectOrder(oid);
 		
-		System.out.println("selectOrder°á°ú°ª: "+olist);
+		System.out.println("selectOrderê²°ê³¼ê°’: "+olist);
 		
 		return olist;
 	}

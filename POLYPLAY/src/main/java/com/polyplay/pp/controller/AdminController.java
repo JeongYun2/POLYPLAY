@@ -73,9 +73,9 @@ public class AdminController {
 	public @ResponseBody ResponseEntity<String> uploadAjax(HttpServletRequest request,MultipartFile file) throws Exception{
  		ResponseEntity<String> entity = null;
  		
- 		//System.out.println("µé¾î¿È1"+file.getContentType());
- 		//System.out.println("µé¾î¿È3"+file.getSize());
- 		//System.out.println("µé¾î¿È2"+file.getContentType());
+ 		//System.out.println("ë“¤ì–´ì˜´1"+file.getContentType());
+ 		//System.out.println("ë“¤ì–´ì˜´3"+file.getSize());
+ 		//System.out.println("ë“¤ì–´ì˜´2"+file.getContentType());
  		
  		
  		entity = new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), 
@@ -85,23 +85,23 @@ public class AdminController {
  				
  	}
  	
- 	//ResponseEntity : µ¥ÀÌÅÍ¿Í Çì´õ¸¦ °¡Á®¿È , ResponseBody : ¸®ÅÏ°ªÀ» °´Ã¼·Î ¹Ş¾ÆÁÖ·Á°í
+ 	//ResponseEntity : ë°ì´í„°ì™€ í—¤ë”ë¥¼ ê°€ì ¸ì˜´ , ResponseBody : ë¦¬í„´ê°’ì„ ê°ì²´ë¡œ ë°›ì•„ì£¼ë ¤ê³ 
 	@RequestMapping(value = "/displayFile",method=RequestMethod.GET)
 	public @ResponseBody ResponseEntity<byte[]> displayFile(String fileName)throws Exception{
 		
 		InputStream in = null;
-		//µ¿¿µ»óÀÌ³ª ÀÌ¹ÌÁö ¹ŞÀ»¶§ ¾²´Â Å¬·¡½º
+		//ë™ì˜ìƒì´ë‚˜ ì´ë¯¸ì§€ ë°›ì„ë•Œ ì“°ëŠ” í´ë˜ìŠ¤
 		ResponseEntity<byte[]> entity = null;
 		
 		try{
 			String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
-			//formatName ÆÄÀÏ È®ÀåÀÚ »Ì¾Æ³»´Â Å¬·¡½º
+			//formatName íŒŒì¼ í™•ì¥ì ë½‘ì•„ë‚´ëŠ” í´ë˜ìŠ¤
 			MediaType mType = MediaUtils.getMediaType(formatName);
 			
 			HttpHeaders headers = new HttpHeaders();
 			
 			in = new FileInputStream(uploadPath+fileName);
-			//¾÷·Îµå °æ·Î¿Í ÆÄÀÏÀÌ¸§À» ¸®ÅÏ°ª
+			//ì—…ë¡œë“œ ê²½ë¡œì™€ íŒŒì¼ì´ë¦„ì„ ë¦¬í„´ê°’
 			//mine type
 			if(mType != null){
 				headers.setContentType(mType);
@@ -150,14 +150,14 @@ public class AdminController {
 	public String adminContentsWriteActionController(@ModelAttribute("cv") ContentsVo cv,Model model) {
 		//	 insertContents
 		String page = null;
-		System.out.println("cv¾È¿¡ ¹«¾ùÀÌ ÀÖ³ª¿ä? "+cv);
+		System.out.println("cvì•ˆì— ë¬´ì—‡ì´ ìˆë‚˜ìš”? "+cv);
 		System.out.println("gidx: "+cv.getGidx());
-		System.out.println("ÀÌ¹ÌÁö : "+cv.getcImage());
-		System.out.println("ºñµÍ : "+cv.getcVideo());
-		System.out.println("ÇÁ¸®ºñµÍ : "+cv.getcPreVideo());
+		System.out.println("ì´ë¯¸ì§€ : "+cv.getcImage());
+		System.out.println("ë¹„ë´ : "+cv.getcVideo());
+		System.out.println("í”„ë¦¬ë¹„ë´ : "+cv.getcPreVideo());
 		int cc = as.insertContents(cv);
 
-		System.out.println("µé¾î¿É´Ï´Ù4"+cc);
+		System.out.println("ë“¤ì–´ì˜µë‹ˆë‹¤4"+cc);
 		if (cc == 1) {
 			page = "redirect:/AdminContents";
 		} else {
@@ -299,7 +299,7 @@ public class AdminController {
 	   public String adminBoardReplyWriteActionController() {
 	      
 	
-		 //Æ®·£Àè¼Ç adReplyBoard
+		 //íŠ¸ëœì­ì…˜ adReplyBoard
 	      
 	      return "";
 	   }

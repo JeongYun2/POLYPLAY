@@ -40,10 +40,10 @@ public class OrderController {
 		
 	    String h="";
 		
-		System.out.println("orderPayControllerµé¾î¿È");
-		//System.out.println("opv¿¡¼­ cidx"+opv.getCidx());
+		System.out.println("orderPayControllerë“¤ì–´ì˜´");
+		//System.out.println("opvì—ì„œ cidx"+opv.getCidx());
 		
-		System.out.println("¸®Äù½ºÆ®ÆÄ¶÷ cidx ´ãÀº°³¼ö: "+cidx.length);
+		System.out.println("ë¦¬í€˜ìŠ¤íŠ¸íŒŒëŒ cidx ë‹´ì€ê°œìˆ˜: "+cidx.length);
 		for(int i=0; i<cidx.length;i++) {
 			System.out.println(cidx[i]);
 			
@@ -89,7 +89,7 @@ public class OrderController {
 //		System.out.println("baPrice: "+baPrice);
 //		opv.setoPrice(baPrice);
 		
-		//ip°¡Á®¿À´ÂÅ¬·¡½º
+		//ipê°€ì ¸ì˜¤ëŠ”í´ë˜ìŠ¤
 		InetAddress local = null;
 		try {
 			local = InetAddress.getLocalHost();
@@ -105,7 +105,7 @@ public class OrderController {
 		
 		
 		
-		//·£´ıÇÔ¼ö
+		//ëœë¤í•¨ìˆ˜
 		Random random = new Random();
 		int randomInt = random.nextInt();
 		

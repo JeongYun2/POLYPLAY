@@ -46,7 +46,7 @@ public class MyPageController {
 	@RequestMapping(value="/MyBasketList")
 	public String myBasketListController(Model model) { //@RequestParam("midx") int midx,
 		
-		System.out.println("myBasketListControllerµé¾î¿È");
+		System.out.println("myBasketListControllerë“¤ì–´ì˜´");
 		
 		ArrayList<BasketListVo> alist = null;
 		
@@ -55,7 +55,7 @@ public class MyPageController {
 		
 		model.addAttribute("basketList", alist);
 		
-		System.out.println("¸Þ¼Òµå½ÇÇàÇÏ°í Àå¹Ù±¸´Ï¸®½ºÆ®»Ñ¸®±â");
+		System.out.println("ë©”ì†Œë“œì‹¤í–‰í•˜ê³  ìž¥ë°”êµ¬ë‹ˆë¦¬ìŠ¤íŠ¸ë¿Œë¦¬ê¸°");
 		
 		return "views/mypage/myBasket";
 	}
@@ -64,7 +64,7 @@ public class MyPageController {
 	@RequestMapping(value="/FromBaToWish")
 	public String fromBaToWishController() {
 
-		System.out.println("fromBaToWishControllerµé¾î¿È");
+		System.out.println("fromBaToWishControllerë“¤ì–´ì˜´");
 		//fromBaToWish
 		
 		return "views/mypage/myWishList";

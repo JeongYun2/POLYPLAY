@@ -39,7 +39,7 @@ public class ReviewController {
 		String page = "";
 		
 		int cc = rs.deleteMyReview(rv);
-		 System.out.println("µé¾î¿É´Ï´Ù :"+cc);
+		 System.out.println("ë“¤ì–´ì˜µë‹ˆë‹¤ :"+cc);
 		if (cc == 1) {
 			page = "/ReviewList";
 		}else{

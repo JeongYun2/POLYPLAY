@@ -1,9 +1,13 @@
 package com.polyplay.pp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.polyplay.pp.service.BoardService;
 
 public class BoardController {
 
+	
 	@RequestMapping(value="/BoardNoticeList")
 	   public String boardNoticeListController() {
 	      
