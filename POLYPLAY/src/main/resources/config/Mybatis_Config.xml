@@ -7,6 +7,7 @@
  
  <typeAliases>
  	<typeAlias alias="arvo" type = "com.polyplay.pp.domain.AdReviewListVo"/>
+ 	<typeAlias alias="blvo" type = "com.polyplay.pp.domain.BasketListVo"/>
  	<typeAlias alias="bavo" type = "com.polyplay.pp.domain.BasketVo"/>
  	<typeAlias alias="bvo" type = "com.polyplay.pp.domain.BoardVo"/>
  	<typeAlias alias="cvo" type = "com.polyplay.pp.domain.ContentsVo"/>

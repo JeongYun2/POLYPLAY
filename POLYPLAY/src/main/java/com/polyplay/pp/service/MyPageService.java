@@ -2,7 +2,7 @@ package com.polyplay.pp.service;
 
 import java.util.ArrayList;
 
-
+import com.polyplay.pp.domain.BasketListVo;
 import com.polyplay.pp.domain.BasketVo;
 import com.polyplay.pp.domain.MemberVo;
 import com.polyplay.pp.domain.OrderPayVo;
@@ -17,9 +17,9 @@ public interface MyPageService {
 	
 	public int addToWishList(WishListVo wv);
 	
-	public ArrayList<BasketVo> selectBasketList();
+	public ArrayList<BasketListVo> selectBasketList(int midx);
 	
-	public int fromBaToWish(WishListVo wv);
+	public int fromBaToWish(int midx, int cidx);
 	
 	public int deleteBasket(BasketVo bav);
 	

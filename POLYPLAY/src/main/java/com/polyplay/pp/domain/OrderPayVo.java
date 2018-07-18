@@ -6,18 +6,25 @@ public class OrderPayVo {
 	private int midx;
 	private int cidx;
 	private String Oid;
-	private String oPrice;
+	private int oPrice;
 	private String oWriteday;
 	private String oIp;
 	private int pidx;
 	private String pMethod;
-	private String pPrice;
+	private int pPrice;
 	private String pStatus;
 	private String pDepositor;
 	private String pWriteday;
 	
+	private String h;
+
+	
+	private String cSubject;
+	private String cImage;
 	
 	
+	
+
 	public int getOidx() {
 		return oidx;
 	}
@@ -42,10 +49,10 @@ public class OrderPayVo {
 	public void setOid(String oid) {
 		Oid = oid;
 	}
-	public String getoPrice() {
+	public int getoPrice() {
 		return oPrice;
 	}
-	public void setoPrice(String oPrice) {
+	public void setoPrice(int oPrice) {
 		this.oPrice = oPrice;
 	}
 	public String getoWriteday() {
@@ -72,10 +79,10 @@ public class OrderPayVo {
 	public void setpMethod(String pMethod) {
 		this.pMethod = pMethod;
 	}
-	public String getpPrice() {
+	public int getpPrice() {
 		return pPrice;
 	}
-	public void setpPrice(String pPrice) {
+	public void setpPrice(int pPrice) {
 		this.pPrice = pPrice;
 	}
 	public String getpStatus() {
@@ -96,8 +103,25 @@ public class OrderPayVo {
 	public void setpWriteday(String pWriteday) {
 		this.pWriteday = pWriteday;
 	}
-	
+	public String getH() {
+		return h;
+	}
+	public void setH(String h) {
+		this.h = h;
+	}
 
-	
+
+	public String getcSubject() {
+		return cSubject;
+	}
+	public void setcSubject(String cSubject) {
+		this.cSubject = cSubject;
+	}
+	public String getcImage() {
+		return cImage;
+	}
+	public void setcImage(String cImage) {
+		this.cImage = cImage;
+	}
 
 }
