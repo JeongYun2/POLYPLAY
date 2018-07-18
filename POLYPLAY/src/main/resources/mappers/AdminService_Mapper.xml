@@ -2,11 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.polyplay.pp.persistence.AdminService_Mapper">
+<select id="selectAdContents" parameterType ="scri" resultType ="cvo">
+select * from POLY_CONTENTS where
+ 	<if test="searchType != null">
+		and ${searchType} like '%'||#{keyword}||'%'
+	</if>
+</select>
 
+<insert id="insertContents" parameterType="cvo">
+insert into POLY_CONTENTS(cidx, gidx, cSubject, cPrice, cDirector, cActor, cRuntime, cOpenyear, cStory, cWriteday, cModifyday, cDel_yn, cPreVideo, cVideo, cImage, cViewcnt)
+values(seq_cidx.nextval, #{gidx}, #{cSubject}, #{cPrice}, #{cDirector}, #{cActor}, #{cRuntime}, #{cOpenYear}, #{cStory}, sysdate, null, default, #{cPreVideo}, #{cVideo}, #{cImage}, NULL)
+</insert>
 
+<update id="updateContents" parameterType="cvo">
+update POLY_CONTENTS set gidx=#{gidx}, cSubject=#{cSubject}, cPrice=#{cPrice},
+cDirector=#{cDirector}, cActor=#{cActor}, cRuntime=#{cRuntime}, cOpenyear=#{cOpenyear},
+cStory=#{cStory}, cModifyday=#{cModifyday}, cVideo=#{cVideo}, cImage=#{cImage}, 
+cViewCnt=#{cViewCnt} where cidx=#{cidx}
+</update>
 
-
-
-
+<delete id="deleteContents" parameterType="cvo">
+update POLY_CONTENTS set cDel_yn=’Y’ where cidx=#{cidx}
+</delete>
 
 </mapper>

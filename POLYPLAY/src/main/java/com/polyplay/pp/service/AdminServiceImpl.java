@@ -2,6 +2,10 @@ package com.polyplay.pp.service;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.polyplay.pp.domain.AdReviewListVo;
 import com.polyplay.pp.domain.BoardVo;
 import com.polyplay.pp.domain.ContentsVo;
@@ -11,9 +15,14 @@ import com.polyplay.pp.domain.OrderVo;
 import com.polyplay.pp.domain.PayVo;
 import com.polyplay.pp.domain.ReviewVo;
 import com.polyplay.pp.domain.SearchCriteria;
+import com.polyplay.pp.persistence.AdminService_Mapper;
 
+@Service("AdminServiceImpl")
 public class AdminServiceImpl implements AdminService {
 
+	@Autowired
+	private SqlSession sqlSession;
+	
 	@Override
 	public ArrayList<MemberVo> selectAdMember(SearchCriteria scri) {
 		// TODO Auto-generated method stub
@@ -34,14 +43,22 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int insertContents(ContentsVo cv) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		
+		
+		AdminService_Mapper asm = sqlSession.getMapper(com.polyplay.pp.persistence.AdminService_Mapper.class);
+		int result = asm.insertContents(cv);
+		
+		return result;
 	}
 
 	@Override
 	public int updateContents(ContentsVo cv) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		AdminService_Mapper asm = sqlSession.getMapper(com.polyplay.pp.persistence.AdminService_Mapper.class);
+		int result = asm.updateContents(cv);
+		
+		return result;
 	}
 
 	@Override

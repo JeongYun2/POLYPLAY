@@ -7,16 +7,16 @@ import com.polyplay.pp.domain.WishListVo;
 
 public interface ReviewService {
 
-	public ArrayList<ReviewVo> selectMyReview(); 
+	public ReviewVo selectMyReview(int midx, int cidx); 
 	
 	public ArrayList<ReviewVo> selectLikeReview();
 	
-	public int deleteMyReview(ReviewVo wv);
+	public int deleteMyReview(ReviewVo rv);
 	
-	public int updateLikePlus(ReviewVo wv);
+	public int updateLikePlus(ReviewVo rv);
 	
-	public int updateLikeMinus(ReviewVo wv);
+	public int updateLikeMinus(ReviewVo rv);
 	
-	public int insertReview(ReviewVo wv);
+	public int insertReview(ReviewVo rv);
 	
 }

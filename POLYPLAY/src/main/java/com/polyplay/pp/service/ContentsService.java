@@ -10,13 +10,13 @@ import com.polyplay.pp.domain.WishListVo;
 
 public interface ContentsService {
 
-	public ArrayList<GenreVo> selectGenreList(); 
+	public ArrayList<ContentsVo> selectGenreList(int gidx); 
 	
 	public ArrayList<ContentsVo> selectSearchList(SearchCriteria scri); 
 	
-	public ArrayList<ContentsVo> selectContentsInfo(); 
+	public ArrayList<ContentsVo> selectContentsInfo(int cidx); 
 	
-	public ArrayList<ContentsVo> selectlSimilarList();
+	public ArrayList<ContentsVo> selectlSimilarList(int gidx);
 	
 	public int playVideo(ContentsVo cv);
 	
