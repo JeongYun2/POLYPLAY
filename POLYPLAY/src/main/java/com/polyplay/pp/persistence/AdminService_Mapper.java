@@ -8,6 +8,8 @@ public interface AdminService_Mapper {
 	
 	public ArrayList<ContentsVo> selectAdContents(SearchCriteria scri); 
 	
+	public ContentsVo selectAdContentsOne(int cidx);
+	
 	public int insertContents(ContentsVo cv);
 	
 	public int updateContents(ContentsVo cv);

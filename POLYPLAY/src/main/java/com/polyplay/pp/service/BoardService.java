@@ -1,6 +1,7 @@
 package com.polyplay.pp.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.polyplay.pp.domain.BoardVo;
 
@@ -11,7 +12,7 @@ public interface BoardService {
 	
 	public ArrayList<BoardVo> selectNoticeList(); 
 	
-	public ArrayList<BoardVo> selectNoticeContent(); 
+	public BoardVo selectNoticeContent(int bidx);
 	
 	public ArrayList<BoardVo> selectFAQList(); 
 	
@@ -19,12 +20,12 @@ public interface BoardService {
 	
 	public ArrayList<BoardVo> selectInquiryList();
 	
-	public int insertInquiry(BoardVo bv);
+	public BoardVo selectInquiryContent(int bidx);
+	 
+	public int insertInquiry(String bSubcate,String bWriter,String bSubject, String bContent,  String bIp);
 	
-	public ArrayList<BoardVo> selectInquiryContent(); 
+	public int updateInquiry(String bSubcate,String bSubject, String bContent, String bIp, int bidx);
 	
-	public int deleteInquiry(BoardVo bv);
-	
-	public int updateInquiry(BoardVo bv);
+	public int deleteInquiry(String bIp, int bidx);
 	
 }

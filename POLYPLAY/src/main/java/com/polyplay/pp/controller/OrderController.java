@@ -130,14 +130,35 @@ public class OrderController {
 	
 	
 	@RequestMapping(value="/OrderPayAction")
-	public String orderPayActionController() {
+	public String orderPayActionController(@RequestParam("midx")int midx,
+			@RequestParam("pMethod")String pMethod, @RequestParam("pDepositor")String pDepositor,
+			@RequestParam("pPrice")int pPrice, @RequestParam("oid")String oid, Model model) {
+		
+		
+		System.out.println("pMethod: "+pMethod);
+		System.out.println("pDepositor: "+pDepositor);
+		System.out.println("pPrice: "+pPrice);
+		System.out.println("oid: "+oid);
+		
+		OrderPayVo opv = new OrderPayVo();
+		opv.setMidx(midx);
+		opv.setpMethod(pMethod);
+		opv.setpPrice(pPrice);
+		opv.setpDepositor(pDepositor);
+		opv.setOid(oid);
+		
+		int result = os.insertPay(opv);
+		System.out.println("pay컨트롤러 insert결과: "+result);
+		
+		//model.addAttribute("oid", oid);
+		
+		OrderPayVo reopv = os.selectCheckOrder(opv);
+		
+		model.addAttribute("orderCompleteList", reopv);
 		
 		
 		
-		
-		
-		
-		return "";
+		return "views/order/orderComplete";
 	}
 	
 	

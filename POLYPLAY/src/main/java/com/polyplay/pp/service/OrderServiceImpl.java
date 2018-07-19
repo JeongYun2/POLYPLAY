@@ -62,20 +62,31 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	@Override
-	public OrderPayVo selectCheckOrder(int midx) {
-		// TODO Auto-generated method stub
-		return null;
+	public int insertPay(OrderPayVo opv) {
+
+		OrderService_Mapper mpsm = sqlSession.getMapper(com.polyplay.pp.persistence.OrderService_Mapper.class);
+		int result = mpsm.insertPay(opv);
+		
+		System.out.println("insertPay결과값: "+result);
+		
+		return result;
+	}
+
+
+	
+
+
+	@Override
+	public OrderPayVo selectCheckOrder(OrderPayVo opv) {
+		
+		OrderService_Mapper mpsm = sqlSession.getMapper(com.polyplay.pp.persistence.OrderService_Mapper.class);
+		OrderPayVo reopv = mpsm.selectCheckOrder(opv);
+		
+		System.out.println("selectCheckOrder결과값: "+reopv);
+		
+		return reopv;
 	}
 
 

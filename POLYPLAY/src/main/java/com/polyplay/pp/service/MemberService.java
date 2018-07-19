@@ -16,4 +16,11 @@ public interface MemberService {
 	
 	public int insertMember(MemberVo mvo);
 	
+	public String selectIdFind(MemberVo mvo);
+	
+	public String selectPwFind(MemberVo mvo);
+	
+	public MemberVo selectMyMember(int midx);
+	
+	public int memberModiDel(MemberVo mvo, String modiDel);
 }

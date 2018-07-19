@@ -23,7 +23,7 @@ public interface MemberService_Mapper {
 	
 	// int midx, String mname, String mnickname, String mid, String mpassword, String memail, String mphone, String mip
 	public int insertMember(MemberVo mvo);
-	/*
+	
 	// String mName, String mEmail
 	public String selectIdFind(MemberVo mvo);
 	
@@ -36,5 +36,7 @@ public interface MemberService_Mapper {
 	public int selectPwConfirm(MemberVo mvo);
 	
 	// String mNickname, String mPassword, String mPhone, String mModifyday, int midx
-	public MemberVo updateMember(MemberVo mvo);*/
+	public int updateMember(MemberVo mvo);
+	
+	public int deleteMember(int midx);
 }

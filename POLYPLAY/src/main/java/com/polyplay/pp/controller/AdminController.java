@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -168,31 +169,57 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/AdminContentsModify", method=RequestMethod.GET)
-	public String adminContentsModifyController() {
-
-		return "";
+	public String adminContentsModifyController(Model model) {
+		String page = "views/admin/adminContentsModify";
+		ContentsVo cv = as.selectAdContentsOne(1);
+		
+		model.addAttribute("cv", cv);
+		return page;
 	}
 	
 	@RequestMapping(value="/AdminContentsModifyAction", method=RequestMethod.POST)
-	public String adminContentsModifyActionController() {
-		
+	public String adminContentsModifyActionController(@RequestParam("cidx") int cidx,
+			@ModelAttribute("cv") ContentsVo cv,Model model) {
 		//	updateContents
+		String page = null;
+		
+		int cc2 = as.updateContents(cv);
+		if (cc2 == 1) {
+			page = "redirect:/AdminContents";
+		} else {
 
-		return "";
+			page = "redirect:/AdminContentsModify";
+		}
+		
+		return page;
 	}
 	
 	@RequestMapping(value="/AdminContentsDelete", method=RequestMethod.GET)
-	public String adminContentsDeleteController() {
+	public String adminContentsDeleteController(Model model) {
+		String page = "views/admin/adminContentsDelete";
+		ContentsVo cv = as.selectAdContentsOne(22);
 		
-		return "";
+		model.addAttribute("cv", cv);
+		return page;
 	}
 	
 	@RequestMapping(value="/AdminContentsDeleteAction", method=RequestMethod.POST)
-	public String adminContentsDeleteActionController() {
+	public String adminContentsDeleteActionController(
+			@RequestParam("cidx") int cidx,
+			@ModelAttribute("cv") ContentsVo cv,Model model){
+		String page = null;
 		
-		//	 deleteContents
+		int cc3 = as.updateContents(cv);
+		if (cc3 == 1) {
+			page = "redirect:/AdminContents";
+		} else {
+
+			page = "redirect:/AdminContentsDelete";
+		}
 		
-		return "";
+		return page;
+		
+		
 	}
 	
 	@RequestMapping(value="/AdminOrderPay", method=RequestMethod.GET)

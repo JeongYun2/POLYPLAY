@@ -17,15 +17,12 @@ public interface OrderService_Mapper {
 	
 	public ArrayList<OrderPayVo> selectOrder(String oid);
 	
-	
-	
-	
-	
-	
-	
+
 	public int insertPay(OrderPayVo opv);
 	
-	public OrderPayVo selectCheckOrder(int midx);
+
+	
+	public OrderPayVo selectCheckOrder(OrderPayVo opv);
 	
 	
 	

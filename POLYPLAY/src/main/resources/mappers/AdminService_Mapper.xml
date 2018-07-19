@@ -9,6 +9,10 @@ select * from POLY_CONTENTS where
 	</if>
 </select>
 
+<select id="selectAdContentsOne"  parameterType ="Integer"  resultType ="cvo">
+select * from POLY_CONTENTS where cDel_yn= 'N' and cidx=#{cidx} 
+</select>
+
 <insert id="insertContents" parameterType="cvo">
 insert into POLY_CONTENTS(cidx, gidx, cSubject, cPrice, cDirector, cActor, cRuntime, cOpenyear, cStory, cWriteday, cModifyday, cDel_yn, cPreVideo, cVideo, cImage, cViewcnt)
 values(seq_cidx.nextval, #{gidx}, #{cSubject}, #{cPrice}, #{cDirector}, #{cActor}, #{cRuntime}, #{cOpenYear}, #{cStory}, sysdate, null, default, #{cPreVideo}, #{cVideo}, #{cImage}, NULL)
@@ -16,9 +20,8 @@ values(seq_cidx.nextval, #{gidx}, #{cSubject}, #{cPrice}, #{cDirector}, #{cActor
 
 <update id="updateContents" parameterType="cvo">
 update POLY_CONTENTS set gidx=#{gidx}, cSubject=#{cSubject}, cPrice=#{cPrice},
-cDirector=#{cDirector}, cActor=#{cActor}, cRuntime=#{cRuntime}, cOpenyear=#{cOpenyear},
-cStory=#{cStory}, cModifyday=#{cModifyday}, cVideo=#{cVideo}, cImage=#{cImage}, 
-cViewCnt=#{cViewCnt} where cidx=#{cidx}
+cDirector=#{cDirector}, cActor=#{cActor}, cRuntime=#{cRuntime}, cOpenYear=#{cOpenYear},
+cStory=#{cStory}, cModifyday=sysdate, cPreVideo=#{cPreVideo}, cVideo=#{cVideo}, cImage=#{cImage} where cidx=#{cidx}
 </update>
 
 <delete id="deleteContents" parameterType="cvo">

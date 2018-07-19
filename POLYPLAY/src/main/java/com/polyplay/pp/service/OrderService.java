@@ -18,6 +18,11 @@ public interface OrderService {
 	public int insertOrder(OrderPayVo opv);
 	
 	public ArrayList<OrderPayVo> selectOrder(String oid);
+	
+	public int insertPay(OrderPayVo opv);
+	
+	
+	public OrderPayVo selectCheckOrder(OrderPayVo opv);
 
 	
 	
@@ -30,6 +35,6 @@ public interface OrderService {
 	
 //	public int insertOrderPay(OrderPayVo opv);
 	
-	public OrderPayVo selectCheckOrder(int midx);
+
 	
 }

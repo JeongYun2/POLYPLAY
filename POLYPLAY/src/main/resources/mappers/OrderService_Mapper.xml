@@ -28,21 +28,19 @@ select * from POLY_ORDER o, POLY_CONTENTS c where c.cidx=o.cidx and oid=#{oid}
 
 
 
-
-<insert id="insertPay" parameterType="opvo">
-insert into POLY_PAY(pidx, oid, pMethod, pPrice, pStatus, pDepositor, pWriteday) 
-	select  seq_pidx.nextval, oid, 'B', '19000', 'N', '이정윤',null from POLY_ORDER where oid='4F08TNAX10'
+<!-- insert into POLY_PAY(pidx, oid, pMethod, pPrice, pStatus, pDepositor, pWriteday) 
+	select  seq_pidx.nextval, oid, 'B', '19000', 'N', '이정윤',null from POLY_ORDER where oid='4F08TNAX10' 
 	
-	
-insert into POLY_PAY(pidx, oid, pMethod, pPrice, pStatus, pDepositor, pWriteday) 
-	select  seq_pidx.nextval, oid, 'B', '19000', 'N', '이정윤',null from POLY_ORDER where oid='4F08TNAX10'
-		
+	insert into POLY_PAY(pidx, oid, pMethod, pPrice, pStatus, pDepositor, pWriteday) 
+	select  seq_pidx.nextval, oid, '${pMethod}', '${pPrice}', 'N', '${pDepositor}',null from POLY_ORDER where oid=#{oid}-->
+<insert id="insertPay" parameterType="opvo">	
+insert into POLY_PAY values(seq_pidx.nextval, #{oid}, #{pMethod}, #{pPrice}, default, #{pDepositor}, null)		
 </insert>
 
 
 
-<select id="selectCheckOrder" parameterType="Integer" resultType="opvo">
-select * from POLY_ORDER o, POLY_PAY p where o.oId = p.oid and o.midx=#{midx}
+<select id="selectCheckOrder" parameterType="opvo" resultType="opvo">
+select * from POLY_ORDER o, POLY_PAY p where o.oId = p.oid and o.midx=#{midx} and o.oid=#{oid}
 </select>
 
 

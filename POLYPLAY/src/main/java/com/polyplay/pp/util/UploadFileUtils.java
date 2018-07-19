@@ -26,9 +26,9 @@ public class UploadFileUtils {
 		String savedName = uid.toString() +"_"+originalName;
 		
 //		String path = UploadFileUtiles.class.getResource("").getPath();
-//		System.out.println("ÇöÀçÅ¬·¡½ºpath:"+path);
+//		System.out.println("í˜„ì¬í´ë˜ìŠ¤path:"+path);
 		
-//  	½ÇÇàµÇ´Â ½Ã½ºÅÛ À§Ä¡	
+//  	ì‹¤í–‰ë˜ëŠ” ì‹œìŠ¤í…œ ìœ„ì¹˜	
 //		System.out.println(System.getProperty("user.dir"));
        
 //        String realpath = request.getSession().getServletContext().getRealPath(uploadPath); 
@@ -37,7 +37,7 @@ public class UploadFileUtils {
 		String savedPath = calcPath(uploadPath);
 		
 		File target = new File(uploadPath+savedPath,savedName);
-//  	µî·ÏÇÑ ÆÄÀÏ »ó´ë°æ·Î
+//  	ë“±ë¡í•œ íŒŒì¼ ìƒëŒ€ê²½ë¡œ
 //		String loc = target.getCanonicalPath();
 
 		FileCopyUtils.copy(fileData,target);
@@ -63,7 +63,7 @@ public class UploadFileUtils {
 		
 		return iconName.substring(uploadPath.length()).replace(File.separatorChar, '/');
 	}
-	//³¯Â¥ Æú´õ¿¡ ¸Â°Ô ÆÄÀÏÀ» º¹»çÇÏ¿© Áı¾î ³Ö´Â´Ù
+	//ë‚ ì§œ í´ë”ì— ë§ê²Œ íŒŒì¼ì„ ë³µì‚¬í•˜ì—¬ ì§‘ì–´ ë„£ëŠ”ë‹¤
 	private static String calcPath(String uploadPath){	
 		
 		Calendar cal = Calendar.getInstance();
@@ -83,10 +83,10 @@ public class UploadFileUtils {
 		
 		return datePath;
 	}
-//		directory Æú´õ,String...paths : uploadPath, yearPath, monthPath, datePath À» ÆíÇÏ°Ô ³Ñ±â±â À§ÇØ¼­ 
-//		makeDir Æú´õ »ı¼º ¸Ş¼Òµå	
+//		directory í´ë”,String...paths : uploadPath, yearPath, monthPath, datePath ì„ í¸í•˜ê²Œ ë„˜ê¸°ê¸° ìœ„í•´ì„œ 
+//		makeDir í´ë” ìƒì„± ë©”ì†Œë“œ	
 	private static void makeDir(String uploadPath,String...paths){
-//		ÆÄÀÏÀÌ ÀÖÀ¸¸é ¸®ÅÏÇÑ´Ù			
+//		íŒŒì¼ì´ ìˆìœ¼ë©´ ë¦¬í„´í•œë‹¤			
 		if(new File(uploadPath+paths[paths.length -1]).exists())
 			return;
 		
@@ -94,16 +94,16 @@ public class UploadFileUtils {
 			
 			File dirPath = new File(uploadPath + path);		
 //		System.out.println("dirPath:"+dirPath);			
-//		ÇØ´çµÈ °æ·Î¿¡ Æú´õ°¡ ¾øÀ¸¸é Æú´õ¸¦ ¸¸µé¾î ÁÖ¼¼¿ä
+//		í•´ë‹¹ëœ ê²½ë¡œì— í´ë”ê°€ ì—†ìœ¼ë©´ í´ë”ë¥¼ ë§Œë“¤ì–´ ì£¼ì„¸ìš”
 			if (! dirPath.exists()){			
 				dirPath.mkdir();				
 			}
 		}
 	}
-//		½æ³×ÀÏ »ı¼º ¸Ş¼Òµå 
-//		resize ½æ³×ÀÏ »çÀÌÁî Á¶Àı Å¬·¡½º	
-//		lastIndexOf index¹øÈ£´Â 0ºÎÅÍ	
-//		formatName ÆÄÀÏ È®ÀåÀÚ¸í	,toUpperCase¹®ÀÚ¿­À» ´ë¹®ÀÚ·Î º¯°æ
+//		ì¸ë„¤ì¼ ìƒì„± ë©”ì†Œë“œ 
+//		resize ì¸ë„¤ì¼ ì‚¬ì´ì¦ˆ ì¡°ì ˆ í´ë˜ìŠ¤	
+//		lastIndexOf indexë²ˆí˜¸ëŠ” 0ë¶€í„°	
+//		formatName íŒŒì¼ í™•ì¥ìëª…	,toUpperCaseë¬¸ìì—´ì„ ëŒ€ë¬¸ìë¡œ ë³€ê²½
 	private static String makeThumbnail(String uploadPath,
 			String path,
 			String fileName) throws Exception{

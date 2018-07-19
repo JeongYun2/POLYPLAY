@@ -17,19 +17,19 @@ select midx
 <select id="selectAutoLogin" parameterType="String">
 select * 
 	from POLY_MEMBER
-	where msessionid=#{msessionid} and msessionlimit >= sysdate
+	where mSessionid=#{mSessionid} and mSessionlimit >= sysdate
 </select> -->
 
 <!-- updateAutoLogin : 자동로그인 세션 정보 수정 --><!-- 
 <update id="updateAutoLogin" parameterType="mvo">
 update POLY_MEMBER 
-	set msessionid=#{msessionid}, msessionlimit=#{msessionlimit}
+	set mSessionid=#{mSessionid}, mSessionlimit=#{mSessionlimit}
 	where midx=#{midx}
 </update> -->
 
 <!-- delKeepLogin : 자동로그인 세션 정보 삭제 --><!-- 
 <update id="delAutoLogin" parameterType="Integer">
-update POLY_MEMBER set msessionid=null msessionlimit=null where midx=#{midx}
+update POLY_MEMBER set mSessionid=null mSessionlimit=null where midx=#{midx}
 </update> -->
 
 
@@ -54,56 +54,56 @@ select count(*) from POLY_MEMBER where mEmail=#{mEmail}
 <insert id="insertMember" parameterType="mvo">
 insert into 
 	poly_member (midx, mName, mNickname, mId, mPassword, mEmail, mPhone, mIp)
-	values (midx_seq, #{mname}, #{mnickname}, #{mid}, #{mpassword}, #{memail}, #{mphone}, #{mip})
+	values (midx_seq.nextval, #{mName}, #{mNickname}, #{mId}, #{mPassword}, #{mEmail}, #{mPhone}, #{mIp})
 </insert>
 
 
 <!-- memberIdFind.jsp -->
 
-<!-- selectIdFind : 아이디 찾기 --><!--  
+<!-- selectIdFind : 아이디 찾기 -->
 <select id="selectIdFind" parameterType="mvo" resultType="String">
-select mid from POLY_MEMBER
+select mId from poly_member
 where mName=#{mName} and mEmail=#{mEmail} and mDel_yn='N'
-</select> -->
+</select>
 
 
 <!-- memberPwFind.jsp -->
 
-<!-- selectPwFind : 비밀번호 찾기 --><!-- 
+<!-- selectPwFind : 비밀번호 찾기 -->
 <select id="selectPwFind" parameterType="mvo" resultType="String">
 select mPassword from poly_member
 where mId=#{mId} and mEmail=#{mEmail} and mPhone=#{mPhone} and mDel_yn='N'
-</select> -->
+</select>
 
 
 <!-- memberModify.jsp -->
 
-<!-- selectMyMember : 회원정보 수정/탈퇴에 필요한 회원정보 가져와서 출력 --><!-- 
+<!-- selectMyMember : 회원정보 수정/탈퇴에 필요한 회원정보 가져와서 출력 -->
 <select id="selectMyMember" parameterType="Integer" resultType="mvo">
 select mId, mName, mNickname, mEmail, mPhone from poly_member 
 	where midx=#{midx}
-</select> -->
+</select>
 
 <!-- selectNicknameCheck : 닉네임 중복 체크 여기에 씀 -->
 
-<!-- selectPwConfirm : 비밀번호 확인 --><!-- 
+<!-- selectPwConfirm : 비밀번호 확인 -->
 <select id="selectPwConfirm" parameterType="mvo" resultType="Integer">
 select count(*)
 	from POLY_MEMBER 
-	where midx=#{midx} amd mPassword=#{mPassword}
-</select> -->
+	where midx=#{midx} and mPassword=#{mPassword}
+</select>
 
-<!-- updateMemberCheck : 회원 정보 수정 --><!-- 
+<!-- updateMemberCheck : 회원 정보 수정 -->
 <update id="updateMember" parameterType="mvo">
 update POLY_MEMBER 
 	set mNickname-#{mNickname},mPassword=#{mPassword},mPhone=#{mPhone},mModifyday=sysdate
 	where midx=#{midx}
-</update> -->
+</update>
 
-<!-- deleteMember : 회원 탈퇴 --><!-- 
+<!-- deleteMember : 회원 탈퇴 -->
 <update id="deleteMember" parameterType="Integer">
 update poly_member set mDel_yn='Y' where midx=#{midx}
-</update> -->
+</update>
 
 
 </mapper>

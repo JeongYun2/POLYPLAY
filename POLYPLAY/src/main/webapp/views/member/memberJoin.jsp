@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>memberJoin</title>
 <!-- Bootstrap CSS -->
@@ -12,18 +12,17 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 
-var idCk = false;			//ID аъ╨╧ц╪е╘ ©╘╨н (аъ╨╧юо ╟Ф©Л = false, аъ╨╧юл ╬ф╢р ╟Ф©Л = true)
-var nickCk = false;		//nick аъ╨╧ц╪е╘ ©╘╨н (аъ╨╧юо ╟Ф©Л = false, аъ╨╧юл ╬ф╢р ╟Ф©Л = true)
+var idCk = false;			//ID О©╫ъ╨О©╫ц╪е╘ О©╫О©╫О©╫О©╫ (О©╫ъ╨О©╫О©╫О©╫ О©╫О©╫О©╫ = false, О©╫ъ╨О©╫О©╫О©╫ О©╫ф╢О©╫ О©╫О©╫О©╫ = true)
+var nickCk = false;		//nick О©╫ъ╨О©╫ц╪е╘ О©╫О©╫О©╫О©╫ (О©╫ъ╨О©╫О©╫О©╫ О©╫О©╫О©╫ = false, О©╫ъ╨О©╫О©╫О©╫ О©╫ф╢О©╫ О©╫О©╫О©╫ = true)
 
 $(function() {
 	$.idCheck();
 	$.nickCheck();
-	$.emailCheck();
 });
 
 $.idCheck = function(){
 	
-	// idCheck ╧Жф╟ю╩ е╛╦╞ гъю╩ ╤╖
+	// idCheck О©╫О©╫ф╟О©╫О©╫ е╛О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫
 	$("#idCheck").click(function() {
 		
 		var userID = $("#mId").val();
@@ -35,18 +34,18 @@ $.idCheck = function(){
 			dataType : "json",
 			success : function(data) {
 				alert("ajax return: "+data);
-				if(data > 0) {					// ╣╔юлемюг ╟Ё╪Ж
+				if(data > 0) {					// О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 
-	            	alert("╬фюл╣П╟║ а╦юГгу╢о╢ы. ╢ы╦╔ ╬фюл╣П╦╕ ют╥бгьаж╪╪©Д.");
-	              	// ╩║╟╜ю╦╥н ╨╞╟Ф
+	            	alert("О©╫О©╫О©╫л╣О©╫ О©╫О©╫О©╫О©╫О©╫у╢о╢О©╫. О©╫ы╦О©╫ О©╫О©╫О©╫л╣О©╫ О©╫т╥О©╫О©╫О©╫О©╫ж╪О©╫О©╫О©╫.");
+	              	// О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 	              	$("#divId").removeClass("has-success");
 	                $("#divId").addClass("has-error");
 	                $("#mId").focus();
 	                
 	            } else {				
 	            	
-	                alert("╩Г©К╟║╢игя ╬фюл╣Пют╢о╢ы.");
-					// фд╤Шю╦╥н ╨╞╟Ф
+	                alert("О©╫О©╫К╟║О©╫О©╫О©╫О©╫ О©╫О©╫О©╫л╣О©╫О©╫т╢о╢О©╫.");
+					// О©╫д╤О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 					$("#divId").removeClass("has-error");
 	                $("#divId").addClass("has-success");
 	                 
@@ -62,7 +61,7 @@ $.idCheck = function(){
 
 $.nickCheck = function(){
 	
-	// nickCheck ╧Жф╟ю╩ е╛╦╞ гъю╩ ╤╖
+	// nickCheck О©╫О©╫ф╟О©╫О©╫ е╛О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫
 	$("#nickCheck").click(function() {
 		
 		var userNick = $("#mNickname").val();
@@ -76,18 +75,18 @@ $.nickCheck = function(){
 				dataType : "json",
 				success : function(data) {
 					alert("ajax return: "+data);
-					if(data > 0) {					// ╣╔юлемюг ╟Ё╪Ж
+					if(data > 0) {					// О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 						
-						alert("╢пЁвюсюл а╦юГгу╢о╢ы. ╢ы╦╔ ╢пЁвюсю╩ ют╥бгьаж╪╪©Д.");
-		              	// ╩║╟╜ю╦╥н ╨╞╟Ф
+						alert("О©╫пЁО©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫у╢о╢О©╫. О©╫ы╦О©╫ О©╫пЁО©╫О©╫О©╫О©╫О©╫ О©╫т╥О©╫О©╫О©╫О©╫ж╪О©╫О©╫О©╫.");
+		              	// О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 		              	$("#divNick").removeClass("has-success");
 		                $("#divNick").addClass("has-error");
 		                $("#mNick").focus();
 		                
 		            } else {				
 		            	
-		                alert("╩Г©К╟║╢игя ╢пЁвюсют╢о╢ы.");
-						// фд╤Шю╦╥н ╨╞╟Ф
+		                alert("О©╫О©╫К╟║О©╫О©╫О©╫О©╫ О©╫пЁО©╫О©╫О©╫О©╫т╢о╢О©╫.");
+						// О©╫д╤О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 						$("#divNick").removeClass("has-error");
 		                $("#divNick").addClass("has-success");
 		                 
@@ -104,43 +103,43 @@ $.nickCheck = function(){
 </script>
 </head>
 <body>
-	<h1>х╦©Ь╟║ют</h1>
+	<h1>М ▄Л⌡░Й╟─Л·┘</h1>
 	<form action="${pageContext.request.contextPath}/MemberJoinAction">
 	<div>
 		<div class="form-group" >
-			<label class="control-label">╬фюл╣П</label>
+			<label class="control-label">Л∙└Л²╢К■■</label>
 			<div class="form-inline" id="divId">
 				<input type="text" class="form-control" id="mId" name="mId">
-				<input type="button" class="btn btn-primary btn-sm" id="idCheck" name="idCheck" value="╬фюл╣П аъ╨╧ц╪е╘">
+				<input type="button" class="btn btn-primary btn-sm" id="idCheck" name="idCheck" value="О©╫О©╫О©╫л╣О©╫ О©╫ъ╨О©╫ц╪е╘">
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label">╨Я╧п╧Ьхё</label>
+			<label class="control-label">К╧└К╟─К╡┬М≤╦</label>
 			<input type="text" class="form-control" id="mPassword" name="mPassword">
 		</div>
 		<div class="form-group">
-			<label class="control-label">юл╦чюо</label>
+			<label class="control-label">О©╫л╦О©╫О©╫О©╫</label>
 			<input type="text" class="form-control" id="mEmail" name="mEmail">
 			
 		</div>
 		<div class="form-group">
-			<label class="control-label">юЭх╜╧Ьхё</label>
+			<label class="control-label">Л═└М≥■К╡┬М≤╦</label>
 			<input type="text" class="form-control" id="mPhone" name="mPhone">
 		</div>
 		<div class="form-group">
-			<label class="control-label">юл╦╖</label>
+			<label class="control-label">Л²╢К╕└</label>
 			<input type="text" class="form-control" id="mName" name="mName">
 		</div>
 		<div class="form-group">
-			<label class="control-label">╢пЁвюс</label>
+			<label class="control-label">К▀┴К└╓Л·└</label>
 			<div class="form-inline">
 				<input type="text" class="form-control" id="mNickname" name="mNickname">
-				<input type="button" class="btn btn-primary btn-sm" id="nickCheck" name="nickCheck" value="╢пЁвюс аъ╨╧ц╪е╘">
+				<input type="button" class="btn btn-primary btn-sm" id="nickCheck" name="nickCheck" value="О©╫пЁО©╫О©╫О©╫ О©╫ъ╨О©╫ц╪е╘">
 			</div>
 		</div>
 	</div>
 	<div>
-		<input class="btn btn-primary btn-sm" type="submit" value="╟║ют">
+		<input class="btn btn-primary btn-sm" type="submit" value="Й╟─Л·┘">
 	</div>
 	</form>
 </body>

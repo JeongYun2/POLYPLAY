@@ -17,6 +17,7 @@ import com.polyplay.pp.domain.ReviewVo;
 import com.polyplay.pp.domain.SearchCriteria;
 import com.polyplay.pp.persistence.AdminService_Mapper;
 
+
 @Service("AdminServiceImpl")
 public class AdminServiceImpl implements AdminService {
 
@@ -28,7 +29,16 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	@Override
+	public ContentsVo selectAdContentsOne(int cidx) {
+		
+		AdminService_Mapper asm = sqlSession.getMapper(AdminService_Mapper.class);
+		ContentsVo cv = asm.selectAdContentsOne(cidx);
+		
+		return cv;
+	}
+	
 	@Override
 	public int updateAuthMember(MemberVo mv) {
 		// TODO Auto-generated method stub
@@ -63,8 +73,10 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int deleteContents(ContentsVo cv) {
-		// TODO Auto-generated method stub
-		return 0;
+		AdminService_Mapper asm = sqlSession.getMapper(com.polyplay.pp.persistence.AdminService_Mapper.class);
+		int result = asm.deleteContents(cv);
+		
+		return result;
 	}
 
 	@Override
@@ -132,5 +144,7 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 
 }

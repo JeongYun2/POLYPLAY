@@ -44,7 +44,7 @@ function payCheck() {
 <!-- 장바구니->찜할때 selectWishListCheck하기 Ajax로  -->
 
 <form name="frm" method="post" action="<%=request.getContextPath()%>/OrderPayAction">
-
+<!-- <form name="frm"> -->
 <table>
 		<!-- 속성 이름 -->
 		<tr>
@@ -55,6 +55,7 @@ function payCheck() {
 			<th></th>
 	
 		</tr>
+		<c:set var="i" value="0"/>
 		<c:forEach var="opvo" items="${orderList}" varStatus ="status">
 		<!-- 속성 값 -->
 		<tr>
@@ -63,12 +64,21 @@ function payCheck() {
 			<td>${opvo.cSubject}</td>
 			<td>${opvo.oPrice}</td>
 		<%-- 	<input type="hidden" id="baPrice${status.count}" name="baPrice" value="${blvo.cPrice}"/> --%>
-			<td>총금액</td>
+			<td>${opvo.oid}</td>
+			<c:set var="j" value="${opvo.oid}"/>
+			
 			<input type="hidden" id="oPrice${status.count}" name="oPrice" value="${opvo.oPrice}"/>
+			<c:set var="i" value="${i=i+opvo.oPrice}"/>
+			
 		</tr>
 		</c:forEach>
 	</table>
+	<c:out value="${i} "/>
+	<input type="text" name="pPrice" value="${i}">
 	
+	<c:out value="${j} "/>
+	<input type="text" name="oid" value="${j}">
+
 	<br>
 	**결제주의사항
 	<br>
@@ -81,10 +91,11 @@ function payCheck() {
 	
 	입금자명 : <input type="text" name="pDepositor" id="pDepositor" size="20" maxlength="20"/>
 
-
 <input type="submit"  id="pay" name="pay" value="결제하기"  />
+<!-- <input type="submit"  id="pay" name="pay" value="결제하기"  /> -->
 <%-- <input type="hidden" name="midx" value="${midx}"/> --%>
 <input type="hidden" name="midx" value="1"/>
+
 
 
 </form>
