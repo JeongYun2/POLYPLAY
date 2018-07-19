@@ -38,11 +38,11 @@ public class ContentsController {
 	@RequestMapping(value="/ContentsInfo")
 	public String contentsInfoController(Model model) {
 		//selectContentsInfo
-		ArrayList<ContentsVo> alist = null;
+		ContentsVo cv = null;
 		
-		alist = cs.selectContentsInfo(8);
+		cv = cs.selectContentsInfo(68);
 		
-		model.addAttribute("alist", alist);
+		model.addAttribute("cv", cv);
 		
 		
 		
@@ -68,11 +68,12 @@ public class ContentsController {
 	}
 	
 	@RequestMapping(value="/ContentsPlayController")
-	public String contentsPlay() {
-		
+	public String contentsPlay(Model model) {
 		//playVideo
 		
-		return "";
+		ContentsVo cv = cs.selectPreVideo(68);
+		model.addAttribute("cv", cv);
+		return "/views/contents/contentsPlay";
 	}
 	
 }

@@ -78,6 +78,8 @@ public class AdminController {
  		//System.out.println("들어옴3"+file.getSize());
  		//System.out.println("들어옴2"+file.getContentType());
  		
+ 		System.out.println("file.getOriginalFilename(): "+file.getOriginalFilename());
+ 		
  		
  		entity = new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), 
 				file.getBytes()),HttpStatus.CREATED);
@@ -197,7 +199,7 @@ public class AdminController {
 	@RequestMapping(value="/AdminContentsDelete", method=RequestMethod.GET)
 	public String adminContentsDeleteController(Model model) {
 		String page = "views/admin/adminContentsDelete";
-		ContentsVo cv = as.selectAdContentsOne(22);
+		ContentsVo cv = as.selectAdContentsOne(21);
 		
 		model.addAttribute("cv", cv);
 		return page;
@@ -209,7 +211,7 @@ public class AdminController {
 			@ModelAttribute("cv") ContentsVo cv,Model model){
 		String page = null;
 		
-		int cc3 = as.updateContents(cv);
+		int cc3 = as.deleteContents(cv);
 		if (cc3 == 1) {
 			page = "redirect:/AdminContents";
 		} else {

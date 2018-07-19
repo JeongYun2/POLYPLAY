@@ -14,11 +14,11 @@ public interface ContentsService {
 	
 	public ArrayList<ContentsVo> selectSearchList(SearchCriteria scri); 
 	
-	public ArrayList<ContentsVo> selectContentsInfo(int cidx); 
+	public ContentsVo selectContentsInfo(int cidx); 
 	
 	public ArrayList<ContentsVo> selectlSimilarList(int gidx);
 	
 	public int playVideo(ContentsVo cv);
 	
-	
+	public ContentsVo selectPreVideo(int cidx);
 }

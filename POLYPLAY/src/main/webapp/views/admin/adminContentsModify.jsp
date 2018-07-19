@@ -169,7 +169,7 @@ $(".fileDrop1").on("drop", function(event){
 		success: function(data){
 			alert(data);
 			
-			$("#cImage").val(getImageLink(data));
+			$("#cImage").val(data);
 		
 			
 			var str ="";
@@ -245,7 +245,7 @@ $(".fileDrop2").on("drop", function(event){
 		success: function(data){
 			alert(data);
 			
-			$("#cPreVideo").val(getImageLink(data));
+			$("#cPreVideo").val(data);
 			
 			
 			var str ="";
@@ -321,7 +321,7 @@ $(".fileDrop3").on("drop", function(event){
 		success: function(data){
 			alert(data);
 			
-			$("#cVideo").val(getImageLink(data));
+			$("#cVideo").val(data);
 			
 			
 			var str ="";

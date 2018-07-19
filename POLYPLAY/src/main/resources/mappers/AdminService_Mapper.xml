@@ -25,7 +25,7 @@ cStory=#{cStory}, cModifyday=sysdate, cPreVideo=#{cPreVideo}, cVideo=#{cVideo}, 
 </update>
 
 <delete id="deleteContents" parameterType="cvo">
-update POLY_CONTENTS set cDel_yn=’Y’ where cidx=#{cidx}
+update POLY_CONTENTS set cDel_yn='Y' where cidx=#{cidx}
 </delete>
 
 </mapper>

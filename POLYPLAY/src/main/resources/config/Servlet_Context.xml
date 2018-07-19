@@ -29,9 +29,9 @@
 	
 	
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="D:/dev/uploadFiles"/>
+		<beans:constructor-arg value="D:/dev/GIT/POLYPLAY/POLYPLAY/src/main/webapp/resources/contents"/>
 	</beans:bean>
-	
+	<!-- <beans:constructor-arg value="D:/dev/uploadFiles"/> -->
 	
 	<beans:bean id="loginInterceptor" class="com.polyplay.pp.interceptor.LoginInterceptor">
 	</beans:bean>

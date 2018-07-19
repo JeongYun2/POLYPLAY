@@ -23,7 +23,12 @@ public class UploadFileUtils {
 	throws Exception{
 		
 		UUID uid = UUID.randomUUID();
+		
+		System.out.println("uid: "+uid);
+		
 		String savedName = uid.toString() +"_"+originalName;
+		
+		System.out.println("uid.toString(): "+uid.toString());
 		
 //		String path = UploadFileUtiles.class.getResource("").getPath();
 //		System.out.println("현재클래스path:"+path);
@@ -119,7 +124,7 @@ public class UploadFileUtils {
 				uploadPath + 
 				path + 
 				File.separator + 
-				"s-"+fileName;
+				fileName;
 		
 		File newFile = new File(thumbnailName);
 		String formatName = fileName.substring(fileName.lastIndexOf(".")+1);

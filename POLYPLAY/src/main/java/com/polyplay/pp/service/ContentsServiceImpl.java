@@ -33,12 +33,12 @@ public class ContentsServiceImpl  implements ContentsService{
 	}
 
 	@Override
-	public ArrayList<ContentsVo> selectContentsInfo(int cidx) {
+	public ContentsVo selectContentsInfo(int cidx){
 		
 		ContentsService_Mapper csm = sqlSession.getMapper(ContentsService_Mapper.class);
-		ArrayList<ContentsVo> alist = csm.selectContentsInfo(cidx);
+		ContentsVo cv = csm.selectContentsInfo(cidx);
 		
-		return alist;
+		return cv;
 	}
 
 	@Override
@@ -54,6 +54,13 @@ public class ContentsServiceImpl  implements ContentsService{
 	public int playVideo(ContentsVo cv) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public ContentsVo selectPreVideo(int cidx) {
+		ContentsService_Mapper csm = sqlSession.getMapper(ContentsService_Mapper.class);
+		ContentsVo cv = csm.selectPreVideo(cidx);
+		return cv;
 	}
 
 }

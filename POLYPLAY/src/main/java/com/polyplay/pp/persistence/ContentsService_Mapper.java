@@ -14,11 +14,11 @@ public interface ContentsService_Mapper {
 	
 	public ArrayList<ContentsVo> selectlSimilarList(int gidx);
 	
-	public ArrayList<ContentsVo> selectContentsInfo(int cidx); 
+	public ContentsVo selectContentsInfo(int cidx); 
 	
 	public int updateViewCnt(ContentsVo cv);
 	
-	public ContentsVo selectPreVideo();
+	public ContentsVo selectPreVideo(int cidx);
 	
 	
 	
