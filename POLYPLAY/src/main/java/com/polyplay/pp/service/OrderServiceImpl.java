@@ -34,6 +34,20 @@ public class OrderServiceImpl implements OrderService {
 */
 
 	
+	@Override
+	public int insertJustOrder(OrderPayVo opv) {
+
+		OrderService_Mapper mpsm = sqlSession.getMapper(com.polyplay.pp.persistence.OrderService_Mapper.class);
+		int result = mpsm.insertJustOrder(opv);
+		
+		System.out.println("insertJustOrder결과값: "+result);
+		
+		return result;
+	}
+
+
+	
+	
 	
 	@Override
 	public int insertOrder(OrderPayVo opv) {
@@ -79,15 +93,18 @@ public class OrderServiceImpl implements OrderService {
 
 
 	@Override
-	public OrderPayVo selectCheckOrder(OrderPayVo opv) {
+	public ArrayList<OrderPayVo> selectCheckOrder(OrderPayVo opv) {
 		
 		OrderService_Mapper mpsm = sqlSession.getMapper(com.polyplay.pp.persistence.OrderService_Mapper.class);
-		OrderPayVo reopv = mpsm.selectCheckOrder(opv);
+		ArrayList<OrderPayVo> reopv = mpsm.selectCheckOrder(opv);
 		
 		System.out.println("selectCheckOrder결과값: "+reopv);
 		
+		
 		return reopv;
 	}
+
+
 
 
 

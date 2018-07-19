@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.polyplay.pp.domain.BasketListVo;
 import com.polyplay.pp.domain.BasketVo;
+import com.polyplay.pp.domain.ContentsVo;
 import com.polyplay.pp.domain.MemberVo;
 import com.polyplay.pp.domain.OrderPayVo;
 import com.polyplay.pp.domain.WishListVo;
@@ -13,29 +14,32 @@ import com.polyplay.pp.domain.WishListVo;
 public interface MyPageService {
 
 	
-	public int addToBasket(BasketVo bav);
+//	public int addToBasket(BasketVo bav);
 	
-	public int addToWishList(WishListVo wv);
+//	public int addToWishList(WishListVo wv);
+	
 	
 	public ArrayList<BasketListVo> selectBasketList(int midx);
 	
+	public ArrayList<WishListVo> selectMyWishList(int midx);
+	
+	
 	public int fromBaToWish(int midx, int cidx);
 	
-	public int deleteBasket(BasketVo bav);
+
+	public int deleteBasket(int midx, int cidx);
 	
-	public OrderPayVo selectMyContents(String pStatus, int midx);
 	
-	public OrderPayVo selectMyVideo(String pStatus, int cidx);
+	public int insertWishList(int midx, int cidx); //얘는 그냥 장바구니담기용
 	
-	public OrderPayVo selectMyOrder(int midx);
 	
-	public OrderPayVo selectMyOrderContent(int midx, String oid); 
+	public int insertBasket(BasketListVo blv);
 	
-	public MemberVo selectMyMember(int midx);
+	public ArrayList<OrderPayVo> selectMyContents(int midx);
 	
-	public MemberVo selectNicknameCheck(String mNickname);
 	
-	public int modiDelMember(MemberVo mv);
+	
+
 	
 	
 	

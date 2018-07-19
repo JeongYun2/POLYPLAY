@@ -14,16 +14,20 @@
 <h1>주문결제완료페이지</h1>
 
 <form name="frm">
-<table>
+<table border="1" width="100%" style="text-align: center;">
 		<!-- 속성 이름 -->
 		<tr>
 			<th>cidx</th>
 			<th>썸네일</th>
 			<th>제목</th>
 			<th>금액</th>
+			<th>주문일</th>
+			<th>결제방법</th>
+			<th>입금자명</th>
+			<th>결제금액</th>
 	
 		</tr>
-		<c:set var="i" value="0"/>
+		
 		<c:forEach var="oclvo" items="${orderCompleteList}" varStatus ="status">
 		<!-- 속성 값 -->
 		<tr>
@@ -31,21 +35,24 @@
 			<td>${oclvo.cImage}</td>
 			<td>${oclvo.cSubject}</td>
 			<td>${oclvo.oPrice}</td>
+			<td>${oclvo.oWriteday}</td>
+			<td>${oclvo.pMethod}</td>
+			<td>${oclvo.pDepositor}</td>
+			<td>${oclvo.pPrice}</td>
 		</tr>
+
 		</c:forEach>
 	</table>
 	
 	<br>
-	**결제정보확인
-	주문일 : ${oclvo.oWriteday}
-	결제방법 : ${oclvo.pMethod}
-	입금자명 : ${oclvo.pDepsitor}
-	결제금액 : ${oclvo.pPrice}
+
 	<br>
 	
+<a href="<%=request.getContextPath() %>/GoToHome">메인페이지가기</a>
+<br>
+<a href="<%=request.getContextPath() %>/MyOrder">나의주문내역확인</a>
 
-<input type="button"  id="main" name="main" value="메인페이지가기"  />
-<input type="button"  id="myorder" name="myorder" value="주문내역확인"  />
+<!-- <input type="button"  id="myorder" name="myorder" value="주문내역확인"  /> -->
 <!-- <input type="submit"  id="pay" name="pay" value="결제하기"  /> -->
 <%-- <input type="hidden" name="midx" value="${midx}"/> --%>
 <input type="hidden" name="midx" value="1"/>

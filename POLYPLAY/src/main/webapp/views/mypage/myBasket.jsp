@@ -11,6 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
 function orderCheck() {
@@ -46,7 +47,7 @@ function orderCheck() {
 
 <form name="frm" method="post" action="<%=request.getContextPath()%>/OrderPay">
 
-<table>
+<table border="1" width="100%" style="text-align: center;">
 		<!-- 속성 이름 -->
 		<tr>
 			<th></th>
@@ -65,8 +66,10 @@ function orderCheck() {
 			<td>${blvo.cPrice}</td>
 		<%-- 	<input type="hidden" id="baPrice${status.count}" name="baPrice" value="${blvo.cPrice}"/> --%>
 			<td>
-				<a href="<%=request.getContextPath()%>/FromBaToWish">찜하기</a>
-				<a href="<%=request.getContextPath()%>/MyBasketDelete">삭제</a>
+			
+			
+				<a href="<%=request.getContextPath()%>/FromBaToWish?midx=1&cidx=${blvo.cidx}">찜하기</a>
+				<a href="<%=request.getContextPath()%>/MyBasketDelete?midx=1&cidx=${blvo.cidx}">삭제</a>
 				<!-- <input type="button" name="addToWish" value="찜하기" onclick=";" />
 				<button id="addToWish" >삭제</button> -->
 		</tr>
@@ -79,6 +82,10 @@ function orderCheck() {
 
 
 </form>
+
+
+<input type="button"/>
+
 
 </body>
 </html>

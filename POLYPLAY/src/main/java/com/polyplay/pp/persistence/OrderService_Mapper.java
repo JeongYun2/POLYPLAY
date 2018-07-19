@@ -12,6 +12,8 @@ public interface OrderService_Mapper {
 //	public ArrayList<BasketListVo> selectBasket(BasketListVo blvo);
 //	public ArrayList<BasketListVo> selectBasket(int midx, int cidx);
 
+	public int insertJustOrder(OrderPayVo opv);
+	
 	
 	public int insertOrder(OrderPayVo opv);
 	
@@ -22,7 +24,7 @@ public interface OrderService_Mapper {
 	
 
 	
-	public OrderPayVo selectCheckOrder(OrderPayVo opv);
+	public ArrayList<OrderPayVo> selectCheckOrder(OrderPayVo opv);
 	
 	
 	

@@ -13,7 +13,7 @@ public interface OrderService {
 	
 //	public ArrayList<BasketListVo> selectBasket(int midx, int cidx);
 	
-	
+	public int insertJustOrder(OrderPayVo opv);
 	
 	public int insertOrder(OrderPayVo opv);
 	
@@ -22,7 +22,7 @@ public interface OrderService {
 	public int insertPay(OrderPayVo opv);
 	
 	
-	public OrderPayVo selectCheckOrder(OrderPayVo opv);
+	public ArrayList<OrderPayVo> selectCheckOrder(OrderPayVo opv);
 
 	
 	

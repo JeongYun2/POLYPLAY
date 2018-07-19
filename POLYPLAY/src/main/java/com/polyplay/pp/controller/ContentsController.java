@@ -40,7 +40,7 @@ public class ContentsController {
 		//selectContentsInfo
 		ContentsVo cv = null;
 		
-		cv = cs.selectContentsInfo(68);
+		cv = cs.selectContentsInfo(11);
 		
 		model.addAttribute("cv", cv);
 		

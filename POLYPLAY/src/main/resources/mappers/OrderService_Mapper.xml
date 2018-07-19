@@ -11,6 +11,11 @@ select c.cidx, c.cImage, c.cSubject, c.cPrice from POLY_BASKET ba, POLY_CONTENTS
 
 
 
+<insert id="insertJustOrder" parameterType="opvo">	
+insert into POLY_ORDER values(seq_oidx.nextval, #{midx}, #{cidx}, #{oid}, default, #{oPrice}, #{oIp})
+</insert>
+
+
 
 <!-- insert into POLY_ORDER(oidx, midx, cidx, oid, oPrice, oWriteday, oIp) 
 	select  seq_oidx.nextval, midx, cidx,(select DBMS_RANDOM.STRING('X',10) from dual)as oid, baPrice, baWriteday, '${oIp}' from POLY_BASKET where midx=#{midx} and cidx in(${h})  --> 	
@@ -22,8 +27,6 @@ insert into POLY_ORDER(oidx, midx, cidx, oid, oPrice, oWriteday, oIp)
 
 <select id="selectOrder" parameterType="String" resultType="opvo">
 select * from POLY_ORDER o, POLY_CONTENTS c where c.cidx=o.cidx and oid=#{oid}
-
-
 </select>
 
 
@@ -39,9 +42,14 @@ insert into POLY_PAY values(seq_pidx.nextval, #{oid}, #{pMethod}, #{pPrice}, def
 
 
 
+<!-- select DISTINCT o.oid, c.cImage, c.cSubject, o.oPrice, o.oWriteday, p.pMethod, p.pDepositor, p.pPrice  from POLY_ORDER o, POLY_PAY p, POLY_CONTENTS c where o.oId = p.oid and c.cidx = o.cidx and o.midx=#{midx} and o.oid=#{oid}; -->
+<!--  -->
 <select id="selectCheckOrder" parameterType="opvo" resultType="opvo">
-select * from POLY_ORDER o, POLY_PAY p where o.oId = p.oid and o.midx=#{midx} and o.oid=#{oid}
+
+select o.*,p.*,c.* from POLY_ORDER o, POLY_PAY p, POLY_CONTENTS c where o.oId = p.oid and c.cidx = o.cidx  and o.midx=#{midx} and o.oid=#{oid}
+
 </select>
+
 
 
 

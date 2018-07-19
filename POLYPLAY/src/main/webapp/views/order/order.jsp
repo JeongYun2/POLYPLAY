@@ -45,7 +45,7 @@ function payCheck() {
 
 <form name="frm" method="post" action="<%=request.getContextPath()%>/OrderPayAction">
 <!-- <form name="frm"> -->
-<table>
+<table border="1" width="100%" style="text-align: center;">
 		<!-- 속성 이름 -->
 		<tr>
 			<th></th>

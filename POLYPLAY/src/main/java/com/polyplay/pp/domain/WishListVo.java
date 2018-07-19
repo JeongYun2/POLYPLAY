@@ -7,6 +7,7 @@ public class WishListVo {
 	private int cidx;
 	private String wWriteday;
 	
+	private String cImage;
 	
 	
 	public int getWidx() {
@@ -32,5 +33,11 @@ public class WishListVo {
 	}
 	public void setwWriteday(String wWriteday) {
 		this.wWriteday = wWriteday;
+	}
+	public String getcImage() {
+		return cImage;
+	}
+	public void setcImage(String cImage) {
+		this.cImage = cImage;
 	}
 }

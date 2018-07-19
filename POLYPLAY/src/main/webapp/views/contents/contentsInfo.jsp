@@ -8,9 +8,67 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$.addWish = function() {
+	
+//	alert("작동합니까?");
+	var formname = document.frm;
+
+	var res;
+	res = confirm("상품을 찜목록에 추가하시겠습니까?");
+
+	if (res == true) {
+		
+		formname.method = "post";
+		formname.action = "<%=request.getContextPath()%>/AddToWishList";
+		formname.submit();
+	}
+	return;		
+}
+
+$.addBasket = function() {
+	
+	var formname = document.frm;
+
+	var res;
+	res = confirm("상품을 장바구니에 추가하시겠습니까?");
+
+	if (res == true) {
+		
+		formname.method = "post";
+		formname.action = "<%=request.getContextPath()%>/AddToBasket";
+		formname.submit();
+	}
+	return;
+	
+	
+}
+
+$.addOrder = function() {
+	
+	var formname = document.frm;
+
+	var res;
+	res = confirm("상품을 바로구매하시겠습니까?");
+
+	if (res == true) {
+		
+		formname.method = "post";
+		formname.action = "<%=request.getContextPath()%>/JustOrderPay";
+		formname.submit();
+	}
+	return;
+	
+	
+}
+
+
+
+</script>
 </head>
 <body>
-	<form>
+	<form name="frm">
 	<table>
 		<!-- 속성 이름 -->
 			<tr>
@@ -48,9 +106,16 @@
 			
 			<tr>
 			<td>
-			<input type="button"name="" value="찜하기" onclick="" />
-			<input type="button"name="" value="장바구니" onclick="" />
-			<input type="button"name="" value="바로구매" onclick="" />
+			<input type="text" name="cidx" value="${cv.cidx}"/>
+			<input type="text" name="cImage" value="${cv.cImage}"/>
+			<input type="text" name="cSubject" value="${cv.cSubject}"/>
+			<input type="text" name="cPrice" value="${cv.cPrice}"/>
+			
+			
+			
+			<input type="button" id="addWish" name="addWish" value="찜하기" onclick="$.addWish();" />
+			<input type="button" id="addBasket" name="addBasket" value="장바구니" onclick="$.addBasket();" />
+			<input type="button" id="addOrder" name="addOrder" value="바로구매" onclick="$.addOrder();" />
 			</td>
 			</tr>
 	</table>

@@ -1,29 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.polyplay.pp.domain.BasketListVo" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <!--  -->
 
-<h1>MYÂò¸ñ·Ï</h1>
+<h1>MYì°œëª©ë¡</h1>
 
 <table>
-		<!-- ¼Ó¼º ÀÌ¸§ -->
+		<!-- ì†ì„± ì´ë¦„ -->
 		<tr>
-			<th>½æ³×ÀÏ</th>
-			<th>Á¦¸ñ</th>
-			<th>¹öÆ°</th>
+			<th>cidx</th>
+			<th>ì¸ë„¤ì¼</th>
+			<th>ë²„íŠ¼</th>
 	
 		</tr>
-		<c:forEach var="blvo" items="${basketList}">
-		<!-- ¼Ó¼º °ª -->
+		<c:forEach var="wlvo" items="${wishList}">
+		<!-- ì†ì„± ê°’ -->
 		<tr>
-			<td>${blvo.cImage}</td>
-			<td>${blvo.cSubject}</td>
+			<td>${wlvo.cidx}</td>
+			<td>${wlvo.cImage}</td>
+			<td></td>
 		</tr>
 		</c:forEach>
 	</table>

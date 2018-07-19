@@ -7,11 +7,16 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.polyplay.pp.domain.BasketListVo;
 import com.polyplay.pp.domain.BasketVo;
+import com.polyplay.pp.domain.ContentsVo;
+import com.polyplay.pp.domain.WishListVo;
 import com.polyplay.pp.service.MyPageService;
 import com.polyplay.pp.service.MyPageServiceImpl;
 
@@ -25,22 +30,50 @@ public class MyPageController {
 	private MyPageService mps;
 	
 	
-	@RequestMapping(value="/AddToBasket")
-	public String addToBasketController() {
-		
-		//addToBasket
-		
-		return "";
-	}
+
+
 	
-	
+	//@ModelAttribute("cv") ContentsVo cv //@RequestParam("midx")int midx,
 	@RequestMapping(value="/AddToWishList")
-	public String addToWishListController() {
+	public String addToWishListController(@RequestParam("cidx")int cidx,
+			@RequestParam("cSubject")String cSubject, @RequestParam("cPrice")int cPrice) { 
+		
+		System.out.println("addToWishListController들어옴");
+		System.out.println("cidx: "+cidx);
+		System.out.println("cSubject: "+cSubject);
+		System.out.println("cPrice: "+cPrice);
+		
+		mps.insertWishList(1, cidx);
+		
 
 		//addToWishList
 		
-		return "";
+		return "redirect:/MyWishList";
 	}
+	
+	
+	@RequestMapping(value="/AddToBasket")
+	public String addToBasketController(@RequestParam("cidx")int cidx,
+			@RequestParam("cSubject")String cSubject, @RequestParam("cPrice")int cPrice) {
+		
+		//addToBasket
+		System.out.println("addToBasketController들어옴");
+		
+		BasketListVo blv = new BasketListVo();
+		
+		blv.setCidx(cidx);
+		
+		System.out.println(" 배스킷 cidx: "+cidx);
+		
+		blv.setcPrice(cPrice);
+		blv.setcSubject(cSubject);
+		blv.setMidx(1);
+		
+		mps.insertBasket(blv);
+		
+		return "redirect:/MyBasketList";
+	}
+	
 	
 	
 	@RequestMapping(value="/MyBasketList")
@@ -60,24 +93,94 @@ public class MyPageController {
 		return "views/mypage/myBasket";
 	}
 	
+	@RequestMapping(value="/MyBasketDelete")
+	public String myBasketDeleteController(@RequestParam("midx")int midx, @RequestParam("cidx")int cidx,
+			Model model) {
+		
+		System.out.println("myBasketDeleteController들어옴");
+		
+		//deleteBasket
+		mps.deleteBasket(midx, cidx);
+		
+		model.addAttribute("midx", midx);
+		
+		return "redirect:/MyBasketList";
+	}
 	
-	@RequestMapping(value="/FromBaToWish")
-	public String fromBaToWishController() {
+	@RequestMapping(value="/MyWishList")
+	public String myWishListController( Model model) { //@RequestParam("midx") int midx,
+		
+		//System.out.println("위시midx: "+midx);
+		
+		ArrayList<WishListVo> alist = null;
+		
+		alist = mps.selectMyWishList(1);
+//		alist = mps.selectMyWishList(midx);
+		
+		model.addAttribute("wishList", alist);
+		
 
-		System.out.println("fromBaToWishController들어옴");
-		//fromBaToWish
 		
 		return "views/mypage/myWishList";
 	}
 	
 	
-	@RequestMapping(value="/MyBasketDelete")
-	public String myBasketDeleteController() {
+	@RequestMapping(value="/FromBaToWish")
+	public String fromBaToWishController(
+			@RequestParam("midx")int midx, @RequestParam("cidx")int cidx,
+			Model model) { //
+
+		System.out.println("fromBaToWishController들어옴");
+		System.out.println("midx: "+midx);
+		System.out.println("cidx: "+cidx);
 		
-		//deleteBasket
+		int result = mps.fromBaToWish(midx, cidx);
+		
+		System.out.println("fromBaToWish의 result: "+result);
+		
+/*		ArrayList<WishListVo> alist = null;
+		
+		alist = mps.selectMyWishList(midx);
+		
+		model.addAttribute("wishList", alist);*/
+		
+		return "redirect:/MyWishList";
+	}
+	
+
+	
+	
+	@RequestMapping(value="/MyOrder")
+	public String myOrderController() {
+		
+		System.out.println("myOrderController들어옴");
+		
+		
+		mps.selectMyContents(1);
+		
 		
 		return "";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	
 	
 	@RequestMapping(value="/MyContents")
@@ -96,13 +199,7 @@ public class MyPageController {
 		return "";
 	}
 	
-	@RequestMapping(value="/MyOrder")
-	public String myOrderController() {
-		
-		//selectMyOrder
-		
-		return "";
-	}
+
 	
 	@RequestMapping(value="/MyOrderContent")
 	public String myOrderContentController() {
