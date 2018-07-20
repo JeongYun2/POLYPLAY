@@ -22,5 +22,6 @@
 		<input type="submit" value="아이디 찾기">
 	</div>
 	</form>
+	<div id="idFined"></div>
 </body>
 </html>

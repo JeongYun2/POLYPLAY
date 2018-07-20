@@ -105,22 +105,72 @@ $.nickCheck = function(){
 		
 	});
 }
+
+$.check = function(){
+	
+	
+	 $("#join").click(function(){
+		 
+		if($("#mId").val() == ""){
+			alert("아이디를 입력하시지 않으셨습니다.");
+			return;
+		} else if($("#mPassword").val() == ""){
+			alert("비밀번호를 입력하시지 않으셨습니다.");
+			return;
+		} else if($("#mPasswordConfirm").val() == ""){
+			alert("비밀번호 확인을 입력하시지 않으셨습니다.");
+			return;
+		} else if($("#mPassword").val() != $("#mPasswordConfirm").val()){
+			alert("비밀번호가 일치하지 않습니다.");
+			return;
+		} else if($("#mPhone").val() == ""){
+			alert("전화번호를 입력하시지 않으셨습니다.");
+			return;
+		} else if($("#mName").val() == ""){
+			alert("이름을 입력하시지 않으셨습니다.");
+			return;
+		} else if($("#mNickname").val() == ""){
+			alert("닉네임을 입력하시지 않으셨습니다.");
+			return;
+		}
+	
+	
+		var res; 
+		res = confirm("가입하시겠습니까?");
+		var su  = document.frm;
+	  
+	  	if (res == true) {
+	  		alert("확인");
+	  		su.method ="post";
+	  		su.action ="${pageContext.request.contextPath}/MemberJoinAction";
+	  		su.submit();
+		}
+	  	
+	  	return;
+	});
+  	
+  	return;
+}
 </script>
 </head>
 <body>
 	<h1>회원가입</h1>
-	<form action="${pageContext.request.contextPath}/MemberJoinAction" method="post">
+	<form>
 	<div>
 		<div class="form-group" >
 			<label class="control-label">아이디</label>
 			<div class="form-inline" id="divId">
 				<input type="text" class="form-control" id="mId" name="mId">
-				<input type="button" class="btn btn-primary btn-sm" id="idCheck" name="idCheck" value="���̵� �ߺ�üũ">
+				<input type="button" class="btn btn-primary btn-sm" id="idCheck" name="idCheck" value="아이디 중복체크">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label">비밀번호</label>
 			<input type="text" class="form-control" id="mPassword" name="mPassword">
+		</div>
+		<div class="form-group">
+			<label class="control-label">비밀번호 확인</label>
+			<input type="text" class="form-control" id="mPasswordConfirm" name="mPasswordConfirm">
 		</div>
 		<div class="form-group">
 			<label class="control-label">이메일</label>
@@ -139,12 +189,12 @@ $.nickCheck = function(){
 			<label class="control-label">닉네임</label>
 			<div class="form-inline">
 				<input type="text" class="form-control" id="mNickname" name="mNickname">
-				<input type="button" class="btn btn-primary btn-sm" id="nickCheck" name="nickCheck" value="�г��� �ߺ�üũ">
+				<input type="button" class="btn btn-primary btn-sm" id="nickCheck" name="nickCheck" value="닉네임 중복체크">
 			</div>
 		</div>
 	</div>
 	<div>
-		<input class="btn btn-primary btn-sm" type="submit" value="가입">
+		<input class="btn btn-primary btn-sm" type="button" id="join" value="가입" onclick="$.check();">
 	</div>
 	</form>
 </body>
