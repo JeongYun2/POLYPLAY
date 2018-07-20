@@ -52,8 +52,8 @@ public class ContentsController {
 	
 
 	
-	@RequestMapping(value="/ContentsSimilarController")
-	public String contentsSimilar(Model model) {
+	@RequestMapping(value="/ContentsSimilar")
+	public String contentsSimilarController(Model model) {
 		
 		//selectSimilarList
 		ArrayList<ContentsVo> alist = null;
@@ -67,8 +67,8 @@ public class ContentsController {
 		return "views/contents/contentsSimilar";
 	}
 	
-	@RequestMapping(value="/ContentsPlayController")
-	public String contentsPlay(Model model) {
+	@RequestMapping(value="/ContentsPlay")
+	public String contentsPlayController(Model model) {
 		//playVideo
 		
 		ContentsVo cv = cs.selectPreVideo(68);
