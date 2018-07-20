@@ -20,8 +20,8 @@ insert into POLY_ORDER values(seq_oidx.nextval, #{midx}, #{cidx}, #{oid}, defaul
 <!-- insert into POLY_ORDER(oidx, midx, cidx, oid, oPrice, oWriteday, oIp) 
 	select  seq_oidx.nextval, midx, cidx,(select DBMS_RANDOM.STRING('X',10) from dual)as oid, baPrice, baWriteday, '${oIp}' from POLY_BASKET where midx=#{midx} and cidx in(${h})  --> 	
 <insert id="insertOrder" parameterType="opvo">	
-insert into POLY_ORDER(oidx, midx, cidx, oid, oPrice, oWriteday, oIp) 
-	select  seq_oidx.nextval, midx, cidx,'${oid}', baPrice, baWriteday, '${oIp}' from POLY_BASKET where midx=#{midx} and cidx in(${h})  	
+insert into POLY_ORDER(oidx, midx, cidx, oid, oPrice, oIp) 
+	select  seq_oidx.nextval, midx, cidx,'${oid}', baPrice, '${oIp}' from POLY_BASKET where midx=#{midx} and cidx in(${h})  	
 </insert>
 
 

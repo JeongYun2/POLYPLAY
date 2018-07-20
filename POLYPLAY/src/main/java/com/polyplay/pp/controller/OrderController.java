@@ -2,7 +2,9 @@ package com.polyplay.pp.controller;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -55,11 +57,15 @@ public class OrderController {
 		String oIp = local.getHostAddress();   
 		opv.setoIp(oIp);
 		
+		Date dt = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String orderDate = sdf.format(dt);
+		
 		//랜덤함수
 		Random random = new Random();
 		int randomInt = random.nextInt();
 		
-		String randomOid = "20180718-" + randomInt;
+		String randomOid = orderDate+ "-" + randomInt;
 		System.out.println("randomOid: "+randomOid);
 		opv.setOid(randomOid);
 		
@@ -153,15 +159,22 @@ public class OrderController {
 		opv.setMidx(midx);
 		
 		
+		Date dt = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String orderDate = sdf.format(dt);
+		String orderDateRe = orderDate.replaceAll("/", "");
 		
 		//랜덤함수
 		Random random = new Random();
 		int randomInt = random.nextInt();
 		
-		String randomOid = "20180718-" + randomInt;
+		String randomString = Integer.toString(randomInt);
+		String randomStringRe = randomString.replaceAll("-", "");
+		
+		String randomOid = orderDateRe+ "-" + randomStringRe;
 		System.out.println("randomOid: "+randomOid);
 		opv.setOid(randomOid);
-		
+
 		
 		//장바구니에 선택한 상품을 order테이블에 인서트
 		os.insertOrder(opv);
