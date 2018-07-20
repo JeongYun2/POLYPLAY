@@ -4,10 +4,10 @@ import com.polyplay.pp.domain.MemberVo;
 
 public interface MemberService_Mapper {
 
-	// int mId, String mPassword
-	public int selectLogin(MemberVo mvo);
+	// int mId, String mId, String mName, String mNickname
+	public MemberVo selectLogin(MemberVo mvo);
 	
-	// String mSessionId
+	// String mSessionId 
 	public MemberVo selectAutoLogin(String mSessionId);
 
 	// String mSessionId, String mSessionLimit, int midx

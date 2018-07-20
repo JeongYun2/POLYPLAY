@@ -55,9 +55,8 @@ public class MemberController {
 		String page;
 		
 		MemberVo loginMvo = ms.selectLogin(mvo);
-		logger.info("loginMvo값은 "+loginMvo);
+		logger.info("loginMvo값은 "+loginMvo+"loginMvo.midx"+loginMvo.getMidx());
 		
-		System.out.println("loginMvo: "+loginMvo);
 		if(loginMvo != null){			// 로그인 성공
 			
 			System.out.println("useCookie: "+useCookie);
@@ -205,8 +204,6 @@ public class MemberController {
 	public @ResponseBody String memberPwFindActionController(MemberVo mvo, HttpSession session) {
 		
 		logger.info("아이디: "+mvo.getmId()+", 이메일: "+mvo.getmEmail()+", 전화번호"+mvo.getmPhone());
-		MemberVo mvo_Res = (MemberVo)session.getAttribute("login");
-		mvo.setMidx(mvo_Res.getMidx());
 		String Pw = ms.selectPwFind(mvo);
 		
 		return Pw;
@@ -217,9 +214,9 @@ public class MemberController {
 		
 		//login세션에서 midx값 갔고 오기
 		MemberVo mvo = (MemberVo)session.getAttribute("login");
-		MemberVo mvo_res = ms.selectMyMember(mvo.getMidx());
-		model.addAttribute("mvo",mvo_res);
-		logger.info("mvo 값: "+mvo_res);
+		mvo = ms.selectMyMember(mvo.getMidx());
+		model.addAttribute("mvo",mvo);
+		logger.info("mvo 값: "+mvo);
 		
 		return "/views/member/memberModify";
 	}
@@ -256,10 +253,10 @@ public class MemberController {
 	@RequestMapping(value="/MemberDeleteAction", method=RequestMethod.POST)
 	public String memberDeleteActionController(MemberVo mvo, HttpSession session) {
 		
-		int midx = (Integer)session.getAttribute("login");
-		mvo.setMidx(midx);
+		MemberVo loginMvo = (MemberVo)session.getAttribute("login");
+		mvo.setMidx(loginMvo.getMidx()); ////////
 		
-		logger.info("비밀번호: "+mvo.getmPassword()+", midx:"+mvo.getMidx());
+		logger.info("비밀번호: "+mvo.getmPassword()+", midx:"+mvo.getMidx()+mvo.getMidx());
 		
 		String page = null;
 		int res = ms.deleteMember(mvo);
