@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.polyplay.pp.domain.BasketListVo;
 import com.polyplay.pp.domain.BasketVo;
 import com.polyplay.pp.domain.ContentsVo;
+import com.polyplay.pp.domain.OrderPayVo;
 import com.polyplay.pp.domain.WishListVo;
 import com.polyplay.pp.service.MyPageService;
 import com.polyplay.pp.service.MyPageServiceImpl;
@@ -148,30 +149,47 @@ public class MyPageController {
 	}
 	
 
+
 	
 	
-	@RequestMapping(value="/MyOrder")
-	public String myOrderController() {
+	
+	
+	@RequestMapping(value="/MyContentsList")
+	public String myContentsController(/*@RequestParam("midx")int midx,*/ Model model) {
+		
+		System.out.println("myContentsController들어옴");
+		//selectMyContents
+		
+		ArrayList<OrderPayVo> alist = null;
+		
+		alist = mps.selectMyContents(1);
+//		mps.selectMyContents(midx);
+		
+		model.addAttribute("myContentsList", alist);
+		
+		return "views/mypage/myContents";
+	}	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/MyOrderList")
+	public String myOrderController(/*@RequestParam("midx")int midx,*/ Model model) {
 		
 		System.out.println("myOrderController들어옴");
 		
+		ArrayList<OrderPayVo> alist = null;
 		
-		mps.selectMyContents(1);
+		alist = mps.selectMyOrder(1);
+//		alist = mps.selectMyOrder(midx);
+		
+		model.addAttribute("myOrderList", alist);
 		
 		
-		return "";
+		return "views/mypage/myOrder";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -181,58 +199,6 @@ public class MyPageController {
 	
 	
 
-	
-	
-	@RequestMapping(value="/MyContents")
-	public String myContentsController() {
-		
-		//selectMyContents
-		
-		return "";
-	}
-	
-	@RequestMapping(value="/MyContentsPlay")
-	public String myContentsPlayController() {
-		
-		//selectMyVideo
-		
-		return "";
-	}
-	
-
-	
-	@RequestMapping(value="/MyOrderContent")
-	public String myOrderContentController() {
-		
-		//selectMyOrderContent
-		
-		return "";
-	}
-	
-	@RequestMapping(value="/MyMemberModify")
-	public String myMemberModifyController() {
-		
-		//selectMyMember
-		
-		return "";
-	}
-	
-	@RequestMapping(value="/MyMemberNickCheck")
-	public String myMemberNickCheckController() {
-		
-		//selectMyMember
-		
-		return "";
-	}
-	
-	
-	@RequestMapping(value="/MyMemberModifyAction")
-	public String myMemberModifyActionController() {
-		
-		//modiDelMember
-		
-		return "";
-	}
 	
 	
 

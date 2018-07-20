@@ -50,7 +50,7 @@
 	
 <a href="<%=request.getContextPath() %>/GoToHome">메인페이지가기</a>
 <br>
-<a href="<%=request.getContextPath() %>/MyOrder">나의주문내역확인</a>
+<a href="<%=request.getContextPath() %>/MyOrderList">나의주문내역확인</a>
 
 <!-- <input type="button"  id="myorder" name="myorder" value="주문내역확인"  /> -->
 <!-- <input type="submit"  id="pay" name="pay" value="결제하기"  /> -->

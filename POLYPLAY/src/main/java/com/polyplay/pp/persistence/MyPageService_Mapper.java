@@ -28,10 +28,12 @@ public interface MyPageService_Mapper {
 
 	public int insertBasket(BasketListVo blv);
 	
-	
-	
 
 	public ArrayList<OrderPayVo> selectMyContents(int midx);
+	
+
+	
+	public ArrayList<OrderPayVo> selectMyOrder(int midx);
 	
 	
 }

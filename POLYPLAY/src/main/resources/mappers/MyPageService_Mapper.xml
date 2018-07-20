@@ -51,7 +51,7 @@ select o.cidx, c.cImage from POLY_ORDER o, POLY_PAY p, POLY_CONTENTS c where o.o
 
 
 
-<select id="selectMyOrder" parameterType="opvo" resultType="opvo">
+<select id="selectMyOrder" parameterType="Integer" resultType="opvo">
 select o.oid, p.pMethod, p.pPrice, p.pStatus, o.oWriteday 
 	from POLY_ORDER o, POLY_PAY p where o.oId = p.oid and o.midx=#{midx} 
 	

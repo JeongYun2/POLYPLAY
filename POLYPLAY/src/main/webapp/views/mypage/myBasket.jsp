@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.polyplay.pp.domain.BasketListVo" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%-- <%@ page import="com.polyplay.pp.domain.BasketListVo" %> --%>
 
 <%-- <% BasketListVo blvo = (BasketListVo)request.getAttribute("basketList"); %> --%>
 
@@ -83,8 +85,6 @@ function orderCheck() {
 
 </form>
 
-
-<input type="button"/>
 
 
 </body>

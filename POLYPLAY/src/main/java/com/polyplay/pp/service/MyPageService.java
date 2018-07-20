@@ -39,7 +39,7 @@ public interface MyPageService {
 	
 	
 	
-
+	public ArrayList<OrderPayVo> selectMyOrder(int midx);
 	
 	
 	

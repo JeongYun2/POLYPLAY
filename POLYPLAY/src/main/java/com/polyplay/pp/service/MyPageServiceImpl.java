@@ -121,7 +121,22 @@ public class MyPageServiceImpl implements MyPageService {
 		MyPageService_Mapper mpsm = sqlSession.getMapper(com.polyplay.pp.persistence.MyPageService_Mapper.class);
 		ArrayList<OrderPayVo> alist = mpsm.selectMyContents(midx);
 		
+		System.out.println("selectMyContents결과값: "+alist);
 		
+		return alist;
+	}
+
+	
+	
+
+	@Override
+	public ArrayList<OrderPayVo> selectMyOrder(int midx) {
+
+
+		MyPageService_Mapper mpsm = sqlSession.getMapper(com.polyplay.pp.persistence.MyPageService_Mapper.class);
+		ArrayList<OrderPayVo> alist = mpsm.selectMyOrder(midx);
+		
+		System.out.println("selectMyOrder결과값: "+alist);
 		
 		return alist;
 	}
