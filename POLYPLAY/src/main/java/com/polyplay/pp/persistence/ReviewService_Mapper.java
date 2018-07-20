@@ -8,7 +8,7 @@ public interface ReviewService_Mapper {
 
 	public ReviewVo selectMyReview(int midx, int cidx);
 	
-	public ArrayList<ReviewVo> selectReviewList();
+	public ArrayList<ReviewVo> selectReviewList(int cidx);
 	
 	public int deleteMyReview(ReviewVo rv);
 	

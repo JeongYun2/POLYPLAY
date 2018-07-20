@@ -16,7 +16,7 @@ $(document).ready(function(){
 	//alert("작동");
 	$.reviewList();
     
-/* 	$(".like-Unlike").click(function(e){
+/*  	$(".like-Unlike").click(function(e){
 		
 		alert("버튼작동");
 		
@@ -27,7 +27,7 @@ $(document).ready(function(){
 	        $(this).html('싫어요');
 	    }
 	    return false;
-	}); */
+	});  */
     
     
 
@@ -41,13 +41,16 @@ $(document).ready(function(){
 
 $.reviewList = function(){
 
-	alert("리뷰리스트불러짐?");
+	//alert("리뷰리스트불러짐?");
 	
 		var str = '';
+		
+		var cidx = ${cidx};
+		alert(cidx);
 
 		$.ajax({
 			type : "GET",
-			url  : "/ReviewListAjax",
+			url  : "${pageContext.request.contextPath}/ReviewListAjax/"+cidx,
 			datatype : "json",
 			cache : false,
 			error:function(request,status,error){
@@ -55,24 +58,27 @@ $.reviewList = function(){
 		       },
 			success : function(data){
 				
-				alert(data);
+				//alert(data);
 				
 				$(data).each(function(){		
 					
 					str += "<tr style='text-align:center;'>"
 					 	+ "<td>"+this.ridx+"</td>"
 						+ "<td width='50%'>"+this.rContent+"</td>" 
-						+ "<td>"+this.rLike+"</td>"
+						/* + "<td>"+this.rLike+"<span><a class='like-Unlike' href='''>추천</a></span></td>" */
+						
+						+"<td>"+this.rLike+"<button class='btn btn-danger' onclick='$.likeUpdate("+this.ridx+")'>추천</button></td>"
+						
 				     	+ "<td>"+this.rPoint+"</td>" 
 					 	+ "</tr>";					
 				});
 
 				$('#tbl').html("<table border='1' width='100%' style='text-align:center;'>"
-							 + "<tr style='text-align:center;background-color:blue;'>"
+							 + "<tr style='text-align:center;background-color:skyblue;'>"
 				 			 + "<td>ridx</td>"
 				 			 + "<td width='50%'>100자평</td>" 
 				 			 + "<td>추천수</td>"
-				             + "<td>별점</td>" 
+				 			 + "<td>별점</td>" 
 				   		 	 + "</tr>" 
 				 			 + str
 				 			 + "</table>");				
@@ -86,6 +92,51 @@ $.reviewList = function(){
 		} //리뷰리스트끝
 
 
+		
+	$.likeUpdate = function(ridx){ //추천수업데이트
+			
+			var ridx = ridx;
+			var cidx = $("#cidx").val();
+			alert("ridx: "+ridx);
+			
+	        $.ajax({
+	            type : "get", 
+	            url  : "${pageContext.request.contextPath}/ReviewLikePlus/"+ridx+"/"+cidx,
+
+	            datatype : "text",
+	            
+	            cache : false,
+	            error : function(){            
+	               alert("error");
+	            },
+	            success : function(data){
+	              // alert(data);
+
+	               $.reviewList();
+	               
+
+	            }         
+	         });   
+	        
+			
+		}		
+		
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
         function del(){	
         	var formname = document.frm;
         	var res;
@@ -103,7 +154,7 @@ $.reviewList = function(){
 </head>
 <body>
 
-
+ <input type="hidden" name="cidx" id="cidx" value="${cidx}" />
 
 <div id="tbl"></div>
 

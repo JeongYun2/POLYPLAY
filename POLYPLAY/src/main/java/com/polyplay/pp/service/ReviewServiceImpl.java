@@ -25,10 +25,10 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public ArrayList<ReviewVo> selectReviewList() {
+	public ArrayList<ReviewVo> selectReviewList(int cidx) {
 		
 		ReviewService_Mapper rsm = sqlSession.getMapper(ReviewService_Mapper.class);
-		ArrayList<ReviewVo> alist = rsm.selectReviewList();
+		ArrayList<ReviewVo> alist = rsm.selectReviewList(cidx);
 		
 		System.out.println("selectReviewList결과값: "+alist);
 		

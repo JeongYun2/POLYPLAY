@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.polyplay.pp.domain.ReviewVo;
 import com.polyplay.pp.service.ReviewService;
@@ -19,7 +20,11 @@ public class ReviewController {
 	ReviewService rs;
 	
 	@RequestMapping(value="/ReviewList")
-	public String reviewListController(Model model) {
+	public String reviewListController(@RequestParam("cidx") int cidx, Model model) {
+		
+		
+		System.out.println("리뷰리스트컨트롤러cidx: "+cidx);
+		
 		//selectMyReview	
 		//selectReviewList 
 		
@@ -32,16 +37,18 @@ public class ReviewController {
 		model.addAttribute("rv", rv);
 		model.addAttribute("alist", alist);	*/
 		
+		model.addAttribute("cidx", cidx);
+		
 		return "views/contents/contentsReview";
 	}
 	
-	@RequestMapping(value = "/ReviewListAjax")
-	public @ResponseBody ArrayList<ReviewVo> boardListAjaxController() {
+	@RequestMapping(value = "/ReviewListAjax/{cidx}")
+	public @ResponseBody ArrayList<ReviewVo> boardListAjaxController(@PathVariable("cidx") int cidx) {
 	
 		System.out.println("ReviewListAjax컨트롤러들어옴?");
 		
 		ArrayList<ReviewVo> alist = null;
-		alist = rs.selectReviewList();
+		alist = rs.selectReviewList(cidx);
 		
 		System.out.println("alist: "+alist);
 		
@@ -71,8 +78,8 @@ public class ReviewController {
 	
 	
 	
-	@RequestMapping(value="/ReviewLikePlus/{ridx}")
-	public @ResponseBody int reviewLikePlusController(@PathVariable("ridx") int ridx) {
+	@RequestMapping(value="/ReviewLikePlus/{ridx}/{cidx}")
+	public @ResponseBody int reviewLikePlusController(@PathVariable("ridx") int ridx,@PathVariable("cidx") int cidx) {
 
 		System.out.println("reviewLikePlusController들어옴");
 		
