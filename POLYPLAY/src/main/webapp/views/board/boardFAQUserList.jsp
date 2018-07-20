@@ -8,38 +8,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>1:1문의 </title>
-</head>
-
- 
 <%
 		ArrayList<BoardVo> alist =(ArrayList<BoardVo>)request.getAttribute("alist");
 %>
 
+</head>
+
 <body>
-<h1>공지사항</h1>
-
-<form name=frm>
-
-
+<h1>FAQ </h1>
+<h1>FAQ 회원</h1>
+<a href="<%=request.getContextPath() %>/BoardFAQUserList">회원 </a>
+<a href="<%=request.getContextPath() %>/BoardFAQPlayerList">플레이어 </a>
+<a href="<%=request.getContextPath() %>/BoardFAQPayList">결제 </a>
+<a href="<%=request.getContextPath() %>/BoardFAQEtcList">기타</a><br>
 	<table border=1>
 		<tr>
 			<td>번호</td>
+		
 			<td>제목</td>
-			<td>등록일</td>
+			
 		</tr>
 		<%
 			for (BoardVo bvo : alist) {
 		%>
 		<tr>
 		    <td><%=bvo.getBidx() %>
-			<td><a href="<%=request.getContextPath() %>/BoardNoticeContent?bidx=<%=bvo.getBidx()%>"><%=bvo.getbSubject()%></a></td>
-			<td><%=bvo.getbWriteday() %></td>
+			
+			<td><a href="<%=request.getContextPath() %>/BoardFAQContent?bidx=<%=bvo.getBidx()%>"><%=bvo.getbSubject()%></a></td>
+			
 		</tr>
 		<%} %>
 
 	</table>
 	
-</form>
+
 
 </body>
 </html>

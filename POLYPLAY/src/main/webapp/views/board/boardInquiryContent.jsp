@@ -7,12 +7,37 @@
 <%@ page import="com.polyplay.pp.domain.BoardVo" %>
 <%
 BoardVo bvo = (BoardVo)request.getAttribute("bvo"); 
-
 %>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $("#Modify").click(function(){
+            // 페이지 주소 변경(이동)
+            location.href = "<%=request.getContextPath()%>/BoardInquiryModify?bidx=<%=bvo.getBidx()%>";
+        });
+    });
+
+
+    $(document).ready(function(){
+        $("#Delete").click(function(){
+            // 페이지 주소 변경(이동)
+            location.href = "<%=request.getContextPath()%>/BoardInquiryContentDelete?bidx=<%=bvo.getBidx()%>";
+           
+        });
+    });
+</script>
 <title>Insert title here</title>
 </head>
 <body>
+<form name=frm>
+	  
+        <button type="button" id="Modify">수정</button>
+  
+   
+        <button type="button" id="Delete">삭제</button>
+       
 <h1>1:1문의 내용</h1>
 
 번호:<%=bvo.getBidx() %><br>
@@ -20,9 +45,8 @@ BoardVo bvo = (BoardVo)request.getAttribute("bvo");
 글쓴이 : <%=bvo.getbWriter() %> <br>
 제목: <%=bvo.getbSubject() %> <br>
 내용 : <%=bvo.getbContent() %><br>
-
-<a href="<%=request.getContextPath()%>/BoardInquiryModify?bidx=<%=bvo.getBidx()%>">수정</a>
-<a href="<%=request.getContextPath()%>/BoardInquiryContentDelete?bidx=<%=bvo.getBidx()%>">삭제</a> 
-
+</form>
 </body>
-</html>
+</html> 
+
+

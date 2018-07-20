@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.polyplay.pp.domain.BoardVo;
+import com.polyplay.pp.domain.MemberVo;
 
 public interface BoardService_Mapper {
 	
@@ -11,9 +12,12 @@ public interface BoardService_Mapper {
 		
 		public BoardVo selectNoticeContent(int bidx);
 		
-		public ArrayList<BoardVo> selectFAQList(); 
+		public ArrayList<BoardVo> selectFAQUserList(); 
+		public ArrayList<BoardVo> selectFAQPlayerList(); 
+		public ArrayList<BoardVo> selectFAQPayList(); 
+		public ArrayList<BoardVo> selectFAQEtcList(); 
 		
-		public ArrayList<BoardVo> selectFAQContent();
+		public BoardVo selectFAQContent(int bidx);
 		
 		public ArrayList<BoardVo> selectInquiryList();
 		
@@ -24,4 +28,6 @@ public interface BoardService_Mapper {
 		public int updateInquiry(HashMap<String,Object> map);
 
 		public int deleteInquiry(HashMap<String,Object> map);
+		
+		public int bPasswordCheck(HashMap<String,Object> map);
 }

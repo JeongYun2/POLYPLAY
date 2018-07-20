@@ -6,8 +6,20 @@ public class BoardVo {
 	private int midx;
 	private String bCate;
 	private String bSubcate;
-	
-	
+	private String bSubject;
+	private String bWriter;
+	private String bContent;
+	private String bWriteday;
+	private String bModifyday;
+	private String bDel_yn;
+	private String bSecret_yn;
+	private String bIp;
+	private String bReply_yn;
+	private int bOridx;
+	private int bDepth;
+	private int bLevel;
+	private String bPassword;
+
 	public int getBidx() {
 		return bidx;
 	}
@@ -104,17 +116,11 @@ public class BoardVo {
 	public void setbLevel(int bLevel) {
 		this.bLevel = bLevel;
 	}
-	private String bSubject;
-	private String bWriter;
-	private String bContent;
-	private String bWriteday;
-	private String bModifyday;
-	private String bDel_yn;
-	private String bSecret_yn;
-	private String bIp;
-	private String bReply_yn;
-	private int bOridx;
-	private int bDepth;
-	private int bLevel;
+	public String getbPassword() {
+		return bPassword;
+	}
+	public void setbPassword(String bPassword) {
+		this.bPassword = bPassword;
+	}
 	
 }

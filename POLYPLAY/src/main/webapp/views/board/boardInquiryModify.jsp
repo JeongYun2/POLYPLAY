@@ -8,7 +8,9 @@
 <title>수정페이지</title>
 <script type="text/javascript">
 function check() {	
-  
+  //히히히히
+  //호호호호
+  //왜안되느냐
   var formname = document.frm;
   
   
@@ -32,15 +34,20 @@ function check() {
 <tr>
 <td>카테고리</td>
 <td>
-<input type="text" name="bSubcate" id="bSubcate" size="10" maxlength="10" value="<%=bvo.getbSubcate()%>" />
+<select name="bSubcate">
+ <option value="1">회원</option>
+ <option value="2">플레이어</option>
+ <option value="3">결제</option>
+ <option value="4">기타</option>
+ <option value="5">작품제안</option>
+ <option value="6">신고하기</option>
+ </select>
 </td>
 </tr>
 <tr>
 <td>글쓴이</td>
 <td>
-<textarea name="bWriter" rows=20 cols=100 >
-<%=bvo.getbWriter() %>
-</textarea>
+<input type="text" name="bWriter"  size="20" value="<%=bvo.getbWriter() %>"readonly disabled />
 </td>
 </tr>
 <tr>

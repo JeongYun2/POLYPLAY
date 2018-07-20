@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.polyplay.pp.domain.BoardVo;
+import com.polyplay.pp.domain.MemberVo;
 import com.polyplay.pp.persistence.BoardService_Mapper;
+import com.polyplay.pp.persistence.MemberService_Mapper;
 
 
 @Service("boardServiceImpl")
@@ -38,21 +40,53 @@ public class BoardServiceImpl implements BoardService{
 		}
 		
 		@Override
-		public ArrayList<BoardVo> selectFAQList() {
+		public ArrayList<BoardVo> selectFAQUserList() {
 
 			ArrayList<BoardVo> alist = null;
 			BoardService_Mapper bsm = sqlSession.getMapper(BoardService_Mapper.class);
-			alist = bsm.selectFAQList();			
+			alist = bsm.selectFAQUserList();			
 
 			return alist;
 		}
-
 		@Override
-		public ArrayList<BoardVo> selectFAQContent() {
-			// TODO Auto-generated method stub
-			return null;
+		public ArrayList<BoardVo> selectFAQPlayerList() {
+
+			ArrayList<BoardVo> alist = null;
+			BoardService_Mapper bsm = sqlSession.getMapper(BoardService_Mapper.class);
+			alist = bsm.selectFAQPlayerList();			
+
+			return alist;
+		}
+		@Override
+		public ArrayList<BoardVo> selectFAQPayList() {
+
+			ArrayList<BoardVo> alist = null;
+			BoardService_Mapper bsm = sqlSession.getMapper(BoardService_Mapper.class);
+			alist = bsm.selectFAQPayList();			
+
+			return alist;
+		}
+		@Override
+		public ArrayList<BoardVo> selectFAQEtcList() {
+
+			ArrayList<BoardVo> alist = null;
+			BoardService_Mapper bsm = sqlSession.getMapper(BoardService_Mapper.class);
+			alist = bsm.selectFAQEtcList();			
+
+			return alist;
+		}
+		@Override
+		public BoardVo selectFAQContent(int bidx) {
+			BoardVo bvo = null;
+			BoardService_Mapper bsm = sqlSession.getMapper(com.polyplay.pp.persistence.BoardService_Mapper.class);
+			bvo =bsm.selectFAQContent(bidx);
+
+			return bvo;
 		}
 
+		
+		
+		
 		@Override
 		public ArrayList<BoardVo> selectInquiryList() {
 			
@@ -65,15 +99,17 @@ public class BoardServiceImpl implements BoardService{
 
 
 		@Override
-		public int insertInquiry(String bSubcate,String bWriter,String bSubject, String bContent,  String bIp){
+		public int insertInquiry(String bSubcate,String bWriter,String bSubject, String bContent,  String bIp, String bSecret_yn,String bPassword){
 			
 			HashMap<String,Object> map = new HashMap<String,Object>();
-			map.put("bSubject", bSubject);
+			map.put("bSubcate", bSubcate);
+			System.out.print(bSubcate);
 			map.put("bWriter", bWriter);
 			map.put("bSubject", bSubject);
 			map.put("bContent", bContent);
 			map.put("bIp", bIp);
-			
+			map.put("bSecret_yn", bSecret_yn);
+			map.put("bPassword", bPassword);
 				
 			
 			BoardService_Mapper bsm = sqlSession.getMapper(com.polyplay.pp.persistence.BoardService_Mapper.class);
@@ -81,14 +117,7 @@ public class BoardServiceImpl implements BoardService{
 
 			return result;
 		}
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 		@Override
 		public BoardVo selectInquiryContent(int bidx) {
@@ -111,6 +140,8 @@ public class BoardServiceImpl implements BoardService{
 			
 			return res;
 		}
+		
+		
 	
 		@Override
 		public int updateInquiry(String bSubcate,String bSubject, String bContent, String bIp, int bidx){
@@ -128,6 +159,20 @@ public class BoardServiceImpl implements BoardService{
 			
 			return result;
 			
+		}
+		
+		@Override
+		public int bPasswordCheck(int bidx, String bPassword) {
+			HashMap<String,Object> map = new HashMap<String,Object>();
+			
+		
+			map.put("bidx", bidx);
+			map.put("bPassword", bPassword);
+			
+			BoardService_Mapper bsm = sqlSession.getMapper(BoardService_Mapper.class);
+			int result = bsm.bPasswordCheck(map);			
+		
+			return result;
 		}
 
 }

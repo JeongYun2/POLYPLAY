@@ -8,17 +8,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>1:1문의 </title>
-</head>
-
- 
 <%
+
+
 		ArrayList<BoardVo> alist =(ArrayList<BoardVo>)request.getAttribute("alist");
 %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#Write").click(function(){
+            // 페이지 주소 변경(이동)
+            location.href = "<%=request.getContextPath()%>/BoardInquiryWrite";
+        });
+    });
+</script>
+</head>
 
 <body>
 <h1>1:1문의</h1>
-<a href="<%=request.getContextPath()%>/BoardInquiryWrite">글쓰기</a>
+
 <form name=frm>
+	 
+
+        <button type="button" id="Write">글쓰기</button>
+       
 	<table border=1>
 		<tr>
 			<td>번호</td>
@@ -34,7 +47,7 @@
 		    <td><%=bvo.getBidx() %>
 			<td><%=bvo.getbSubcate() %>
 			<td><%=bvo.getbWriter()%></td>
-			<td><a href="<%=request.getContextPath() %>/BoardInquiryContent?bidx=<%=bvo.getBidx()%>"><%=bvo.getbSubject()%></a></td>
+			<td><a href="<%=request.getContextPath() %>/BoardInquiryContentPassword?bidx=<%=bvo.getBidx()%>"><%=bvo.getbSubject()%></a></td>
 			<td><%=bvo.getbWriteday() %></td>
 		</tr>
 		<%} %>
@@ -45,3 +58,8 @@
 
 </body>
 </html>
+
+
+
+
+
