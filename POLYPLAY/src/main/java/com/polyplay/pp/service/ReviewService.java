@@ -9,7 +9,7 @@ public interface ReviewService {
 
 	public ReviewVo selectMyReview(int midx, int cidx); 
 	
-	public ArrayList<ReviewVo> selectLikeReview();
+	public ArrayList<ReviewVo> selectReviewList();
 	
 	public int deleteMyReview(ReviewVo rv);
 	

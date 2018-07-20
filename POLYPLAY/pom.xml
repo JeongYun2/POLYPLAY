@@ -9,25 +9,24 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	
 	
-	<!-- (추가) jdbc다운받는곳설정함 -->
+	<!--(추가) jdbc 다운받는곳 설정함 -->
 	<repositories>
-		<repository>
-    		<id>oracle</id>
-    		<name>ORACLE JDBC Repository</name>
-    		<url>http://code.lds.org/nexus/content/groups/main-repo</url>
-		</repository>
+	<repository>
+    <id>oracle</id>
+    <name>ORACLE JDBC Repository</name>
+    <url>http://code.lds.org/nexus/content/groups/main-repo</url>
+	</repository>
 	</repositories>
 	
-	
-	<!-- 자바버전변경, 스프링버전변경 -->
 	<properties>
+		<!-- 자바버젼 변경하고 스프링 버젼 변경함 -->
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.3.3.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
-	<dependencies>
 	
+	<dependencies>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -40,19 +39,38 @@
 					<artifactId>commons-logging</artifactId>
 				 </exclusion>
 			</exclusions>
-		</dependency>
+		</dependency>				
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
+		</dependency>	
+		<!-- (추가) 스프링jdbc  -->	
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		<!-- (추가) 스프링test -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>3.1.0.RELEASE</version>
+		</dependency>
+		
+		<!-- (추가) 로그 -->		
+		<dependency>
+			<groupId>org.bgee.log4jdbc-log4j2</groupId>
+			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+			<version>1.16</version>
 		</dependency>
 				
-		<!-- aop를 사용하기 위한 문법 AspectJ -->
+		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
-		</dependency>	
+		</dependency>
 		
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -60,33 +78,13 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>	
 		
-		<!-- aop,tx추가 -->
-		<dependency>
-	        <groupId>org.springframework</groupId>
-	        <artifactId>spring-aop</artifactId>
-	        <version>${org.springframework-version}</version>
- 		</dependency>
- 		
- 		<dependency>
-	        <groupId>org.springframework</groupId>
-	        <artifactId>spring-tx</artifactId>
-	        <version>${org.springframework-version}</version>
- 		</dependency>
- 		
- 		<dependency>
- 		<!-- cglib : 프록시 -->
- 			<groupId>cglib</groupId>
-		   <artifactId>cglib</artifactId>
-		   <version>2.2</version>
-		</dependency>
- 		
-		
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${org.slf4j-version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -134,14 +132,14 @@
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
-			<version>2.1</version>
+			<version>2.2</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -149,39 +147,38 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-	
-		<!-- Test -->
-		<dependency>
-		<!-- junit : 개발자 단위 테스트용 (기본내장) -->
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.7</version>
-			<scope>test</scope>
-		</dependency>   
 		
-		
-<!--  mybatis추가	 -->	
-		<!-- myBatis -->     
+		<!--(추가) myBatis -->        
 
 	    <dependency>
 	     <groupId>org.mybatis</groupId>
 	     <artifactId>mybatis</artifactId>
 	     <version>3.4.1</version>
 	 	</dependency>
-<!-- mybatis연동 추가 -->
+
+		<!--(추가) myBatis --> 
     	<dependency>
         <groupId>org.mybatis</groupId>
         <artifactId>mybatis-spring</artifactId>
         <version>1.3.0</version>
    		</dependency>
-   		
-   		<!-- (추가) https://mvnrepository.com/artifact/commons-pool/commons-pool -->
+
+    <!-- (추가) Spring core -->
+	 	<dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-core</artifactId>
+	        <version>${org.springframework-version}</version>
+	 	</dependency>		
+	
+	<!--(추가) https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
-		<!-- 접속할때 로드가 제일 많이걸려
-				디비커넥션풀 - 접속할때 사용할수있는자원많이 확보해놔
-				풀:여유공간
-				그 기능 사용하는 드라이버 commons-pool 
-		 -->
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.2.2</version>
+		</dependency>
+	
+	<!-- (추가) https://mvnrepository.com/artifact/commons-pool/commons-pool -->
+		<dependency>
 		    <groupId>commons-pool</groupId>
 		    <artifactId>commons-pool</artifactId>
 		    <version>1.6</version>
@@ -189,70 +186,64 @@
 	
 	<!-- (추가) https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
-		<!-- 스프링jdbc 변수에는 위에 지정해놓은 버전이 들어가 -->
-		
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
-		
 	<!--  (추가) jdbc -->	
 		<dependency>
   		  <groupId>com.oracle</groupId>
     		  <artifactId>ojdbc7</artifactId>
   		  <version>12.1.0.2</version>
 		</dependency> 	
+	
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>		
 		
-		
+		<dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-aop</artifactId>
+	        <version>${org.springframework-version}</version>
+ 		</dependency>
+ 		
+ 		<dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-tx</artifactId>
+	        <version>${org.springframework-version}</version>
+ 		</dependency>
+ 		
+ 		<!--(추가) proxy -->
+ 		<!--cglib 사용시 프록시 서버가 하나더 생성 이 친구는 그외 ex)impl을 @등록해서 사용할경우 사용 ,내장proxy는 부모꺼를 사용하기를 권장 -->
+ 		<dependency>
+		   <groupId>cglib</groupId>
+		   <artifactId>cglib</artifactId>
+		   <version>2.2</version>
+		</dependency>
 		<!--(추가) 파일업로드시 필요 -->
 		<dependency>
 		   <groupId>org.imgscalr</groupId>
 		   <artifactId>imgscalr-lib</artifactId>
 		   <version>4.2</version>
 		</dependency>
-		
 		<!--(추가) 파일업로드시 필요 -->
 		<dependency>
 		   <groupId>commons-fileupload</groupId>
 		   <artifactId>commons-fileupload</artifactId>
 		   <version>1.3.2</version>
 		</dependency>
-		
 		<!--(추가) ajax사용시 -->
+		<!--bv,mv등등 jason파일로 가져다 쓸수있도록 해주는 라이브러리  -->
 		<dependency>
-		<!-- jackson-databind :  ajax사용할때 씀 -->
 		   <groupId>com.fasterxml.jackson.core</groupId>
 		   <artifactId>jackson-databind</artifactId>
 		   <version>2.8.4</version>
 		</dependency>		
 		        
-	
-	
-	
-
-
-<!--  스프링jdbc 추가 다운 -->
-<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-jdbc</artifactId>
-		    <version>${org.springframework-version}</version>
-		</dependency>
-<!-- 스프링테스트 추가 -->
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-test</artifactId>
-		    <version>3.1.0.RELEASE</version>
-		</dependency>	
-<!-- log(기록)	접속기록남기는것.. 로그남기기위한 드라이버 추가	 -->
-		<dependency>
-			<groupId>org.bgee.log4jdbc-log4j2</groupId>
-			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
-			<version>1.16</version>
-		</dependency>	     
-		     
-		     
-		     
 	</dependencies>
     <build>
         <plugins>
@@ -275,8 +266,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArgument>-Xlint:all</compilerArgument>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>

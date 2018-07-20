@@ -25,10 +25,10 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public ArrayList<ReviewVo> selectLikeReview() {
+	public ArrayList<ReviewVo> selectReviewList() {
 		
 		ReviewService_Mapper rsm = sqlSession.getMapper(ReviewService_Mapper.class);
-		ArrayList<ReviewVo> alist = rsm.selectLikeReview();
+		ArrayList<ReviewVo> alist = rsm.selectReviewList();
 		
 		return alist;
 	}

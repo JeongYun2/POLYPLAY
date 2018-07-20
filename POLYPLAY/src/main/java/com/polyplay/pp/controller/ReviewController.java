@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.polyplay.pp.domain.ReviewVo;
 import com.polyplay.pp.service.ReviewService;
 
@@ -19,19 +20,35 @@ public class ReviewController {
 	@RequestMapping(value="/ReviewList")
 	public String reviewListController(Model model) {
 		//selectMyReview	
-		//selectLikeReview
+		//selectReviewList 
 		
-		ArrayList<ReviewVo> alist = null;
-		alist = rs.selectLikeReview();
+/*		ArrayList<ReviewVo> alist = null;
+		alist = rs.selectReviewList();
 		
 		ReviewVo rv  = null;
 		rv = rs.selectMyReview(6,8);
 		
 		model.addAttribute("rv", rv);
-		model.addAttribute("alist", alist);	
+		model.addAttribute("alist", alist);	*/
 		
 		return "views/contents/contentsReview";
 	}
+	
+	@RequestMapping(value = "/ReviewListAjax")
+	public @ResponseBody ArrayList<ReviewVo> boardListAjaxController(Model model) {
+	
+		System.out.println("ReviewListAjax컨트롤러들어옴?");
+		
+		ArrayList<ReviewVo> alist = null;
+		alist = rs.selectReviewList();
+		
+	
+		
+		return alist;
+
+	}
+	
+	
 	
 	@RequestMapping(value="/ReviewDelete")
 	public String reviewDeleteController(@ModelAttribute("rv") ReviewVo rv) {

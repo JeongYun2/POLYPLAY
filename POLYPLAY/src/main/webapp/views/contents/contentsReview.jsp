@@ -9,25 +9,116 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
-function del(){	
-var formname = document.frm;
-var res;
-res = confirm("삭제 하시겠습니까?");
-if (res == true){
-	
-	formname.action ="<%=request.getContextPath()%>/ReviewDelete";
-	formname.method ="POST";
-	formname.submit();
-}
-	return;
 
+
+$(document).ready(function(){
+	
+	//alert("작동");
+	$.reviewList();
+    
+	$(".like-Unlike").click(function(e){
 		
-		return;
-	}
-</script>
+		alert("버튼작동");
+		
+	    if ($(this).html() == "싫어요"){
+	        $(this).html('좋아요');
+	    }
+	    else {
+	        $(this).html('싫어요');
+	    }
+	    return false;
+	});
+    
+    
+
+	
+    
+}); //다큐먼트레디끝
+
+
+
+
+
+$.reviewList = function(){
+
+	alert("리뷰리스트불러짐?");
+	
+		var str = '';
+
+		$.ajax({
+			type : "GET",
+			url  : "/ReviewListAjax",
+			datatype : "json",
+			cache : false,
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       },
+			success : function(data){
+				
+				alert(data);
+				
+				$(data).each(function(){		
+					
+					str += "<tr style='text-align:center;'>"
+					 	+ "<td>"+this.ridx+"</td>"
+						+ "<td width='50%'>"+this.rContent+"</td>" 
+						+ "<td>"+this.rLike+"</td>"
+				     	+ "<td>"+this.rPoint+"</td>" 
+					 	+ "</tr>";					
+				});
+
+				$('#tbl').html("<table border='1' width='100%' style='text-align:center;'>"
+							 + "<tr style='text-align:center;background-color:blue;'>"
+				 			 + "<td>글번호</td>"
+				 			 + "<td width='50%'>제목</td>" 
+				 			 + "<td>작성자</td>"
+				             + "<td>작성일</td>" 
+				   		 	 + "</tr>" 
+				 			 + str
+				 			 + "</table>");				
+
+				} 
+				
+		
+				
+		});	  //ajax끝
+
+		} //리뷰리스트끝
+
+
+        function del(){	
+        	var formname = document.frm;
+        	var res;
+        	res = confirm("삭제 하시겠습니까?");
+        	if (res == true){
+        		
+        		formname.action ="<%=request.getContextPath()%>/ReviewDelete";
+        		formname.method ="POST";
+        		formname.submit();
+        	}
+        		return;
+
+        		}
+    </script>
 </head>
 <body>
-	<form name =frm>
+
+
+
+<div id="tbl"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- 	<form name =frm>
 	<table>
 		<!-- 속성 이름 -->
 		<tr>
@@ -72,10 +163,10 @@ if (res == true){
 			<td>${rv.cidx}</td>
 			<td>${rv.rPoint}</td>
 			<td>${rv.rContent}</td>
-			<td>${rv.rLike}</td>
+			<td>${rv.rLike}<span><a class="like-Unlike" href="">싫어요</a></span></td>
 		</tr>	
 		</c:forEach>
-	</table>
+	</table> --%>
 	
 	
 	
