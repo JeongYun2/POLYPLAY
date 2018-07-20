@@ -19,13 +19,13 @@ public class ContentsController {
 	ContentsService cs;
 	
 	@RequestMapping(value="/ContentsList")
-	public String contentsListController(Model model) {
+	public String contentsListController(@RequestParam("gidx") int gidx,Model model) {
 		//selectGenreList
 		//selectSearchList
 		
 		ArrayList<ContentsVo> alist = null;
 				
-		alist = cs.selectGenreList(1);
+		alist = cs.selectGenreList(gidx);
 		
 		model.addAttribute("alist", alist);
 		
@@ -52,20 +52,20 @@ public class ContentsController {
 	
 
 	
-	@RequestMapping(value="/ContentsSimilar")
-	public String contentsSimilarController(Model model) {
+	/*@RequestMapping(value="/ContentsSimilar")
+	public String contentsSimilarController(@RequestParam("gidx") int gidx,Model model) {
 		
 		//selectSimilarList
 		ArrayList<ContentsVo> alist = null;
 		
-		alist = cs.selectlSimilarList(1);
+		alist = cs.selectlSimilarList(gidx);
 		
 		model.addAttribute("alist", alist);
 		
 		
 		
 		return "views/contents/contentsSimilar";
-	}
+	}*/
 	
 	@RequestMapping(value="/ContentsPlay")
 	public String contentsPlayController(@RequestParam("cidx") int cidx,Model model) {

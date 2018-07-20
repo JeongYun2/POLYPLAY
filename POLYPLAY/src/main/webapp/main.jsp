@@ -19,6 +19,18 @@
 <link rel="stylesheet" type="text/css" href="resources/plugins/css/jq.rolling.css"/>
 </head>
 <body>
+<div>
+<a href="${pageContext.request.contextPath}/ContentsList?gidx=1"class="btn btn-info pull-right">액션</a> 
+<a href="${pageContext.request.contextPath}/ContentsList?gidx=2"class="btn btn-info pull-right">스릴러</a>
+<a href="${pageContext.request.contextPath}/ContentsList?gidx=3"class="btn btn-info pull-right">SF판타지</a>
+<a href="${pageContext.request.contextPath}/ContentsList?gidx=4"class="btn btn-info pull-right">공포</a>
+<a href="${pageContext.request.contextPath}/ContentsList?gidx=5"class="btn btn-info pull-right">코미디</a>
+<a href="${pageContext.request.contextPath}/ContentsList?gidx=6"class="btn btn-info pull-right">로맨스</a>
+<a href="${pageContext.request.contextPath}/ContentsList?gidx=7"class="btn btn-info pull-right">드라마</a>
+<a href="${pageContext.request.contextPath}/ContentsList?gidx=8"class="btn btn-info pull-right">애니메이션</a>
+</div>
+
+
 
 <div>
 	<div id="rolling">
