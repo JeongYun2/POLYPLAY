@@ -17,12 +17,12 @@ public class MemberServiceImpl implements MemberService {
 	
 	
 	@Override
-	public int selectLogin(MemberVo mvo) {
+	public MemberVo selectLogin(MemberVo mvo) {
 		
 		MemberService_Mapper msm = sqlSession.getMapper(MemberService_Mapper.class);
-		Integer midx = msm.selectLogin(mvo);
+		MemberVo mvo_res = msm.selectLogin(mvo);
 		
-		return midx;
+		return mvo_res;
 	}
 
 

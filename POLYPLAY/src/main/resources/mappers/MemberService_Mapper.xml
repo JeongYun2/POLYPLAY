@@ -7,8 +7,8 @@
 <!-- memberLogin.jsp -->
 
 <!-- selectLogin : 로그인 -->
-<select id="selectLogin" parameterType="mvo" resultType="Integer"><!-- 리턴을 Integer로 할때 데이터가 없으면 null값 반환함  -->
-select midx 
+<select id="selectLogin" parameterType="mvo" resultType="mvo"><!-- 리턴을 Integer로 할때 데이터가 없으면 null값 반환함  -->
+select midx,mId,mName,mNickname
 	from POLY_MEMBER 
 	where mId=#{mId} and mPassword=#{mPassword} and mDel_yn ='N'
 </select>
@@ -31,7 +31,7 @@ update POLY_MEMBER
 <!-- memberjoin.jsp -->
 
 <!-- selectIdCheck : 아이디 중복 체크 --> 
-<select id="selectIdCheck" parameterType="String" resultType="int">
+<select id="selectIdCheck" parameterType="String" resultType="Integer">
 select count(*) from POLY_MEMBER where mId=#{mId}
 </select> 
 

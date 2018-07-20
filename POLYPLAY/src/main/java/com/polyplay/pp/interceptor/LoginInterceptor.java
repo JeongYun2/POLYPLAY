@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -20,7 +21,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 
 	// 세션  유효기한
-	private static int expir_date = 7;
+	private static int expir_date = 14;
 	
 	@Autowired(required=false)
 	MemberService ms;
@@ -32,28 +33,21 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		logger.info("LoginInterceptorPost에 들어옴");
 		//세션을 꺼내옴
 		HttpSession session = request.getSession();
+		ModelMap modelMap = modelAndView.getModelMap();
+		MemberVo login = (MemberVo)modelMap.get("login");
 		
-		System.out.println(session);
-		
-		
-		if(modelAndView.getModel().get("sMidx") != null){
+		System.out.println("session: "+session+", modelMap: "+modelMap+", login: "+login);
 			
-			//memberLoginActionController에서 Model에 담은 값을 받는다.
-			int sMidx = (Integer)modelAndView.getModel().get("sMidx");
+		if(login != null){		// 로그인 안했을 경우
 			
-			System.out.println("sMidx: "+sMidx);
+			// 세션에 midx값을 login라는 이름으로 저장한다.
+			session.setAttribute("login", login);
 			
-			if(sMidx >= 1){
+			System.out.println(request.getParameter("useCookie"));
+			
+			if (request.getParameter("useCookie").equals("on") ) {
 				
-				// 세션에 midx값을 sMidx라는 이름으로 저장한다.
-				session.setAttribute("sMidx", sMidx);
-				
-				System.out.println(request.getParameter("useCookie"));
-				
-				if (request.getParameter("useCookie").equals("on") ) {
-					
-					useCookie(request, response);	
-				}
+				useCookie(request, response);	
 			}
 		}
 	}
@@ -65,20 +59,22 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		
 		logger.info("LoginInterceptorPre에 들어옴");
 		HttpSession session = request.getSession();
+		System.out.println(session);
+		System.out.println(session.getAttribute("login"));
+		MemberVo mvo = (MemberVo) session.getAttribute("login");
+		System.out.println(mvo);
 		
-		if(session.getAttribute("sMidx") != null){
+		if(mvo != null){
 
-			int midx = (Integer) session.getAttribute("sMidx");
-			session.removeAttribute("sMidx");
+			session.removeAttribute("login");
 			
-			MemberVo mvo = new MemberVo();
-			mvo.setMidx(midx);
 			mvo.setmSessionId("");
 			mvo.setmSessionLimit("");
-			ms.updateAutoLogin(mvo);
+			int res = ms.updateAutoLogin(mvo);
+			System.out.println("res:"+res);
 		}
-		 
-		 return true;
+		
+		return true;
 	}
 	
 	private void useCookie(HttpServletRequest request, HttpServletResponse response) {
