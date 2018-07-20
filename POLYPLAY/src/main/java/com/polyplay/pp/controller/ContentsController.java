@@ -68,10 +68,10 @@ public class ContentsController {
 	}
 	
 	@RequestMapping(value="/ContentsPlay")
-	public String contentsPlayController(Model model) {
+	public String contentsPlayController(@RequestParam("cidx") int cidx,Model model) {
 		//playVideo
 		
-		ContentsVo cv = cs.selectPreVideo(68);
+		ContentsVo cv = cs.selectPreVideo(cidx);
 		model.addAttribute("cv", cv);
 		return "/views/contents/contentsPlay";
 	}
