@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.polyplay.pp.domain.ReviewVo;
@@ -35,7 +36,7 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value = "/ReviewListAjax")
-	public @ResponseBody ArrayList<ReviewVo> boardListAjaxController(Model model) {
+	public @ResponseBody ArrayList<ReviewVo> boardListAjaxController() {
 	
 		System.out.println("ReviewListAjax컨트롤러들어옴?");
 		
@@ -66,14 +67,19 @@ public class ReviewController {
 			
 	
 	}
-	@RequestMapping(value="/ReviewLikePlus")
-	public String reviewLikePlusController() {
+	
+	
+	
+	
+	@RequestMapping(value="/ReviewLikePlus/{ridx}")
+	public @ResponseBody int reviewLikePlusController(@PathVariable("ridx") int ridx) {
 
+		System.out.println("reviewLikePlusController들어옴");
 		
-		//updateLikePlus
+		int result = rs.updateLikePlus(ridx);
 	
 				
-		return "";
+		return result;
 	}
 	
 	@RequestMapping(value="/ReviewLikeMinus")
@@ -86,6 +92,12 @@ public class ReviewController {
 	}
 	
 			
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value="/ReviewWrite")
 	public String reviewWriteController(@ModelAttribute("rv") ReviewVo rv) {

@@ -13,9 +13,13 @@ public interface ReviewService {
 	
 	public int deleteMyReview(ReviewVo rv);
 	
-	public int updateLikePlus(ReviewVo rv);
 	
-	public int updateLikeMinus(ReviewVo rv);
+	
+	public int updateLikePlus(int ridx);
+	
+	public int updateLikeMinus(int ridx);
+	
+	
 	
 	public int insertReview(ReviewVo rv);
 	

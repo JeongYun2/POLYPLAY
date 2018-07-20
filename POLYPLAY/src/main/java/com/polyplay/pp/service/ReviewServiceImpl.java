@@ -45,19 +45,24 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public int updateLikePlus(ReviewVo rv) {
+	public int updateLikePlus(int ridx) {
 		
 		ReviewService_Mapper rsm = sqlSession.getMapper(ReviewService_Mapper.class);
-		int result = rsm.updateLikePlus(rv);
+		int result = rsm.updateLikePlus(ridx);
+		
+		System.out.println("updateLikePlus결과값: "+result);
 		
 		return result;
 	}
 
 	@Override
-	public int updateLikeMinus(ReviewVo rv) {
+	public int updateLikeMinus(int ridx) {
 		
 		ReviewService_Mapper rsm = sqlSession.getMapper(ReviewService_Mapper.class);
-		int result = rsm.updateLikeMinus(rv);
+		int result = rsm.updateLikeMinus(ridx);
+		
+		
+		System.out.println("updateLikeMinus결과값: "+result);
 		
 		return result;
 	}

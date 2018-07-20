@@ -20,13 +20,15 @@ select * from POLY_REVIEW where midx=#{0} and cidx=#{1} and rDel_yn='N'
 update POLY_REVIEW set rDel_yn='Y' where midx=#{midx} and cidx=#{cidx} 
 </update>
 
-<update id="updateLikePlus" parameterType ="rvo">
+
+<update id="updateLikePlus" parameterType ="Integer">
 update POLY_REVIEW set rLike=rLike+1 where ridx=#{ridx} 
 </update>
 
-<update id="updateLikeMinus" parameterType ="rvo">
+<update id="updateLikeMinus" parameterType ="Integer">
 update POLY_REVIEW set rLike=rLike-1 where ridx=#{ridx}
 </update>
+
 
 <insert id="insertReview" parameterType ="rvo">
 insert into POLY_REVIEW(ridx, midx, cidx, rpoint, rcontent, rlike, rwriteday, rDel_yn,
