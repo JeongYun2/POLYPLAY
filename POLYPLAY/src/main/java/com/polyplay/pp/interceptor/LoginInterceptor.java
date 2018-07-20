@@ -36,7 +36,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		ModelMap modelMap = modelAndView.getModelMap();
 		MemberVo login = (MemberVo)modelMap.get("login");
 		
-		System.out.println("session: "+session+", modelMap: "+modelMap+", login: "+login);
+		System.out.println("session: "+session+"/n");
+		System.out.println("modelMap: "+modelMap+"/n");
+		System.out.println("login: "+login+"/n");
 			
 		if(login != null){		// 로그인 안했을 경우
 			
