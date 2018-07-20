@@ -1,10 +1,14 @@
 package com.polyplay.pp.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.nio.charset.CharacterCodingException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,11 +16,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.WebUtils;
 
 import com.polyplay.pp.domain.MemberVo;
 import com.polyplay.pp.service.MemberService;
@@ -25,12 +30,13 @@ import com.polyplay.pp.service.MemberService;
 public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-
-	@Autowired(required=false)	//값을 못찾아도 괜찬
+	
+	@Autowired(required=false)
 	MemberService ms;		
 	//delKeepLogin , selectAutoLogin , updateAutoLogin 인터셉터에서
 	
 	
+
 	@RequestMapping(value="/MemberLogin")
 	public String memberLoginController() {
 		
@@ -39,26 +45,81 @@ public class MemberController {
 		return "/views/member/memberLogin";
 	}
 	
-	// ???? get만 됨 post로 변경하면 안됨
-	@RequestMapping(value="/MemberLoginAction", method=RequestMethod.GET)
-	public String memberLoginActionController(MemberVo mvo) {
+	@RequestMapping(value="/MemberLoginAction", method= RequestMethod.POST)
+	public String memberLoginActionController(MemberVo mvo, Model model, HttpSession session,
+			@RequestParam(name="useCookie",required=false) String useCookie ) {
 		
 		logger.info("/MemberLoginAction로 들어 왔습니다.");
-		logger.info("회원님의 아이디: "+mvo.getmId()+", 비밀번호: "+mvo.getmPassword());
+		logger.info("회원님의 아이디: "+mvo.getmId()+", 비밀번호: "+mvo.getmPassword()+", useCookie: "+useCookie);
 		
+		// 이동할 페이지
 		String page;
 		int midx = 0;
 		
 		midx = ms.selectLogin(mvo);
 		logger.info("midx값은 "+midx);
 		
-		if(midx != 0){			// 로그인 성공
+		if(midx > 0){			// 로그인 성공
+			
+			if (useCookie != null) {		// 자동 로그인 체크
+				
+				model.addAttribute("sMidx", midx);
+				
+				Calendar cal = Calendar.getInstance();
+			    cal.setTime(new Date());
+			    cal.add(Calendar.DATE, 7);
+			    DateFormat df = new SimpleDateFormat("yy-MM-dd");   
+			    String sessionLimit = df.format(cal.getTime());
+			    
+			    mvo.setMidx(midx);
+			    mvo.setmSessionId(session.getId());
+			    mvo.setmSessionLimit(sessionLimit);
+			    int updateAuto_res = ms.updateAutoLogin(mvo);
+			    
+			    System.out.println("자동로그인 체크 DB확인:"+updateAuto_res);
+			}
+
 			page = "/index";
+			
 		}else {					// 로그인 실패
-			page = "/views/member/memberLogin";
+			page = "redirect:/views/member/memberLogin";
 		}
 		
 		return page;
+	}
+	
+	@RequestMapping(value="/MemberLogout")
+	public String memberLogoutController(HttpServletRequest request,HttpServletResponse response, HttpSession session) {	
+		
+//		세션에 담은 midx값을 가져온다.
+		Object sMidx = session.getAttribute("sMidx");
+		
+//		로그인을 하지 않았으면 메인 페이지로 보낸다.
+		if(sMidx != null) {
+			
+			int midx = (Integer) sMidx;
+			session.removeAttribute("sMidx");
+			session.invalidate();
+			
+//			HTTP request에서 loginCookie라는 쿠키를 가져온다.
+			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+			if(loginCookie != null){
+				//쿠키 유효기간을 0으로 설정 후 반환 한다.
+				loginCookie.setPath("/");		
+				loginCookie.setMaxAge(0);				 
+				response.addCookie(loginCookie);
+				
+				Date date = new Date(System.currentTimeMillis());
+				
+				MemberVo mvo = new MemberVo();
+				mvo.setMidx(midx);
+				mvo.setmSessionId("");
+				mvo.setmSessionLimit("");
+				ms.updateAutoLogin(mvo);
+			}
+		}
+		
+		return "/index";
 	}
 	
 	@RequestMapping(value="/MemberJoin")
@@ -69,8 +130,8 @@ public class MemberController {
 		return "/views/member/memberJoin";
 	}
 	
-	@RequestMapping(value="/MemberIdCheck/{userID}", method=RequestMethod.POST)
-	public @ResponseBody int memberIdCheckController(@PathVariable("userID") String userID) {
+	@RequestMapping(value="/MemberIdCheck", method=RequestMethod.POST)
+	public @ResponseBody int memberIdCheckController(@RequestBody String userID) {
 		
 		logger.info("/MemberIdCheck/"+userID+"로 들어 왔습니다.");
 		int cnt = ms.selectIdCheck(userID);
@@ -79,9 +140,8 @@ public class MemberController {
 		return cnt;
 	}
 	
-	
-	@RequestMapping(value="/MemberNickCheck/{userNick}", method=RequestMethod.POST)
-	public @ResponseBody int memberNickCheckController(@PathVariable("userNick") String userNick) {
+	@RequestMapping(value="/MemberNickCheck", method=RequestMethod.POST)
+	public @ResponseBody int memberNickCheckController(@RequestBody String userNick) {
 		
 		logger.info("/MemberNickCheck/"+userNick+"로 들어 왔습니다.");
 		int cnt = ms.selectNicknameCheck(userNick);
@@ -90,8 +150,7 @@ public class MemberController {
 		return cnt;
 	}
 	
-	// 이름, 닉네임 한글입력이 깨짐, org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
-	@RequestMapping(value="/MemberJoinAction", method=RequestMethod.GET, produces = "application/text; charset=utf8")
+	@RequestMapping(value="/MemberJoinAction", method=RequestMethod.POST, produces = "application/text; charset=utf8")
 	public String memberJoinActionController(MemberVo mvo,
 			HttpServletRequest request) throws UnsupportedEncodingException {
         
@@ -115,7 +174,7 @@ public class MemberController {
 		if(res == 1){
 			page = "/index";
 		} else {
-			page = "/views/member/memberJoin";
+			page = "redirect:/views/member/memberJoin";
 		}
 		
 		return page;
@@ -128,15 +187,8 @@ public class MemberController {
 		return "/views/member/memberIdFind";
 	}
 	
-	// 입력값이 잘 들어 왔는데 0개 로 나옴
-	// 이름이 한글이여서 깨짐
-	@RequestMapping(value="/MemberIdFindAction", method=RequestMethod.GET)
+	@RequestMapping(value="/MemberIdFindAction", method=RequestMethod.POST)
 	public @ResponseBody String memberIdFindActionController(MemberVo mvo,HttpServletRequest request) {
-		
-		String mName = request.getParameter("mName");
-		String mEmail = request.getParameter("mEmail");
-		logger.info(mName+", "+mEmail);
-		
 		
 		logger.info("이름: "+mvo.getmName()+", 이메일: "+mvo.getmEmail());
 		String mId = ms.selectIdFind(mvo);
@@ -151,7 +203,7 @@ public class MemberController {
 		return "/views/member/memberPwFind";
 	}
 	
-	@RequestMapping(value="/MemberPwFindAction", method=RequestMethod.GET)
+	@RequestMapping(value="/MemberPwFindAction", method=RequestMethod.POST)
 	public @ResponseBody String memberPwFindActionController(MemberVo mvo) {
 		
 		logger.info("아이디: "+mvo.getmId()+", 이메일: "+mvo.getmEmail()+", 전화번호"+mvo.getmPhone());
@@ -164,33 +216,76 @@ public class MemberController {
 	public String memberModifyController(HttpSession session,Model model) {
 		
 		//sMidx세션에서 midx값 갔고 오기
-//		int midx = (Integer)session.getAttribute("sMidx");
-		MemberVo mvo = ms.selectMyMember(3);
-		model.addAttribute("mvo", mvo);
-		logger.info("fdf"+mvo);
+		int midx = (Integer)session.getAttribute("sMidx");
+		MemberVo mvo = ms.selectMyMember(midx);
+		model.addAttribute("mvo",mvo);
+		logger.info("mvo 값: "+mvo);
 		
 		return "/views/member/memberModify";
 	}
 	
-	@RequestMapping(value="/MemberModifyAction")
-	public String memberModifyActionController(MemberVo mvo,
-			@RequestParam("modiDel") String modiDel) {
+	@RequestMapping(value="/MemberModifyAction", method=RequestMethod.POST)
+	public String memberModifyActionController(MemberVo mvo, HttpSession session) {
+		
+		int midx = (Integer)session.getAttribute("sMidx");
+		mvo.setMidx(midx);
+		
+		logger.info("midx: "+mvo.getMidx()+", mPassword: "+mvo.getmPassword());
 		
 		String page = null;
-		int res = ms.memberModiDel(mvo,modiDel);
+		int res = ms.updateMember(mvo);
 		
-		if(res >= 1){
-			if(modiDel == "modi"){
-				
-				page="/MemberModify";
-			} else if(modiDel == "del") {
-				
-				page="/index";
-			}
+		if(res >= 1) {
+			page = "redirect:/MemberModify";
 		} else {
-			page="/MemberModify";
+			page ="/index";
 		}
 		
 		return page;
 	}
+	
+	@RequestMapping(value="/MemberDelete")
+	public String memberDeleteController() {
+		
+		return "/views/member/memberDelete";
+	}
+	
+	@RequestMapping(value="/MemberDeleteAction", method=RequestMethod.POST)
+	public String memberDeleteActionController(MemberVo mvo, HttpSession session) {
+		
+		int midx = (Integer)session.getAttribute("sMidx");
+		mvo.setMidx(midx);
+		
+		logger.info("비밀번호: "+mvo.getmPassword()+", midx:"+mvo.getMidx());
+		
+		String page = null;
+		int res = ms.deleteMember(mvo);
+		
+		logger.info("deleteMember: "+res);
+		
+		if(res == 1) {
+			page = "/index";
+		} else {
+			page ="redirect:/MemberDelete";
+		}
+		
+		return page;
+	}
+	/*
+	@RequestMapping(value="/adminMember")
+	public String adminMemberController(Model model) {
+		
+		
+		
+		return "/views/member/adminMember";
+	}
+	
+
+	@RequestMapping(value="/adminMember")
+	public String adminMemberController() {
+		
+		
+		
+		return "/views/member/adminMember";
+	}*/
 }

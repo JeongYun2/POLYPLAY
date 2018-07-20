@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>아이디 찾기</h1>
-	<form action="${pageContext.request.contextPath}/MemberIdFindAction">
+	<form action="${pageContext.request.contextPath}/MemberIdFindAction" method="post">
 	<div>
 		<div class="form-group" >
 			<label class="control-label">이름</label>			

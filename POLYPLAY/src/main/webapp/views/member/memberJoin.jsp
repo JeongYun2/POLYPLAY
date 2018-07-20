@@ -12,8 +12,8 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 
-var idCk = false;			//ID �ߺ�üũ ���� (�ߺ��� ��� = false, �ߺ��� �ƴ� ��� = true)
-var nickCk = false;		//nick �ߺ�üũ ���� (�ߺ��� ��� = false, �ߺ��� �ƴ� ��� = true)
+var idCk = false;			//ID 체크여부 확인 (중복일 경우 = false , 중복이 아닐경우 = true)
+var nickCk = false;		//nickname 체크여부 확인 (중복일 경우 = false , 중복이 아닐경우 = true)
 
 $(function() {
 	$.idCheck();
@@ -22,7 +22,7 @@ $(function() {
 
 $.idCheck = function(){
 	
-	// idCheck ��ư�� Ŭ�� ���� ��
+	// idCheck 버튼을 눌렀을 때
 	$("#idCheck").click(function() {
 		
 		var userID = $("#mId").val();
@@ -30,22 +30,25 @@ $.idCheck = function(){
 		
 		$.ajax({
 			type : "POST",
-			url : "${pageContext.request.contextPath}/MemberIdCheck/"+userID,
+			async: true,
+			url : "${pageContext.request.contextPath}/MemberIdCheck",
+			data: userID,
 			dataType : "json",
+			contentType: "application/json; charset=UTF-8",
 			success : function(data) {
 				alert("ajax return: "+data);
-				if(data > 0) {					// �������� ����
+				if(data > 0) {
 
-	            	alert("���̵� �����մϴ�. �ٸ� ���̵� �Է����ּ���.");
-	              	// �������� ����
+	            	alert("중복된 아이디입니다. 다른 아이디를 입력해주세요.");
+	              	// 성공(파랑)에서 실패(빨강)로 변경
 	              	$("#divId").removeClass("has-success");
 	                $("#divId").addClass("has-error");
 	                $("#mId").focus();
 	                
 	            } else {				
 	            	
-	                alert("��밡���� ���̵��Դϴ�.");
-					// �Ķ����� ����
+	                alert("사용 가능한 아이디입니다.");
+	             	// 실패(빨강)에서 성공(파랑)로 변경
 					$("#divId").removeClass("has-error");
 	                $("#divId").addClass("has-success");
 	                 
@@ -61,7 +64,7 @@ $.idCheck = function(){
 
 $.nickCheck = function(){
 	
-	// nickCheck ��ư�� Ŭ�� ���� ��
+	// nickCheck 버튼을 눌렀을 때
 	$("#nickCheck").click(function() {
 		
 		var userNick = $("#mNickname").val();
@@ -70,23 +73,25 @@ $.nickCheck = function(){
 		
 			$.ajax({
 				type : "POST",
-				url : "${pageContext.request.contextPath}/MemberNickCheck/"+userNick,
+				async: true,
+				url : "${pageContext.request.contextPath}/MemberNickCheck",
 				data : userNick,
 				dataType : "json",
+				contentType: "application/json; charset=UTF-8",
 				success : function(data) {
 					alert("ajax return: "+data);
-					if(data > 0) {					// �������� ����
+					if(data > 0) {
 						
-						alert("�г����� �����մϴ�. �ٸ� �г����� �Է����ּ���.");
-		              	// �������� ����
+						alert("중복된 닉네임입니다. 다른 닉네임를 입력해주세요.");
+						// 성공(파랑)에서 실패(빨강)로 변경
 		              	$("#divNick").removeClass("has-success");
 		                $("#divNick").addClass("has-error");
 		                $("#mNick").focus();
 		                
 		            } else {				
 		            	
-		                alert("��밡���� �г����Դϴ�.");
-						// �Ķ����� ����
+		                alert("사용 가능한 닉네임입니다.");
+		             	// 실패(빨강)에서 성공(파랑)로 변경
 						$("#divNick").removeClass("has-error");
 		                $("#divNick").addClass("has-success");
 		                 
@@ -104,7 +109,7 @@ $.nickCheck = function(){
 </head>
 <body>
 	<h1>회원가입</h1>
-	<form action="${pageContext.request.contextPath}/MemberJoinAction">
+	<form action="${pageContext.request.contextPath}/MemberJoinAction" method="post">
 	<div>
 		<div class="form-group" >
 			<label class="control-label">아이디</label>
@@ -118,7 +123,7 @@ $.nickCheck = function(){
 			<input type="text" class="form-control" id="mPassword" name="mPassword">
 		</div>
 		<div class="form-group">
-			<label class="control-label">�̸���</label>
+			<label class="control-label">이메일</label>
 			<input type="text" class="form-control" id="mEmail" name="mEmail">
 			
 		</div>

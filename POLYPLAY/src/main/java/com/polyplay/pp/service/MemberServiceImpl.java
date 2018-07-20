@@ -20,10 +20,32 @@ public class MemberServiceImpl implements MemberService {
 	public int selectLogin(MemberVo mvo) {
 		
 		MemberService_Mapper msm = sqlSession.getMapper(MemberService_Mapper.class);
-		int midx = msm.selectLogin(mvo);
+		Integer midx = msm.selectLogin(mvo);
 		
 		return midx;
 	}
+
+
+	@Override
+	public MemberVo selectAutoLogin(String mSessionid) {
+		
+		MemberService_Mapper msm = sqlSession.getMapper(MemberService_Mapper.class);
+		MemberVo mvo = msm.selectAutoLogin(mSessionid);
+		
+		return mvo;
+	}
+
+
+	@Override
+	public int updateAutoLogin(MemberVo mvo) {
+		
+		MemberService_Mapper msm = sqlSession.getMapper(MemberService_Mapper.class);
+		// 성공 여부
+		int res = msm.updateAutoLogin(mvo);
+		
+		return res;
+	}
+
 
 	@Override
 	public int selectIdCheck(String userID) {
@@ -93,26 +115,32 @@ public class MemberServiceImpl implements MemberService {
 
 	@Transactional
 	@Override
-	public int memberModiDel(MemberVo mvo, String modiDel) {
+	public int updateMember(MemberVo mvo) {
 		
 		MemberService_Mapper msm = sqlSession.getMapper(MemberService_Mapper.class);
 		int res = msm.selectPwConfirm(mvo);
-		
-		if(res >= 1){
-			if(modiDel == "modi"){
-				
-				msm.updateMember(mvo);
-				
-			} else if(modiDel == "del") {
-				
-				msm.deleteMember(mvo.getMidx());
-				
-			}
+		System.out.println(res);
+		if(res == 1) {
+			msm.updateMember(mvo);
 		}
 		
 		return res;
 	}
-
+	
+	@Transactional
+	@Override
+	public int deleteMember(MemberVo mvo) {
+		
+		MemberService_Mapper msm = sqlSession.getMapper(MemberService_Mapper.class);
+		int res = msm.selectPwConfirm(mvo);
+		
+		if(res == 1) {
+			msm.deleteMember(mvo.getMidx());
+		}
+				
+		
+		return res;
+	}
 
 
 }

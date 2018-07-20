@@ -7,11 +7,17 @@ public class MemberVo {
 	private String mNickname;
 	private String mId;
 	private String mPassword;
+	private String mNewPassword;
 	private String mEmail;
 	private String mPhone;
 	private String mWriteday;
 	private String mModifyday;
 	private String mDel_yn;
+	private String mAuth;
+	private String mIp;
+	private String mSessionId;
+	private String mSessionLimit;
+	
 	
 	
 	public int getMidx() {
@@ -43,6 +49,12 @@ public class MemberVo {
 	}
 	public void setmPassword(String mPassword) {
 		this.mPassword = mPassword;
+	}
+	public String getmNewPassword() {
+		return mNewPassword;
+	}
+	public void setmNewPassword(String mNewPassword) {
+		this.mNewPassword = mNewPassword;
 	}
 	public String getmEmail() {
 		return mEmail;
@@ -98,9 +110,4 @@ public class MemberVo {
 	public void setmSessionLimit(String mSessionLimit) {
 		this.mSessionLimit = mSessionLimit;
 	}
-	private String mAuth;
-	private String mIp;
-	private String mSessionId;
-	private String mSessionLimit;
-
 }

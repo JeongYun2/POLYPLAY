@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>비밀번호</h1>
-	<form action="${pageContext.request.contextPath}/MemberPwFindAction">
+	<form action="${pageContext.request.contextPath}/MemberPwFindAction" method="post">
 	<div>
 		<div class="form-group" >
 			<label class="control-label">아이디</label>			

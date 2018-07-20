@@ -6,9 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>login</title>
+<script type="text/javascript">
+</script>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/MemberLoginAction">
+	<form action="${pageContext.request.contextPath}/MemberLoginAction" method="post">
 	<div>
 		<div>
 			<label>id</label>
@@ -17,6 +19,9 @@
 		<div>
 			<label>password</label>
 			<input type="password" id="mPassword" name="mPassword">
+		</div><br>
+		<div>
+			<input type="checkbox" name="useCookie" id="useCookie" />
 		</div><br>
 		<div>
 			<input type="submit" value="Login">

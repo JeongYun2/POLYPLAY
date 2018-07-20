@@ -8,12 +8,10 @@ public interface MemberService_Mapper {
 	public int selectLogin(MemberVo mvo);
 	
 	// String mSessionId
-//	public MemberVo selectAutoLogin(String mSessionId);
+	public MemberVo selectAutoLogin(String mSessionId);
 
 	// String mSessionId, String mSessionLimit, int midx
-//	public int updateAutoLogin(MemberVo mvo);
-	
-//	public int delKeepLogin(int midx);
+	public int updateAutoLogin(MemberVo mvo);
 	
 	public int selectIdCheck(String mId);
 	
