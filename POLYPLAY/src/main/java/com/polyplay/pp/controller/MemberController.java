@@ -32,8 +32,7 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired(required=false)
-	MemberService ms;		
-	//delKeepLogin , selectAutoLogin , updateAutoLogin 인터셉터에서
+	MemberService ms;
 	
 	
 
@@ -54,32 +53,32 @@ public class MemberController {
 		
 		// 이동할 페이지
 		String page;
-		int midx = 0;
 		
-		midx = ms.selectLogin(mvo);
-		logger.info("midx값은 "+midx);
+		MemberVo loginMvo = ms.selectLogin(mvo);
+		logger.info("loginMvo값은 "+loginMvo);
 		
-		if(midx > 0){			// 로그인 성공
+		System.out.println("loginMvo: "+loginMvo);
+		if(loginMvo != null){			// 로그인 성공
 			
+			System.out.println("useCookie: "+useCookie);
 			if (useCookie != null) {		// 자동 로그인 체크
 				
-				model.addAttribute("sMidx", midx);
+				model.addAttribute("login", loginMvo);
 				
 				Calendar cal = Calendar.getInstance();
 			    cal.setTime(new Date());
-			    cal.add(Calendar.DATE, 7);
+			    cal.add(Calendar.DATE, 14);
 			    DateFormat df = new SimpleDateFormat("yy-MM-dd");   
 			    String sessionLimit = df.format(cal.getTime());
 			    
-			    mvo.setMidx(midx);
-			    mvo.setmSessionId(session.getId());
-			    mvo.setmSessionLimit(sessionLimit);
-			    int updateAuto_res = ms.updateAutoLogin(mvo);
+			    loginMvo.setmSessionId(session.getId());
+			    loginMvo.setmSessionLimit(sessionLimit);
+			    int updateAuto_res = ms.updateAutoLogin(loginMvo);
 			    
 			    System.out.println("자동로그인 체크 DB확인:"+updateAuto_res);
 			}
 
-			page = "/index";
+			page = "redirect:/GoToHome";
 			
 		}else {					// 로그인 실패
 			page = "redirect:/views/member/memberLogin";
@@ -92,34 +91,31 @@ public class MemberController {
 	public String memberLogoutController(HttpServletRequest request,HttpServletResponse response, HttpSession session) {	
 		
 //		세션에 담은 midx값을 가져온다.
-		Object sMidx = session.getAttribute("sMidx");
+		Object login = session.getAttribute("login");
 		
 //		로그인을 하지 않았으면 메인 페이지로 보낸다.
-		if(sMidx != null) {
+		if(login != null) {
 			
-			int midx = (Integer) sMidx;
-			session.removeAttribute("sMidx");
+			MemberVo mvo = (MemberVo) login;
+			session.removeAttribute("login");
 			session.invalidate();
 			
 //			HTTP request에서 loginCookie라는 쿠키를 가져온다.
 			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+			System.out.println("/MemberLogout의 loginCookie: "+loginCookie);
 			if(loginCookie != null){
 				//쿠키 유효기간을 0으로 설정 후 반환 한다.
 				loginCookie.setPath("/");		
 				loginCookie.setMaxAge(0);				 
 				response.addCookie(loginCookie);
 				
-				Date date = new Date(System.currentTimeMillis());
-				
-				MemberVo mvo = new MemberVo();
-				mvo.setMidx(midx);
 				mvo.setmSessionId("");
 				mvo.setmSessionLimit("");
 				ms.updateAutoLogin(mvo);
 			}
 		}
 		
-		return "/index";
+		return "redirect:/GoToHome";
 	}
 	
 	@RequestMapping(value="/MemberJoin")
@@ -169,12 +165,14 @@ public class MemberController {
 		
 		
 		int res = ms.insertMember(mvo);
-		String page;
+		System.out.println("res: "+res);
+		
+		String page = null;
 		
 		if(res == 1){
-			page = "/index";
+			page = "redirect:/GoToHome";
 		} else {
-			page = "redirect:/views/member/memberJoin";
+			page = "redirect:/MemberJoin";
 		}
 		
 		return page;
@@ -204,9 +202,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/MemberPwFindAction", method=RequestMethod.POST)
-	public @ResponseBody String memberPwFindActionController(MemberVo mvo) {
+	public @ResponseBody String memberPwFindActionController(MemberVo mvo, HttpSession session) {
 		
 		logger.info("아이디: "+mvo.getmId()+", 이메일: "+mvo.getmEmail()+", 전화번호"+mvo.getmPhone());
+		MemberVo mvo_Res = (MemberVo)session.getAttribute("login");
+		mvo.setMidx(mvo_Res.getMidx());
 		String Pw = ms.selectPwFind(mvo);
 		
 		return Pw;
@@ -215,11 +215,11 @@ public class MemberController {
 	@RequestMapping(value="/MemberModify")
 	public String memberModifyController(HttpSession session,Model model) {
 		
-		//sMidx세션에서 midx값 갔고 오기
-		int midx = (Integer)session.getAttribute("sMidx");
-		MemberVo mvo = ms.selectMyMember(midx);
-		model.addAttribute("mvo",mvo);
-		logger.info("mvo 값: "+mvo);
+		//login세션에서 midx값 갔고 오기
+		MemberVo mvo = (MemberVo)session.getAttribute("login");
+		MemberVo mvo_res = ms.selectMyMember(mvo.getMidx());
+		model.addAttribute("mvo",mvo_res);
+		logger.info("mvo 값: "+mvo_res);
 		
 		return "/views/member/memberModify";
 	}
@@ -227,8 +227,11 @@ public class MemberController {
 	@RequestMapping(value="/MemberModifyAction", method=RequestMethod.POST)
 	public String memberModifyActionController(MemberVo mvo, HttpSession session) {
 		
-		int midx = (Integer)session.getAttribute("sMidx");
-		mvo.setMidx(midx);
+		System.out.println(mvo);
+		System.out.println(session.getAttribute("login"));
+		MemberVo loginMvo = (MemberVo)session.getAttribute("login");
+		mvo.setMidx(loginMvo.getMidx());
+		System.out.println(mvo.getmId()+", "+mvo.getmNewPassword()+", ");
 		
 		logger.info("midx: "+mvo.getMidx()+", mPassword: "+mvo.getmPassword());
 		
@@ -238,7 +241,7 @@ public class MemberController {
 		if(res >= 1) {
 			page = "redirect:/MemberModify";
 		} else {
-			page ="/index";
+			page ="redirect:/GoToHome";
 		}
 		
 		return page;
@@ -253,7 +256,7 @@ public class MemberController {
 	@RequestMapping(value="/MemberDeleteAction", method=RequestMethod.POST)
 	public String memberDeleteActionController(MemberVo mvo, HttpSession session) {
 		
-		int midx = (Integer)session.getAttribute("sMidx");
+		int midx = (Integer)session.getAttribute("login");
 		mvo.setMidx(midx);
 		
 		logger.info("비밀번호: "+mvo.getmPassword()+", midx:"+mvo.getMidx());
@@ -264,7 +267,7 @@ public class MemberController {
 		logger.info("deleteMember: "+res);
 		
 		if(res == 1) {
-			page = "/index";
+			page = "redirect:/GoToHome";
 		} else {
 			page ="redirect:/MemberDelete";
 		}

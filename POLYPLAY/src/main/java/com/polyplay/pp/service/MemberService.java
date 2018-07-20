@@ -4,7 +4,7 @@ import com.polyplay.pp.domain.MemberVo;
 
 public interface MemberService {
 
-	public int selectLogin(MemberVo mvo);
+	public MemberVo selectLogin(MemberVo mvo);
 	
 	public MemberVo selectAutoLogin(String mSessionid);
 	
