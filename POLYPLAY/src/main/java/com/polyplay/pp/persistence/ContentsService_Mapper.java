@@ -16,7 +16,7 @@ public interface ContentsService_Mapper {
 	
 	public ContentsVo selectContentsInfo(int cidx); 
 	
-	public int updateViewCnt(ContentsVo cv);
+	public int updateViewCnt(int cidx);
 	
 	public ContentsVo selectPreVideo(int cidx);
 	

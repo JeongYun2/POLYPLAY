@@ -18,7 +18,7 @@ public interface ContentsService {
 	
 	public ArrayList<ContentsVo> selectlSimilarList(int gidx);
 	
-	public int playVideo(ContentsVo cv);
+	public ContentsVo playVideo(int cidx);
 	
 	public ContentsVo selectPreVideo(int cidx);
 }

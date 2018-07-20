@@ -23,7 +23,7 @@ select * from POLY_CONTENTS where gidx=#{gidx} and cDel_yn='N'
 </select>
 
 <update id="updateViewCnt" parameterType="cvo">
-update poly_contents set cViewCnt = cViewCnt + 1 where cidx=#{cidx};
+update poly_contents set cViewCnt = cViewCnt + 1 where cidx=#{cidx}
 </update>
 
 <select id="selectPreVideo" parameterType="Integer" resultType ="cvo">

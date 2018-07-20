@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.polyplay.pp.domain.ContentsVo;
 import com.polyplay.pp.domain.SearchCriteria;
@@ -49,11 +50,17 @@ public class ContentsServiceImpl  implements ContentsService{
 		
 		return alist;
 	}
-
+	@Transactional
 	@Override
-	public int playVideo(ContentsVo cv) {
-		// TODO Auto-generated method stub
-		return 0;
+	public ContentsVo playVideo(int cidx) {
+		
+		ContentsService_Mapper csm = sqlSession.getMapper(ContentsService_Mapper.class);
+		ContentsVo cv = csm.selectPreVideo(cidx);
+		int result = csm.updateViewCnt(cidx);
+		System.out.println("조회수 업데이트 됐니?: "+result);
+		 
+		
+		return cv;
 	}
 
 	@Override
