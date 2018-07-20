@@ -1,5 +1,10 @@
 package com.polyplay.pp.interceptor;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,42 +33,52 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object handler) throws Exception{
 		
-		logger.info("AuthInterceptordp 들어왔습니다.");
+		logger.info("AuthInterceptor pre로 들어왔습니다.");
 		HttpSession session = request.getSession();		
-		Object login = session.getAttribute("login");
 		
-		logger.info("login: "+login);
+		System.out.println(session.getAttribute("login"));
 		
-		if(login == null){		// 로그인한 세션이 없는 경우
+		if(session.getAttribute("login") == null){	// 로그인 안했을 때
 			
 			saveDest(request);
-			Cookie loginCookie = WebUtils.getCookie(request,"loginCookie");		// client에서 loginCookie를 받아온다.  
-			System.out.println(loginCookie);
+			Cookie loginCookie = WebUtils.getCookie(request,"loginCookie"); 
 			
-			if (loginCookie  != null){ 			//쿠키가 존재할 때
+			if (loginCookie  != null){ 		// 쿠키 값이 존재할떄
 				
-				System.out.println("loginCookie  != null");
-				// sessionId값으로 DB에 유효기간이 지나지않은 것을 갔고 온다. 
-				String sessionId = loginCookie.getValue();
-				MemberVo mv =  ms.selectAutoLogin(sessionId);
-				logger.info("sessionId: "+sessionId+", mv: "+mv);
+				MemberVo mv =  ms.selectAutoLogin(loginCookie.getValue());
 				
-				if (mv != null) {
-					
-					System.out.println("mv != null");
+				if (mv != null) {			//쿠키 값에 유효 할때
+				 
 					session.setAttribute("login", mv);
-					response.sendRedirect(request.getContextPath()+"/MemberModify");
-					return false;
+					
+					Cookie loginCookie2 = new Cookie("loginCookie",loginCookie.getValue());
+					loginCookie2.setPath("/");
+					loginCookie2.setMaxAge(60*60*24*14);
+					response.addCookie(loginCookie2);	
+					
+					Calendar cal = Calendar.getInstance();
+					cal.setTime(new Date());
+					cal.add(Calendar.DATE, 14);
+					DateFormat df1 = new SimpleDateFormat("yy-MM-dd");   
+					String sessionLimit = df1.format(cal.getTime());
+					
+					mv.setmSessionId(loginCookie.getValue());
+					mv.setmSessionLimit(sessionLimit);	
+					ms.updateAutoLogin(mv);
+					
+					System.out.println("mv");
+					return true;
 				}
-			}
+				System.out.println("mv != null");
+			}		
+			System.out.println("/MemberLogin");
 			response.sendRedirect(request.getContextPath()+"/MemberLogin");
-			return false;
-			
+			return false; 
 		}
-		return true;	
+		System.out.println("session.getAttribute('login') == null");
+		return true;
+		
 	}
-	
-	
 	
 	private void saveDest(HttpServletRequest req){
 		

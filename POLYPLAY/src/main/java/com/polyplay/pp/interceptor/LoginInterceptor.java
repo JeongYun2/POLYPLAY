@@ -47,7 +47,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			
 			System.out.println(request.getParameter("useCookie"));
 			
-			if (request.getParameter("useCookie").equals("on") ) {
+			if (request.getParameter("useCookie") == "on") {
 				
 				useCookie(request, response);	
 			}

@@ -8,7 +8,7 @@
 
 <!-- selectLogin : 로그인 -->
 <select id="selectLogin" parameterType="mvo" resultType="mvo"><!-- 리턴을 Integer로 할때 데이터가 없으면 null값 반환함  -->
-select midx,mId,mName,mNickname
+select *
 	from POLY_MEMBER 
 	where mId=#{mId} and mPassword=#{mPassword} and mDel_yn ='N'
 </select>
@@ -17,7 +17,7 @@ select midx,mId,mName,mNickname
 <select id="selectAutoLogin" parameterType="String" resultType="mvo">
 select * 
 	from POLY_MEMBER
-	where mSessionId=#{mSessionId} and mSessionLimit >= sysdate
+	where mSessionId=#{mSessionId} and mSessionLimit >= sysdate and mDel_yn ='N'
 </select>
 
 <!-- updateAutoLogin : 자동로그인 세션 정보 수정 --> 
