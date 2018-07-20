@@ -42,7 +42,7 @@ public class ReviewController {
 		ArrayList<ReviewVo> alist = null;
 		alist = rs.selectReviewList();
 		
-	
+		System.out.println("alist: "+alist);
 		
 		return alist;
 

@@ -30,6 +30,8 @@ public class ReviewServiceImpl implements ReviewService {
 		ReviewService_Mapper rsm = sqlSession.getMapper(ReviewService_Mapper.class);
 		ArrayList<ReviewVo> alist = rsm.selectReviewList();
 		
+		System.out.println("selectReviewList결과값: "+alist);
+		
 		return alist;
 	}
 

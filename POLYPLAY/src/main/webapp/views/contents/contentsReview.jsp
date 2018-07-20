@@ -16,7 +16,7 @@ $(document).ready(function(){
 	//alert("작동");
 	$.reviewList();
     
-	$(".like-Unlike").click(function(e){
+/* 	$(".like-Unlike").click(function(e){
 		
 		alert("버튼작동");
 		
@@ -27,7 +27,7 @@ $(document).ready(function(){
 	        $(this).html('싫어요');
 	    }
 	    return false;
-	});
+	}); */
     
     
 
@@ -69,10 +69,10 @@ $.reviewList = function(){
 
 				$('#tbl').html("<table border='1' width='100%' style='text-align:center;'>"
 							 + "<tr style='text-align:center;background-color:blue;'>"
-				 			 + "<td>글번호</td>"
-				 			 + "<td width='50%'>제목</td>" 
-				 			 + "<td>작성자</td>"
-				             + "<td>작성일</td>" 
+				 			 + "<td>ridx</td>"
+				 			 + "<td width='50%'>100자평</td>" 
+				 			 + "<td>추천수</td>"
+				             + "<td>별점</td>" 
 				   		 	 + "</tr>" 
 				 			 + str
 				 			 + "</table>");				

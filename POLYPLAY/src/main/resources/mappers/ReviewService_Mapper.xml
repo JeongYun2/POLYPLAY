@@ -7,7 +7,7 @@
 select * from POLY_REVIEW where midx=#{0} and cidx=#{1} and rDel_yn='N'
 </select>
 
-<select id="selectLikeReview" resultType ="rvo">
+<select id="selectReviewList" resultType ="rvo">
 <![CDATA[select * from (
 	select Row_number() over(order by rLike desc, ridx desc) as rn, A.* from(
 		select * from POLY_REVIEW 
