@@ -29,8 +29,14 @@ public class ContentsServiceImpl  implements ContentsService{
 
 	@Override
 	public ArrayList<ContentsVo> selectSearchList(SearchCriteria scri) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		System.out.println("impl에서 scri: "+scri);
+		ContentsService_Mapper csm = sqlSession.getMapper(ContentsService_Mapper.class);
+		ArrayList<ContentsVo> alist = csm.selectSearchList(scri);
+		
+		System.out.println("impl에서 selectSearchList: "+alist);
+		
+		return alist;
 	}
 
 	@Override

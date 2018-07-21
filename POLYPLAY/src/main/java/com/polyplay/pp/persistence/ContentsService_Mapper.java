@@ -10,7 +10,7 @@ public interface ContentsService_Mapper {
 
 	public ArrayList<ContentsVo> selectGenreList(int gidx);
 	
-	public ContentsVo selectSearchList(SearchCriteria scri);
+	public ArrayList<ContentsVo> selectSearchList(SearchCriteria scri);
 	
 	public ArrayList<ContentsVo> selectlSimilarList(int gidx);
 	

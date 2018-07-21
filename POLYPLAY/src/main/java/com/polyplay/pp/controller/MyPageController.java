@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.polyplay.pp.domain.BasketListVo;
-import com.polyplay.pp.domain.BasketVo;
 import com.polyplay.pp.domain.ContentsVo;
 import com.polyplay.pp.domain.OrderPayVo;
 import com.polyplay.pp.domain.WishListVo;

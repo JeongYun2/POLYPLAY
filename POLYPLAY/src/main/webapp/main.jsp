@@ -31,7 +31,26 @@
 </div>
 
 
-
+	<!-- 검색테이블 추가 -->
+	<form name="searchform" action="${pageContext.request.contextPath}/ContentsSearchList${pageMaker.makeSearch(pageMaker.scri.page)}">
+	<table align="right">
+	<tr>
+	<td>
+	<select name="searchType">
+	<option value="cSubject">제목</option>
+	<option value="cDirector">감독</option>
+	<option value="cActor">배우</option>
+	</select>
+	</td>
+	<td>
+	<input type="text" name="keyword" size="12" maxlength="12"/>
+	</td>
+	<td>
+	<input type="submit" name="submit" value="검색" />
+	</td>
+	</tr>
+	</table>
+	</form>
 
 
 

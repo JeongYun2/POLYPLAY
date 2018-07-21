@@ -8,7 +8,7 @@ public class BasketListVo {
 	private int cidx;
 	private int midx;
 	
-	private String inCidx;
+	
 	
 	
 	
@@ -43,11 +43,6 @@ public class BasketListVo {
 		this.midx = midx;
 	}
 	
-	public String getInCidx() {
-		return inCidx;
-	}
-	public void setInCidx(String inCidx) {
-		this.inCidx = inCidx;
-	}
+	
 	
 }

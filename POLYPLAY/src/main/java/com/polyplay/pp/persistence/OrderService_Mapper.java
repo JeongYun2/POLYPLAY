@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 import com.polyplay.pp.domain.BasketListVo;
 import com.polyplay.pp.domain.OrderPayVo;
-import com.polyplay.pp.domain.OrderVo;
-import com.polyplay.pp.domain.PayVo;
+
 
 public interface OrderService_Mapper {
 	
