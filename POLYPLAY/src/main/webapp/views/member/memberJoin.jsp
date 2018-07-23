@@ -215,7 +215,7 @@ $.clearAll = function(){
 	</div>
 	<div>
 		<input class="btn btn-primary btn-sm" type="button" id="join" value="가입하기" onclick="$.check();">
-		<input class="btn btn-primary btn-sm" type="button" id="join" value="취소하기" onclick="location='${pageContext.request.contextPath}/GoToHome'">
+		<input class="btn btn-primary btn-sm" type="button" value="취소하기" onclick="location='${pageContext.request.contextPath}/GoToHome'">
 	</div>
 	</form>
 </body>

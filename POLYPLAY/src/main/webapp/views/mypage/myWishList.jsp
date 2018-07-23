@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="container">
 <br>
 <br>
 <br>
@@ -51,8 +52,21 @@
 		</tr>
 		</c:forEach>
 	</table>
-	
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>	
+</div>
 </body>
 </html>
 

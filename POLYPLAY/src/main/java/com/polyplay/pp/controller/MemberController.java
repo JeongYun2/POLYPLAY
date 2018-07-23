@@ -180,7 +180,7 @@ public class MemberController {
 		String page = null;
 		
 		if(res == 1){
-			page = "redirect:/GoToHome";
+			page = "redirect:/MainList";
 		} else {
 			page = "redirect:/MemberJoin";
 		}

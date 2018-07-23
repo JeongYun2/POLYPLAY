@@ -12,12 +12,49 @@
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
+<div class="container">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <input type="hidden" name="cidx" id="cidx"/> 
 <video controls autoplay>
 <source src="resources/contents${cv.cPreVideo}" width="320" height="240" controls="controls">
 </video>
 <c:out value="${cv.cPreVideo}"></c:out>
 
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>
 

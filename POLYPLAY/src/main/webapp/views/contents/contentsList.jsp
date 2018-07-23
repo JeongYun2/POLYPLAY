@@ -11,10 +11,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<div class="container">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <H1>장르별 컨텐츠 리스트</H1>
-
-
 
 
 <form>
@@ -55,6 +60,21 @@
 	
 	
 	</form>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>	
 </body>
 </html>
 

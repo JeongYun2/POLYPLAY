@@ -71,6 +71,14 @@ function addOrder() {
 </script>
 </head>
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
 <c:choose>
 	<c:when test="${sMemberMidx != null}">
 		<c:set var="midx" value="${sMemberMidx}" />
@@ -140,7 +148,29 @@ function addOrder() {
 			<button type="button" id="addWish" name="addWish" onclick="addWish();">찜하기</button>
 			<button type="button" id="addBasket" name="addBasket" onclick="addBasket();" />장바구니담기</button>
 			<button type="button" id="addOrder" name="addOrder" onclick="addOrder();" />바로구매</button>
-	
+
+</div>	
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>
 

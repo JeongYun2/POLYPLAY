@@ -45,6 +45,7 @@ function orderCheck() {
 
 </head>
 <body>
+<div class="container">
 <br>
 <br>
 <br>
@@ -58,24 +59,6 @@ function orderCheck() {
 <form name="frm" method="post" action="<%=request.getContextPath()%>/OrderPay">
 
 <h1>MY장바구니</h1>
-
-<%-- <%
-		//로그인한상태인지 확인하려구....
-		String sMemberId = "";
-		if (session.getAttribute("sMemberId") != null) {
-			sMemberId = (String) session.getAttribute("sMemberId");
-		}
-
-		if (sMemberId != null && sMemberId.equals("")) {
-			out.println("로그인 후 이용가능합니다:D");
-		} else {
-			out.println("현재 로그인ID : "+ sMemberId );
-		}
-		
-		
-		int midx = (Integer)session.getAttribute("sMemberMidx");
-		out.println("midx: "+midx);
-%> --%>
 
 <c:choose>
 	<c:when test="${sMemberMidx != null}">
@@ -123,9 +106,29 @@ function orderCheck() {
 
 
 </form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-
-
+</div>
 </body>
 </html>
 

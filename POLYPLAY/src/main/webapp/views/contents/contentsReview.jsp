@@ -155,6 +155,7 @@ $.reviewList = function(){
     </script>
 </head>
 <body>
+<div class="container">
 <br>
 <br>
 <br>
@@ -162,6 +163,7 @@ $.reviewList = function(){
 <br>
 <br>
 <br>
+
 
  <input type="hidden" name="cidx" id="cidx" value="${cidx}" />
 
@@ -227,9 +229,21 @@ $.reviewList = function(){
 		</tr>	
 		</c:forEach>
 	</table> --%>
-	
-	
-	
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>		
+</div>
 </body>
 </html>
 
