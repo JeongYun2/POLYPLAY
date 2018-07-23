@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/include/header.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -88,17 +89,7 @@ function check() {
 <input type="Password" name="bPassword" id="bPassword" size="10" maxlength="10" />
 </td>
 </tr>
-<tr>
-<td>비밀글여부</td>
-<td>
-비밀글<input type="radio" name="bSecret_yn" id="bSecret_yn" value="Y" checked> 
-공개글<input type="radio" name="bSecret_yn" id="bSecret_yn" value="N"></td>
 
-
- 
-
-</td>
-</tr>
 <tr>
 <td></td>
 <td align="center">
@@ -111,3 +102,4 @@ function check() {
 </form>
 </body>
 </html>
+<%@ include file="/include/footer.jsp" %> 

@@ -97,7 +97,7 @@ public class ContentsController {
 	public String contentsPlayController(Model model) {
 		//playVideo
 		
-		ContentsVo cv = cs.playVideo(21);
+		ContentsVo cv = cs.playVideo(11);
 		model.addAttribute("cv", cv);
 		return "/views/contents/contentsPlay";
 	}

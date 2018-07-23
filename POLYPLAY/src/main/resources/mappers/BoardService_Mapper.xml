@@ -32,23 +32,25 @@ select bidx,bSubject from POLY_BOARD where bCate=2 and bSubcate=4 and bDel_yn='N
 <select id="selectFAQContent" parameterType="Integer" resultType="com.polyplay.pp.domain.BoardVo">
 select bidx,bSubcate,bSubject,bContent from POLY_BOARD where bDel_yn='N' and bidx=#{bidx}
 </select>
+
 <select id="selectInquiryList" resultType="bvo">
- <!--
- select C.* from(
-    select B.* from(
-        select rownum as rn, A.* from(
-            select bSubCate,  bSubject, bWriteday, bWriter from POLY_BOARD  where bDel_yn='N' and bCate='3' order by bOridx desc, bDepth, bidx
-            )A
-    )B where B.rn <=#{pageEnd}
-)C where C.rn >=#{pageStart}; 
--->
-select bidx,bSubCate,bWriter,bSubject,bWriteday from POLY_BOARD where bDel_yn='N' and bCate=3 order by bOridx desc, bDepth, bidx
+
+ <![CDATA[
+    select C.* from(select B.* from(    
+        select rownum as rn, A.*from(
+        	select bidx,bSubCate,  bSubject, bWriteday, bWriter from POLY_BOARD  where bDel_yn='N' and bCate='3' order by boridx desc,bdepth,bidx
+        )A
+    )B where B.rn <=10  )C where C.rn >=1 
+ ]]>
+<!-- select bidx,bSubCate,bWriter,bSubject,bWriteday from POLY_BOARD where bDel_yn='N' and bCate=3 order by bOridx desc, bDepth, bidx
+ -->
 </select>
+
 <select id="selectInquiryContent" parameterType="Integer" resultType="com.polyplay.pp.domain.BoardVo">
 select bidx,bSubcate,bWriter,bSubject,bContent from POLY_BOARD where bDel_yn='N' and bidx=#{bidx}
 </select>
 <insert id="insertInquiry" parameterType="HashMap">
-insert into POLY_BOARD(bidx,midx,bCate,bSubcate,bWriter,bSubject,bContent,bWriteday,bModifyday,bIp,bDel_yn,bSecret_yn,bOridx,bPassword) values(SEQ_BIDX.nextval,2,3,#{bSubcate},#{bWriter},#{bSubject},#{bContent},sysdate,null,#{bIp},default,#{bSecret_yn},SEQ_BIDX.nextval,#{bPassword})
+insert into POLY_BOARD(bidx,midx,bCate,bSubcate,bWriter,bSubject,bContent,bWriteday,bModifyday,bIp,bDel_yn,bOridx,bPassword) values(SEQ_BIDX.nextval,2,3,#{bSubcate},#{bWriter},#{bSubject},#{bContent},sysdate,null,#{bIp},default,SEQ_BIDX.nextval,#{bPassword})
 </insert>
  <!--  나중에 midx값 바꿔야함  -->
 <update id="deleteInquiry" parameterType="HashMap">

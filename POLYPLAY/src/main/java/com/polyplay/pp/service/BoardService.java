@@ -30,7 +30,7 @@ public interface BoardService {
 	
 	public BoardVo selectInquiryContent(int bidx);
 	
-	public int insertInquiry(String bSubcate,String bWriter,String bSubject, String bContent,  String bIp, String bSecret_yn,String bPassword);
+	public int insertInquiry(String bSubcate,String bWriter,String bSubject, String bContent,  String bIp, String bPassword);
 	
 	public int updateInquiry(String bSubcate,String bSubject, String bContent, String bIp, int bidx);
 	

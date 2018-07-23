@@ -12,7 +12,7 @@ public class BoardVo {
 	private String bWriteday;
 	private String bModifyday;
 	private String bDel_yn;
-	private String bSecret_yn;
+	
 	private String bIp;
 	private String bReply_yn;
 	private int bOridx;
@@ -80,12 +80,7 @@ public class BoardVo {
 	public void setbDel_yn(String bDel_yn) {
 		this.bDel_yn = bDel_yn;
 	}
-	public String getbSecret_yn() {
-		return bSecret_yn;
-	}
-	public void setbSecret_yn(String bSecret_yn) {
-		this.bSecret_yn = bSecret_yn;
-	}
+	
 	public String getbIp() {
 		return bIp;
 	}

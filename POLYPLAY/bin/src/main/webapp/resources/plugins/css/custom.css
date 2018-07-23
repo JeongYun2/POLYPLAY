@@ -175,7 +175,7 @@ section {
 
 
 .sps--blw.top-bar .nav-link1 {
-	color: #000000
+	color: #000
 }
 .top-bar .navbar-nav .nav-item {
 	margin: 0
@@ -185,7 +185,7 @@ section {
 	background: rgb(12,36,46);
 }
 .top-bar .nav-link:hover, .top-bar .nav-item.active a {
-	color: #fff;
+	color: #222;
 	border-bottom: 2px solid #fff;
 	border-radius: 0;
 }

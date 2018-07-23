@@ -99,7 +99,7 @@ public class BoardServiceImpl implements BoardService{
 
 
 		@Override
-		public int insertInquiry(String bSubcate,String bWriter,String bSubject, String bContent,  String bIp, String bSecret_yn,String bPassword){
+		public int insertInquiry(String bSubcate,String bWriter,String bSubject, String bContent,  String bIp, String bPassword){
 			
 			HashMap<String,Object> map = new HashMap<String,Object>();
 			map.put("bSubcate", bSubcate);
@@ -108,7 +108,7 @@ public class BoardServiceImpl implements BoardService{
 			map.put("bSubject", bSubject);
 			map.put("bContent", bContent);
 			map.put("bIp", bIp);
-			map.put("bSecret_yn", bSecret_yn);
+			
 			map.put("bPassword", bPassword);
 				
 			

@@ -44,6 +44,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			
 			// 세션에 midx값을 login라는 이름으로 저장한다.
 			session.setAttribute("login", login);
+		
 			
 			System.out.println(request.getParameter("useCookie"));
 			

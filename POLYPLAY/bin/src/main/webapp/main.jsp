@@ -46,20 +46,7 @@
       <a class="navbar-brand1" href="#">Poly<span>Play</span></a>
       <div class="collapse navbar-collapse" id="navbarCollapse1">
         <ul class="navbar-nav ml-auto">
-         <li class="nav-item active"> <a class="nav-link1" href="#myCarousel">Home<span class="sr-only">(current)</span></a> </li>
-        <li class="dropdown nav-item">
-                      <a href="#pablo" class="dropdown-toggle nav-link1" data-toggle="dropdown">Dropdown</a>
-                      <div class="dropdown-menu">
-                        <h6 class="dropdown-header">Dropdown header</h6>
-                        <a href="#pablo" class="dropdown-item">Action</a>
-                        <a href="#pablo" class="dropdown-item">Another action</a>
-                        <a href="#pablo" class="dropdown-item">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#pablo" class="dropdown-item">Separated link</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#pablo" class="dropdown-item">One more separated link</a>
-                      </div>
-                    </li>
+         <li class="nav-item active"> <a class="nav-link1" href="#myCarousel">Home <span class="sr-only">(current)</span></a> </li>
         <li class="nav-item"> <a class="nav-link1" href="${pageContext.request.contextPath}/ContentsList?gidx=1">액션</a> </li>
         <li class="nav-item"> <a class="nav-link1" href="${pageContext.request.contextPath}/ContentsList?gidx=2">스릴러</a> </li>
         <li class="nav-item"> <a class="nav-link1" href="${pageContext.request.contextPath}/ContentsList?gidx=3">SF판타지</a> </li>

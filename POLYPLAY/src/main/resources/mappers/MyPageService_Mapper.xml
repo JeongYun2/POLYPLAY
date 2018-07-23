@@ -53,7 +53,7 @@ select o.cidx, c.cImage from POLY_ORDER o, POLY_PAY p, POLY_CONTENTS c where o.o
 
 <select id="selectMyOrder" parameterType="Integer" resultType="opvo">
 select o.oid, p.pMethod, p.pPrice, p.pStatus, o.oWriteday 
-	from POLY_ORDER o, POLY_PAY p where o.oId = p.oid and o.midx=#{midx} 
+	from POLY_ORDER o, POLY_PAY p where o.oId = p.oid and o.midx=#{midx} order by o.oWriteday desc
 	
 <!-- select o.*,p.*,c.* from POLY_ORDER o, POLY_PAY p, POLY_CONTENTS c where o.oId = p.oid and c.cidx = o.cidx  and o.midx=#{midx}	 -->
 </select>

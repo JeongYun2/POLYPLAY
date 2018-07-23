@@ -3,6 +3,8 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%@ include file="/include/header.jsp" %>
+
 <%-- <%@ page import="com.polyplay.pp.domain.BasketListVo" %> --%>
 
 <%-- <% BasketListVo blvo = (BasketListVo)request.getAttribute("basketList"); %> --%>
@@ -43,13 +45,20 @@ function orderCheck() {
 
 </head>
 <body>
-<h1>MY장바구니</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <!-- 장바구니->찜할때 selectWishListCheck하기 Ajax로  -->
 
 <form name="frm" method="post" action="<%=request.getContextPath()%>/OrderPay">
 
-<table border="1" width="100%" style="text-align: center;">
+<h1>MY장바구니</h1>
+<table border="1" width="80%" style="text-align: center;">
 		<!-- 속성 이름 -->
 		<tr>
 			<th></th>
@@ -78,7 +87,7 @@ function orderCheck() {
 		</c:forEach>
 	</table>
 
-<input type="submit"  id="order" name="order" value="구매하기"  />
+<input type="button"  id="order" name="order" value="구매하기" onclick="orderCheck();"  />
 <%-- <input type="hidden" name="midx" value="${midx}"/> --%>
 <input type="hidden" name="midx" value="1"/>
 
@@ -89,3 +98,5 @@ function orderCheck() {
 
 </body>
 </html>
+
+<%@ include file="/include/footer.jsp" %> 

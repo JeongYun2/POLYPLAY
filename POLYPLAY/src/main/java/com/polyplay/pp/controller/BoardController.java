@@ -122,7 +122,7 @@ public class BoardController {
 			@RequestParam("bWriter") String bWriter,
 			@RequestParam("bSubject") String bSubject,
 			@RequestParam("bContent") String bContent,
-			@RequestParam("bSecret_yn") String bSecret_yn,
+			
 			@RequestParam("bPassword") String bPassword
 			) throws UnknownHostException {
 				
@@ -133,7 +133,7 @@ public class BoardController {
 		
 	
 		
-		int res = bsi.insertInquiry(bSubcate, bWriter,bSubject, bContent,bIp,bSecret_yn,bPassword);
+		int res = bsi.insertInquiry(bSubcate, bWriter,bSubject, bContent,bIp,bPassword);
 		
 		
 		return "redirect:/BoardInquiryList";

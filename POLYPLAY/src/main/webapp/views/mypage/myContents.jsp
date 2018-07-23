@@ -3,6 +3,8 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%@ include file="/include/header.jsp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,13 +12,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <h1>MY 구입한 작품 </h1>
 
 
 
 <form name="frm">
 
-<table border="1" width="100%" style="text-align: center;">
+<table border="1" width="80%" style="text-align: center;">
 		<!-- 속성 이름 -->
 		<tr>
 			<th>cidx</th>
@@ -40,3 +49,5 @@
 
 </body>
 </html>
+
+<%@ include file="/include/footer.jsp" %> 
