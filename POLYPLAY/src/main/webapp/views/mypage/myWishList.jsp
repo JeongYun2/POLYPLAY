@@ -21,6 +21,18 @@
 <!--  -->
 
 <h1>MY찜목록</h1>
+<c:choose>
+	<c:when test="${sMemberMidx != null}">
+		<c:set var="midx" value="${sMemberMidx}" />
+	</c:when>
+	
+	<c:otherwise>
+		<c:set var="midx" value="0" />
+	</c:otherwise>
+
+</c:choose>
+
+<input type="text" id="midx" name="midx" value="${sMemberMidx}"/>
 
 <table border="1" width="80%" style="text-align: center;">
 		<!-- 속성 이름 -->

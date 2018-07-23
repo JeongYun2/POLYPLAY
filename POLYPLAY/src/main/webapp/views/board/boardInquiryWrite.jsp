@@ -7,7 +7,6 @@
 <title>글쓰기</title>
 <script type="text/javascript">
 
-
 function check() {	
   
   var formname = document.frm;
@@ -45,16 +44,58 @@ function check() {
 }	
 
 
+$(document).ready(function(){
+    $("#Cancle").click(function(){
+        // 페이지 주소 변경(이동)
+        location.href = "<%=request.getContextPath()%>/BoardInquiryList";
+    });
+});
+
 
 </script>
 </head>
 <body>
+<br><br><br>
+<h1>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+1:1문의 작성</h1>
+<center>
+<a href="<%=request.getContextPath() %>/BoardNoticeList "> <font size="5" >공지사항</font></a>&emsp;&emsp;&emsp;
+<a href="<%=request.getContextPath() %>/BoardFAQUserList "><font size="5" > FAQ</font></a>&emsp;&emsp;&emsp;
+<a href="<%=request.getContextPath() %>/BoardInquiryList "> <font size="5" color="red">1:1문의</font></a>
+</center>
 <form name="frm" method="post" action="<%=request.getContextPath() %>/BoardInquiryWriteAction">
-<table border=1 width="100%" height="600px">
+
+<br>
+ <style>
+.table1_1 table {
+	width:100%;
+	margin:15px 0
+}
+.table1_1 th {
+	background-color:#93DAFF;
+	color:#000000
+}
+.table1_1,.table1_1 th,.table1_1 td
+{
+	font-size:0.95em;
+	text-align:center;
+	padding:4px;
+	border:1px solid #dddddd;
+	border-collapse:collapse
+}
+.table1_1 tr:nth-child(odd){
+	background-color:#dbf2fe;
+}
+.table1_1 tr:nth-child(even){
+	background-color:#fdfdfd;
+}
+</style>
+<table class=table1_1  width="1000" height="100"   style="margin-left: auto; margin-right: auto;">
 <tr>
-<td>카테고리</td>
-<td>
-<select name="bSubcate">
+	<th width="50">카테고리</th> 
+	<th width="950" colspan="3"  style="text-align:left">
+	<select name="bSubcate">
  <option value="1">회원</option>
  <option value="2">플레이어</option>
  <option value="3">결제</option>
@@ -62,40 +103,31 @@ function check() {
  <option value="5">작품제안</option>
  <option value="6">신고하기</option>
  </select>
-<!-- <input type="hidden" name="bSubcate" value="sub"/> -->
-</tr>
-
-<tr>
-<td>작성자</td>
-<td>
-<input type="text" name="bWriter"  size="20"  />
-</td>
+	</th>	
 </tr>
 <tr>
-<td>제목</td>
-<td>
-<input type="text" name="bSubject" id="bSubject" size="20" maxlength="20" />
-</td>
+	<th width="250">작성자</th>
+	<th width="250">
+	<input type="text" name="bWriter"  size="32"  /></th>
+	<th width="250">비밀번호</th>
+	<th width="250">
+	<input type="Password" name="bPassword" id="bPassword" size="32" maxlength="32" /></th>
 </tr>
 <tr>
-<td>내용</td>
-<td>
-<textarea name="bContent" rows=20 cols=100 ></textarea>
-</td>
+	<th width="50">제목</th> 
+	<th width="950" colspan="3"  style="text-align:left">
+	<input type="text" name="bSubject" id="bSubject" size="105" maxlength="105" />
+	</th>	
+</tr>
+<tr>	
+	<td colspan="4" height="200" style="text-align:left" >
+	<textarea name="bContent" rows=25  cols=140></textarea>
+	</td>
 </tr>
 <tr>
-<td>비밀번호</td>
-<td>
-<input type="Password" name="bPassword" id="bPassword" size="10" maxlength="10" />
-</td>
-</tr>
-
-<tr>
-<td></td>
-<td align="center">
-<input type="button" name="button" value="확인" onclick="javascript:check();" />
-<a href="<%=request.getContextPath() %>/BoardInquiryList"> 취소 </a><br>
-
+<td colspan="4" style="text-align:right">
+	<input type="button" name="button" value="확인" onclick="javascript:check();" />
+	<input type="button" id="Cancle" name="Cancle" value="취소">
 </td>
 </tr>
 </table>
@@ -103,3 +135,4 @@ function check() {
 </body>
 </html>
 <%@ include file="/include/footer.jsp" %> 
+

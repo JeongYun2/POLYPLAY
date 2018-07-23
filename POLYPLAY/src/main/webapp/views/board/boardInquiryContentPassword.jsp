@@ -13,7 +13,7 @@
     function Content() {
     	 var formname=document.frm;
         var res;
-        res= confirm("글을보아요");
+        res= confirm("게시글을 열람합니다");
         
        	if(res==true){
        	formname.method="post";                            
@@ -28,14 +28,28 @@
 <title>글컨텐츠비밀번호</title>
 </head>
 <body>
+<br><br><br>
+<h1>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+1:1문의</h1>
+<center>
+<a href="<%=request.getContextPath() %>/BoardNoticeList "> <font size="5" >공지사항</font></a>&emsp;&emsp;&emsp;
+<a href="<%=request.getContextPath() %>/BoardFAQUserList "><font size="5" > FAQ</font></a>&emsp;&emsp;&emsp;
+<a href="<%=request.getContextPath() %>/BoardInquiryList "> <font size="5" color="red">1:1문의</font></a>
+</center>
+<br><br><br><br>
+<center><h1>
+비밀번호를 입력하세요</h1></center>
 <form name=frm>
-<h4>작성하신 글을 볼건가요 ?</h4>
+
 
 <br>
-<h1>비밀번호를 입력 하고 누르세요</h1>
+
 <br>
-<input type="password" name="bPassword" id="bPassword" size=10 maxlength="20"/>
-<input type="button"  value="보기" onclick="Content()" />
+<center>
+<input type="password" name="bPassword" id="bPassword" size=20 maxlength="20"/>
+<input type="button"  value="입력" onclick="Content()" />
+</center>
 </form>
 </body>
 </html>

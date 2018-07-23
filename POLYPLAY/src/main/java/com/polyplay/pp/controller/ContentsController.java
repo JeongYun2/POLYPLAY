@@ -62,12 +62,12 @@ public class ContentsController {
 	
 	
 	@RequestMapping(value="/ContentsInfo")
-	public String contentsInfoController(Model model) {
+	public String contentsInfoController(@RequestParam("cidx") int cidx,Model model) {
 		//selectContentsInfo
 		ContentsVo cv = null;
-		
-		cv = cs.selectContentsInfo(11);
-		
+		System.out.println("cv :"+cv);
+		cv = cs.selectContentsInfo(cidx);
+		System.out.println("cidx :"+cidx);
 		model.addAttribute("cv", cv);
 		
 		
@@ -94,10 +94,10 @@ public class ContentsController {
 	}*/
 	
 	@RequestMapping(value="/ContentsPlay")
-	public String contentsPlayController(Model model) {
+	public String contentsPlayController(@RequestParam("cidx") int cidx,Model model) {
 		//playVideo
 		
-		ContentsVo cv = cs.playVideo(11);
+		ContentsVo cv = cs.playVideo(cidx);
 		model.addAttribute("cv", cv);
 		return "/views/contents/contentsPlay";
 	}

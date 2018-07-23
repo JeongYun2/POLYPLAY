@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="container">
 <br>
 <br>
 <br>
@@ -20,16 +21,28 @@
 <br>
 <br>
 <h1>MY 주문내역</h1>
- o.oid, p.pMethod, p.pPrice, p.pStatus, o.oWriteday 
+<c:choose>
+	<c:when test="${sMemberMidx != null}">
+		<c:set var="midx" value="${sMemberMidx}" />
+	</c:when>
+	
+	<c:otherwise>
+		<c:set var="midx" value="0" />
+	</c:otherwise>
+
+</c:choose>
+
+<input type="text" id="midx" name="midx" value="${sMemberMidx}"/>
+
 <form name="frm">
-<table border="1" width="80%" style="text-align: center;">
+<table class="table table-striped table-bordered table-hover" style="text-align: center;">
 		<!-- 속성 이름 -->
 		<tr>
-			<th>주문번호</th>
-			<th>결제방법</th>
-			<th>결제금액</th>
-			<th>결제상태</th>
-			<th>주문날짜</th>
+			<td>주문번호</td>
+			<td>결제방법</td>
+			<td>결제금액</td>
+			<td>결제상태</td>
+			<td>주문날짜</td>
 		</tr>
 		
 		<c:forEach var="opvo" items="${myOrderList}" varStatus ="status">
@@ -55,7 +68,7 @@
 
 
 
-
+</div>
 </body>
 </html>
 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ page import="com.polyplay.pp.domain.MemberVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ include file="/include/header.jsp" %>
@@ -59,6 +59,36 @@ function orderCheck() {
 
 <h1>MY장바구니</h1>
 
+<%-- <%
+		//로그인한상태인지 확인하려구....
+		String sMemberId = "";
+		if (session.getAttribute("sMemberId") != null) {
+			sMemberId = (String) session.getAttribute("sMemberId");
+		}
+
+		if (sMemberId != null && sMemberId.equals("")) {
+			out.println("로그인 후 이용가능합니다:D");
+		} else {
+			out.println("현재 로그인ID : "+ sMemberId );
+		}
+		
+		
+		int midx = (Integer)session.getAttribute("sMemberMidx");
+		out.println("midx: "+midx);
+%> --%>
+
+<c:choose>
+	<c:when test="${sMemberMidx != null}">
+		<c:set var="midx" value="${sMemberMidx}" />
+	</c:when>
+	
+	<c:otherwise>
+		<c:set var="midx" value="0" />
+	</c:otherwise>
+
+</c:choose>
+
+<input type="text" id="midx" name="midx" value="${sMemberMidx}"/>
 <table border="1" width="80%" style="text-align: center;">
 		<!-- 속성 이름 -->
 		<tr>
@@ -89,8 +119,7 @@ function orderCheck() {
 	</table>
 
 <input type="button"  id="order" name="order" value="구매하기" onclick="orderCheck();"  />
-<%-- <input type="hidden" name="midx" value="${midx}"/> --%>
-<input type="hidden" name="midx" value="1"/>
+
 
 
 </form>

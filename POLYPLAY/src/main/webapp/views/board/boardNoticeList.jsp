@@ -16,29 +16,62 @@
 %>
 
 <body>
-<h1>공지사항</h1>
+<br><br><br>
+<h1>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+공지사항</h1>
+<br>
+<center>
+<a href="<%=request.getContextPath() %>/BoardNoticeList "> <font size="5" color="red">공지사항</font></a>&emsp;&emsp;&emsp;
+<a href="<%=request.getContextPath() %>/BoardFAQUserList "><font size="5"> FAQ</font></a>&emsp;&emsp;&emsp;
+<a href="<%=request.getContextPath() %>/BoardInquiryList "> <font size="5">1:1문의</font></a>
+</center>
 
 <form name=frm>
+<br>
+ <style>
+.table1_1 table {
+	width:100%;
+	margin:15px 0
+}
+.table1_1 th {
+	background-color:#93DAFF;
+	color:#000000
+}
+.table1_1,.table1_1 th,.table1_1 td
+{
+	font-size:0.95em;
+	text-align:center;
+	padding:4px;
+	border:1px solid #dddddd;
+	border-collapse:collapse
+}
+.table1_1 tr:nth-child(odd){
+	background-color:#dbf2fe;
+}
+.table1_1 tr:nth-child(even){
+	background-color:#fdfdfd;
+}
+</style>
+<table class=table1_1  width="800" height="100"   style="margin-left: auto; margin-right: auto;
+	text-align: center;">
+<tr>
+	<th width="100">번호</th>
+	<th width="500">제목</th>
+	<th width="200">등록일</th>
+</tr>
 
-
-	<table border=1>
-		<tr>
-			<td>번호</td>
-			<td>제목</td>
-			<td>등록일</td>
-		</tr>
-		<%
-			for (BoardVo bvo : alist) {
+<%
+for (BoardVo bvo : alist) {
 		%>
-		<tr>
-		    <td><%=bvo.getBidx() %>
-			<td><a href="<%=request.getContextPath() %>/BoardNoticeContent?bidx=<%=bvo.getBidx()%>"><%=bvo.getbSubject()%></a></td>
-			<td><%=bvo.getbWriteday() %></td>
-		</tr>
-		<%} %>
+<tr>
+	<td><%=bvo.getBidx() %></td>
+	<td><a href="<%=request.getContextPath() %>/BoardNoticeContent?bidx=<%=bvo.getBidx()%>"><%=bvo.getbSubject()%></a></td>
+	<td><%=bvo.getbWriteday() %></td>
+</tr>
+	<%} %>
+</table>
 
-	</table>
-	
 </form>
 
 </body>

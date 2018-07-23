@@ -12,7 +12,8 @@
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 
-$.addWish = function() {
+
+function addWish(){
 	
 //	alert("작동합니까?");
 	var formname = document.frm;
@@ -29,7 +30,7 @@ $.addWish = function() {
 	return;		
 }
 
-$.addBasket = function() {
+function addBasket() {
 	
 	var formname = document.frm;
 
@@ -47,7 +48,7 @@ $.addBasket = function() {
 	
 }
 
-$.addOrder = function() {
+function addOrder() {
 	
 	var formname = document.frm;
 
@@ -70,7 +71,21 @@ $.addOrder = function() {
 </script>
 </head>
 <body>
-	<form name="frm">
+<c:choose>
+	<c:when test="${sMemberMidx != null}">
+		<c:set var="midx" value="${sMemberMidx}" />
+	</c:when>
+	
+	<c:otherwise>
+		<c:set var="midx" value="0" />
+	</c:otherwise>
+
+</c:choose>
+
+	<form name="frm" method="post">
+		
+<input type="text" id="midx" name="midx" value="${sMemberMidx}"/>
+
 	<table>
 		<!-- 속성 이름 -->
 			<tr>
@@ -112,16 +127,20 @@ $.addOrder = function() {
 			<input type="text" name="cImage" value="${cv.cImage}"/>
 			<input type="text" name="cSubject" value="${cv.cSubject}"/>
 			<input type="text" name="cPrice" value="${cv.cPrice}"/>
-			
-			
-			
-			<input type="button" id="addWish" name="addWish" value="찜하기" onclick="$.addWish();" />
-			<input type="button" id="addBasket" name="addBasket" value="장바구니" onclick="$.addBasket();" />
-			<input type="button" id="addOrder" name="addOrder" value="바로구매" onclick="$.addOrder();" />
+
 			</td>
 			</tr>
 	</table>
+	
+	
+
+	
 	</form>
+	
+			<button type="button" id="addWish" name="addWish" onclick="addWish();">찜하기</button>
+			<button type="button" id="addBasket" name="addBasket" onclick="addBasket();" />장바구니담기</button>
+			<button type="button" id="addOrder" name="addOrder" onclick="addOrder();" />바로구매</button>
+	
 </body>
 </html>
 

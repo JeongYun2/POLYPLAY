@@ -3,6 +3,7 @@ package com.polyplay.pp.controller;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,14 +78,16 @@ public class MyPageController {
 	
 	
 	@RequestMapping(value="/MyBasketList")
-	public String myBasketListController(Model model) { //@RequestParam("midx") int midx,
+	public String myBasketListController(Model model, HttpSession session) { //@RequestParam("midx") int midx,
 		
 		System.out.println("myBasketListController들어옴");
 		
+		int midx = (Integer)session.getAttribute("sMemberMidx");
+		
 		ArrayList<BasketListVo> alist = null;
 		
-		alist = mps.selectBasketList(1);
-//		alist = mps.selectBasketList(midx);
+//		alist = mps.selectBasketList(1);
+		alist = mps.selectBasketList(midx);
 		
 		model.addAttribute("basketList", alist);
 		
@@ -108,14 +111,15 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value="/MyWishList")
-	public String myWishListController( Model model) { //@RequestParam("midx") int midx,
+	public String myWishListController( Model model, HttpSession session) { //@RequestParam("midx") int midx,
 		
 		//System.out.println("위시midx: "+midx);
+		int midx = (Integer)session.getAttribute("sMemberMidx");
 		
 		ArrayList<WishListVo> alist = null;
 		
-		alist = mps.selectMyWishList(1);
-//		alist = mps.selectMyWishList(midx);
+
+		alist = mps.selectMyWishList(midx);
 		
 		model.addAttribute("wishList", alist);
 		
@@ -154,15 +158,17 @@ public class MyPageController {
 	
 	
 	@RequestMapping(value="/MyContentsList")
-	public String myContentsController(/*@RequestParam("midx")int midx,*/ Model model) {
+	public String myContentsController(Model model, HttpSession session) {
 		
 		System.out.println("myContentsController들어옴");
 		//selectMyContents
 		
+		int midx = (Integer)session.getAttribute("sMemberMidx");
+		
 		ArrayList<OrderPayVo> alist = null;
 		
-		alist = mps.selectMyContents(1);
-//		mps.selectMyContents(midx);
+		alist = mps.selectMyContents(midx);
+
 		
 		model.addAttribute("myContentsList", alist);
 		
@@ -175,14 +181,16 @@ public class MyPageController {
 	
 	
 	@RequestMapping(value="/MyOrderList")
-	public String myOrderController(/*@RequestParam("midx")int midx,*/ Model model) {
+	public String myOrderController(Model model, HttpSession session) {
 		
 		System.out.println("myOrderController들어옴");
 		
+		int midx = (Integer)session.getAttribute("sMemberMidx");
+		
 		ArrayList<OrderPayVo> alist = null;
 		
-		alist = mps.selectMyOrder(1);
-//		alist = mps.selectMyOrder(midx);
+
+		alist = mps.selectMyOrder(midx);
 		
 		model.addAttribute("myOrderList", alist);
 		

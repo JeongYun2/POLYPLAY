@@ -15,7 +15,7 @@
 select bidx,bWriteday,bSubject from POLY_BOARD where bCate=1 and bDel_yn='N' order by bidx desc
 </select>
 <select id="selectNoticeContent" parameterType="Integer" resultType="com.polyplay.pp.domain.BoardVo">
-select bidx,bSubject,bContent from POLY_BOARD where bDel_yn='N' and bidx=#{bidx}
+select bidx,bSubject,bContent,bWriter,bWriteday from POLY_BOARD where bDel_yn='N' and bidx=#{bidx}
 </select>
 <select id="selectFAQUserList" resultType="bvo">
 select bidx,bSubject from POLY_BOARD where bCate=2 and bSubcate=1 and bDel_yn='N' order by bidx desc
@@ -31,23 +31,27 @@ select bidx,bSubject from POLY_BOARD where bCate=2 and bSubcate=4 and bDel_yn='N
 </select>
 <select id="selectFAQContent" parameterType="Integer" resultType="com.polyplay.pp.domain.BoardVo">
 select bidx,bSubcate,bSubject,bContent from POLY_BOARD where bDel_yn='N' and bidx=#{bidx}
+
 </select>
 
-<select id="selectInquiryList" resultType="bvo">
+
+
+ <select id="selectInquiryList" resultType="bvo">
 
  <![CDATA[
     select C.* from(select B.* from(    
         select rownum as rn, A.*from(
-        	select bidx,bSubCate,  bSubject, bWriteday, bWriter from POLY_BOARD  where bDel_yn='N' and bCate='3' order by boridx desc,bdepth,bidx
+           select * from POLY_BOARD  where bDel_yn='N' and bCate='3' order by boridx desc,bdepth,bidx
         )A
-    )B where B.rn <=10  )C where C.rn >=1 
+    )B where B.rn <=30  )C where C.rn >=1 
  ]]>
 <!-- select bidx,bSubCate,bWriter,bSubject,bWriteday from POLY_BOARD where bDel_yn='N' and bCate=3 order by bOridx desc, bDepth, bidx
  -->
 </select>
 
+
 <select id="selectInquiryContent" parameterType="Integer" resultType="com.polyplay.pp.domain.BoardVo">
-select bidx,bSubcate,bWriter,bSubject,bContent from POLY_BOARD where bDel_yn='N' and bidx=#{bidx}
+select bidx,bSubcate,bWriter,bSubject,bContent,bWriteday from POLY_BOARD where bDel_yn='N' and bidx=#{bidx}
 </select>
 <insert id="insertInquiry" parameterType="HashMap">
 insert into POLY_BOARD(bidx,midx,bCate,bSubcate,bWriter,bSubject,bContent,bWriteday,bModifyday,bIp,bDel_yn,bOridx,bPassword) values(SEQ_BIDX.nextval,2,3,#{bSubcate},#{bWriter},#{bSubject},#{bContent},sysdate,null,#{bIp},default,SEQ_BIDX.nextval,#{bPassword})

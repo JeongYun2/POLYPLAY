@@ -13,6 +13,7 @@
 </head>
 
 <body>
+<div class="container">
 <br>
 <br>
 <br>
@@ -22,8 +23,22 @@
 <br>
 <h1>주문결제완료페이지</h1>
 
+<c:choose>
+	<c:when test="${sMemberMidx != null}">
+		<c:set var="midx" value="${sMemberMidx}" />
+	</c:when>
+	
+	<c:otherwise>
+		<c:set var="midx" value="0" />
+	</c:otherwise>
+
+</c:choose>
+
 <form name="frm">
-<table border="1" width="80%" style="text-align: center;">
+
+<input type="text" id="midx" name="midx" value="${sMemberMidx}"/>
+
+<table class="table table-striped table-bordered table-hover" style="text-align: center;">
 		<!-- 속성 이름 -->
 		<tr>
 			<th>cidx</th>
@@ -57,23 +72,17 @@
 
 	<br>
 	
-<a href="<%=request.getContextPath() %>/GoToHome">메인페이지가기</a>
+<a href="<%=request.getContextPath() %>/GoToHome?midx=${sMemberMidx}">메인페이지가기</a>
 <br>
-<a href="<%=request.getContextPath() %>/MyOrderList">나의주문내역확인</a>
-
-<!-- <input type="button"  id="myorder" name="myorder" value="주문내역확인"  /> -->
-<!-- <input type="submit"  id="pay" name="pay" value="결제하기"  /> -->
-<%-- <input type="hidden" name="midx" value="${midx}"/> --%>
-<input type="hidden" name="midx" value="1"/>
+<a href="<%=request.getContextPath() %>/MyOrderList?midx=${sMemberMidx}">나의주문내역확인</a>
 
 
 
 </form>
 
 
-
-
 </body>
+</div>
 </html>
 
 <%@ include file="/include/footer.jsp" %> 

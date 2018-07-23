@@ -83,7 +83,7 @@ public class MemberController {
 		}
 			
 		if(mv != null) {
-			page = "redirect:/GoToHome";
+			page = "redirect:/MainList";
 			
 		}else {					// 로그인 실패
 			page = "redirect:/MemberLogin";
@@ -97,7 +97,7 @@ public class MemberController {
 		
 		delSession(request, response, session);
 		
-		return "redirect:/GoToHome";
+		return "redirect:/MainList";
 	}
 	
 	//서버상의 세션을 제거, 쿠키 유효기간을 0, DB에 세션정보를 지운다.

@@ -39,6 +39,7 @@ function payCheck() {
 
 </head>
 <body>
+<div class="container">
 <br>
 <br>
 <br>
@@ -48,11 +49,25 @@ function payCheck() {
 <br>
 <h1>주문결제페이지</h1>
 
-<!-- 장바구니->찜할때 selectWishListCheck하기 Ajax로  -->
+<c:choose>
+	<c:when test="${sMemberMidx != null}">
+		<c:set var="midx" value="${sMemberMidx}" />
+	</c:when>
+	
+	<c:otherwise>
+		<c:set var="midx" value="0" />
+	</c:otherwise>
+
+</c:choose>
+
 
 <form name="frm" method="post" action="<%=request.getContextPath()%>/OrderPayAction">
+
+
+<input type="text" id="midx" name="midx" value="${sMemberMidx}"/>
+
 <!-- <form name="frm"> -->
-<table border="1" width="80%" style="text-align: center;">
+<table class="table table-striped table-bordered table-hover" style="text-align: center;">
 		<!-- 속성 이름 -->
 		<tr>
 			<th></th>
@@ -85,27 +100,30 @@ function payCheck() {
 	
 	<c:out value="${j} "/>
 	<input type="text" name="oid" value="${j}">
-
+	
+	<br>
+	<br>
 	<br>
 	**결제주의사항
 	<br>
+	<br>
 	
+	
+	
+	<br>
 	결제방법선택
 	<br>
 	<input type="radio" name="pMethod" value="C"/>카드결제
-	<input type="radio" name="pMethod" value="B"/>무통장입금
+	<input type="radio" name="pMethod" value="B" checked/>무통장입금
 	<br>
-	
+	<br>
 	입금자명 : <input type="text" name="pDepositor" id="pDepositor" size="20" maxlength="20"/>
 
 <input type="submit"  id="pay" name="pay" value="결제하기"  />
-<!-- <input type="submit"  id="pay" name="pay" value="결제하기"  /> -->
-<%-- <input type="hidden" name="midx" value="${midx}"/> --%>
-<input type="hidden" name="midx" value="1"/>
-
 
 
 </form>
+</div>
 </body>
 </html>
 
