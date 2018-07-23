@@ -38,12 +38,12 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand1" href="${pageContext.request.contextPath}/MainList">Poly<span>Play</span></a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath}/MainList">Poly<span>Play</span></a>
       <div class="collapse navbar-collapse" id="navbarCollapse1">
         <ul class="navbar-nav ml-auto">
-         <li class="nav-item active"> <a class="nav-link1" href="${pageContext.request.contextPath}/MainList">Home<span class="sr-only">(current)</span></a> </li>
+         <li class="nav-item active"> <a class="nav-link" href="${pageContext.request.contextPath}/MainList">Home<span class="sr-only">(current)</span></a> </li>
         <li class="dropdown nav-item">
-                      <a href="#pablo" class="dropdown-toggle nav-link1" data-toggle="dropdown">장르</a>
+                      <a href="#pablo" class="dropdown-toggle nav-link" data-toggle="dropdown">장르</a>
                       <div class="dropdown-menu">
                         <a href="${pageContext.request.contextPath}/ContentsList?gidx=1" class="dropdown-item">액션</a> 
                         <a href="${pageContext.request.contextPath}/ContentsList?gidx=2" class="dropdown-item">스릴러</a>
@@ -53,20 +53,18 @@
                         <a href="${pageContext.request.contextPath}/ContentsList?gidx=6" class="dropdown-item">로맨스</a>
                         <a href="${pageContext.request.contextPath}/ContentsList?gidx=7" class="dropdown-item">드라마</a>
                         <a href="${pageContext.request.contextPath}/ContentsList?gidx=8" class="dropdown-item">애니메이션</a>
-                     
                       </div>
                     </li>
- 		<li class="nav-item"> <a class="nav-link1" ></a></li>
-        <li class="nav-item"> <a class="nav-link1" ></a></li>
-        <li class="nav-item"> <a class="nav-link1" ></a></li>
-       	<li class="nav-item"> <a class="nav-link1" ></a></li>
-        <li class="nav-item"> <a class="nav-link1" ></a></li>
-        <li class="nav-item"> <a class="nav-link1" ></a></li>
-        <li class="nav-item"> <a class="nav-link1" ></a></li>
-   
-        <li class="nav-item"> <a class="nav-link1" ></a></li>
+ 		<li class="nav-item"> <a class="nav-link" ></a></li>
+        <li class="nav-item"> <a class="nav-link" ></a></li>
+        <li class="nav-item"> <a class="nav-link" ></a></li>
+       	<li class="nav-item"> <a class="nav-link" ></a></li>
+        <li class="nav-item"> <a class="nav-link" ></a></li>
+        <li class="nav-item"> <a class="nav-link" ></a></li>
+        <li class="nav-item"> <a class="nav-link" ></a></li>
+        <li class="nav-item"> <a class="nav-link" ></a></li>
         <li class="dropdown nav-item">
-                      <a href="#pablo" class="dropdown-toggle nav-link1" data-toggle="dropdown">마이페이지</a>
+                      <a href="#pablo" class="dropdown-toggle nav-link" data-toggle="dropdown">마이페이지</a>
                       <div class="dropdown-menu">
                         <a href="${pageContext.request.contextPath}/MyBasketList" class="dropdown-item">장바구니</a> 
                         <a href="${pageContext.request.contextPath}/MyWishList" class="dropdown-item">찜한작품</a>
@@ -80,11 +78,11 @@
         <c:set var="midx" value="${sMemberMidx}" />
         <c:choose>
     	<c:when test='${sMemberMidx == null}'>            
-        <li class="nav-item"> <a class="nav-link1" href="${pageContext.request.contextPath}/MemberLogin">로그인</a></li>
+        <li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/MemberLogin">로그인</a></li>
         </c:when>
    		
     	<c:when test='${sMemberMidx != null}'>  
-    	<li class="nav-item"> <a class="nav-link1" href="${pageContext.request.contextPath}/MemberLogout">로그아웃</a></li>
+    	<li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/MemberLogout">로그아웃</a></li>
         </c:when>
 		</c:choose>
         </ul>

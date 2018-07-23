@@ -92,63 +92,59 @@ function addOrder() {
 
 	<form name="frm" method="post">
 		
-<input type="text" id="midx" name="midx" value="${sMemberMidx}"/>
-
-	<table>
-		<!-- 속성 이름 -->
-			<tr>
-			<th>
-			<a href="${pageContext.request.contextPath}/"class="t">컨텐츠 정보</a>
-			<a href="${pageContext.request.contextPath}/"class="t">리뷰보기</a>
-			<a href="${pageContext.request.contextPath}/"class="t">비슷한 컨텐츠</a>
-			</th>
-			</tr>
-			
-			
-			<tr>
-			<td>${cv.cSubject}</td>
-			<td>${cv.cRuntime}</td>
-			</tr>
-			<tr>
-			<td>${cv.cOpenYear}</td>
-			</tr>
-			<img src='displayFile?fileName=${cv.cImage}'/>
-			<tr>
-			<td>${cv.cViewCnt}</td>
-			</tr>
-			<tr>
-			<td>${cv.cStory}</td>
-			</tr>
-			<tr>
-			<td>${cv.cDirector}</td>
-			</tr>
-			<tr>
-			<td>${cv.cActor}</td>
-			</tr>	
-			<tr>
-			<td>${cv.cPrice}</td>
-			</tr>	
-			
-			<tr>
-			<td>
-			<input type="text" name="cidx" value="${cv.cidx}"/>
-			<input type="text" name="cImage" value="${cv.cImage}"/>
-			<input type="text" name="cSubject" value="${cv.cSubject}"/>
-			<input type="text" name="cPrice" value="${cv.cPrice}"/>
-
-			</td>
-			</tr>
-	</table>
-	
-	
 
 	
-	</form>
+	
+	
+	<section class="service-sec" id="benefits">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="heading text-md-center text-xs-center" >
+      <a href="${pageContext.request.contextPath}/ContentsInfo?cidx=${cv.cidx}" ><font size="5">컨텐츠 정보</font></a>
+   
+      <a href="${pageContext.request.contextPath}/ReviewList?cidx=${cv.cidx}"><font size="5">리뷰보기</font></a>
+    </div>
+        </div>
+        
+      <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-6 text-sm-center service-block"> <i class="fa fa-plus" aria-hidden="true"></i>
+          <h3>영화명</h3>
+          <p>제목 : ${cv.cSubject}</p>
+          <p>영화시간 : ${cv.cRuntime}</p>
+        </div>
+        <div class="col-md-6 text-sm-center service-block"> <i class="fa fa-leaf" aria-hidden="true"></i>
+          <h3>영화정보</h3>
+          <p>개봉연도 : ${cv.cOpenYear}</p>
+          <p>감독 : ${cv.cDirector}</p>
+          <p>배우 : ${cv.cActor}</p>
+          <p>가격 : ${cv.cPrice}</p>
+        </div>
+        <div class="col-md-6 text-sm-center service-block"> <i class="fa fa-leaf" aria-hidden="true"></i>
+          <h3>줄거리</h3>
+          <p>${cv.cStory}</p>
+        </div>
+        </div>
+      </div>
+      <div class="col-md-4"> <img src="displayFile?fileName=${cv.cImage}" class="img-fluid" /> </div>
+    </div>
+    <!-- /.row --> 
+  </div>
+
+		<div style="text-align:center;">
+
 	
 			<button type="button" id="addWish" name="addWish" onclick="addWish();">찜하기</button>
 			<button type="button" id="addBasket" name="addBasket" onclick="addBasket();" />장바구니담기</button>
 			<button type="button" id="addOrder" name="addOrder" onclick="addOrder();" />바로구매</button>
-
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+	</form>
 </div>	
 <br>
 <br>

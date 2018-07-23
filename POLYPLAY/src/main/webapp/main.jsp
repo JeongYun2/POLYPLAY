@@ -158,7 +158,7 @@
     <c:forEach items="${alist2}" var="cvo">
       <div class="col-md-3 blog-box">
         <div class="blog-image-block"> <a href="${pageContext.request.contextPath}/ContentsInfo?cidx=${cvo.cidx}"><img src="displayFile?fileName=${cvo.cImage}" alt="" class="img-fluid"></a> </div>
-
+		<h3 class="blog-title"><a href="${pageContext.request.contextPath}/ContentsPlay?cidx=${cvo.cidx}">${cvo.cSubject}"</a></h3>
         
       </div>
      </c:forEach>
@@ -182,7 +182,7 @@
     <c:forEach items="${alist3}" var="cvo">
       <div class="col-md-3 blog-box">
         <div class="blog-image-block"> <a href="${pageContext.request.contextPath}/ContentsInfo?cidx=${cvo.cidx}"><img src="displayFile?fileName=${cvo.cImage}" alt="" class="img-fluid"></a> </div>
-
+		<h3 class="blog-title"><a href="${pageContext.request.contextPath}/ContentsPlay?cidx=${cvo.cidx}">${cvo.cSubject}"</a></h3>
         
       </div>
      </c:forEach>
@@ -205,7 +205,7 @@
     <c:forEach items="${alist4}" var="cvo">
       <div class="col-md-3 blog-box">
         <div class="blog-image-block"> <a href="${pageContext.request.contextPath}/ContentsInfo?cidx=${cvo.cidx}"><img src="displayFile?fileName=${cvo.cImage}" alt="" class="img-fluid"></a> </div>
-
+		<h3 class="blog-title"><a href="${pageContext.request.contextPath}/ContentsPlay?cidx=${cvo.cidx}">${cvo.cSubject}"</a></h3>
         
       </div>
      </c:forEach>

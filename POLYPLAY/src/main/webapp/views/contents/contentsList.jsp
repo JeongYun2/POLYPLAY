@@ -11,62 +11,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container">
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>
-<H1>장르별 컨텐츠 리스트</H1>
-
-
-<form>
-	<table>
+<section class="service-sec" id="benefits">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="heading text-md-center text-xs-center">
+      <h2>장르별 영화 리스트</h2>
+    </div>
+        </div>
+	
 		<!-- 속성 이름 -->
-		<tr>
-			<th>번호</th>
-			<th>장르</th>
-			<th>제목</th>
-			<th>가격</th>
-			<th>감독</th>
-			<th>배우</th>
-			<th>러닝타임</th>	
-			<th>개봉연도</th>	
-			<th>줄거리</th>	
-			<th>날짜</th>
-				
-				
-		</tr>
-		<c:forEach items="${alist}" var="cvo">
-		<!-- 속성 값 -->
-		<tr>
-			<td>${cvo.cidx}</td>
-			<td>${cvo.gidx}</td>
-			<td>${cvo.cSubject}</td>
-			<td>${cvo.cPrice}</td>
-			<td>${cvo.cDirector}</td>
-			<td>${cvo.cActor}</td>
-			<td>${cvo.cRuntime}</td>
-			<td>${cvo.cOpenYear}</td>
-			<td>${cvo.cStory}</td>
-			<td>${cvo.cWriteday}</td>
-			
-		
-		</tr>
-		</c:forEach>
-	</table>
-	
-	
-	</form>
+		 <c:forEach items="${alist}" var="cvo">
+      <div class="col-md-3 blog-box">
+        <div class="blog-image-block"> <a href="${pageContext.request.contextPath}/ContentsInfo?cidx=${cvo.cidx}"><img src="displayFile?fileName=${cvo.cImage}" alt="" class="img-fluid"></a> </div>
+		<h3 class="blog-title"><a href="${pageContext.request.contextPath}/ContentsPlay?cidx=${cvo.cidx}">${cvo.cSubject}"</a></h3>
+        
+      </div>
+     </c:forEach>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+	
+
+</div>
+</section>
 <br>
 <br>
 <br>
@@ -75,6 +47,32 @@
 <br>
 <br>
 <br>	
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>
 
