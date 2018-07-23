@@ -762,9 +762,9 @@ section {
 }
 footer {
 	float: left;
-	background: #0297FF;
+	background: #f7d156;
 	width: 100%;
-	color: #fff;
+	color: #000000;
 	padding: 20px 0
 }
 footer ul {
