@@ -8,7 +8,42 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<section class="service-sec" id="benefits">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="heading text-md-center text-xs-center">
+      <h2><small>최근 업데이트 된 작품</small>지금 구매하세요</h2>
+    </div>
+        </div>
+      <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-6 text-sm-center service-block"> <i class="fa fa-plus" aria-hidden="true"></i>
+          <h3>Better Sleep</h3>
+          <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe.</p>
+        	<p>
+        
+        </div>
+        <div class="col-md-6 text-sm-center service-block"> <i class="fa fa-leaf" aria-hidden="true"></i>
+          <h3>Reduces Weight</h3>
+          <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe.</p>
+        </div>
+        <div class="col-md-6 text-sm-center service-block"> <i class="fa fa-leaf" aria-hidden="true"></i>
+          <h3>Improves Mood</h3>
+          <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe.</p>
+        </div>
+        <div class="col-md-6 text-sm-center service-block"> <i class="fa fa-bell" aria-hidden="true"></i>
+          <h3>Boosts Energy</h3>
+          <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe.</p>
+        </div>
+        </div>
+      </div>
+      <div class="col-md-4"> <img src="img/side-01.jpg" class="img-fluid" /> </div>
+    </div>
+    <!-- /.row --> 
+  </div>
+</section>
+<div class="container">
 
 <a href="<%=request.getContextPath() %>/MyBasketList"> 장바구니 고고 </a>
 
@@ -76,7 +111,9 @@
 <a href="<%=request.getContextPath() %>/BoardInquiryList "> 1:1문의 리스트 </a>
 <br>
 <a href="<%=request.getContextPath() %>/BoardInquiryWrite "> 1:1문의 작성하기 </a>
-
+</div>
+<br>
+<br>
 </body>
 </html>
 <%@ include file="../include/footer.jsp" %>
