@@ -49,7 +49,7 @@ select count(*) from POLY_MEMBER where mEmail=#{mEmail}
 <insert id="insertMember" parameterType="mvo">
 insert into 
 	poly_member (mName, mNickname, mId, mPassword, mEmail, mPhone, mIp, midx)
-	values (#{mName}, #{mNickname}, #{mId}, #{mPassword}, #{mEmail}, #{mPhone}, #{mIp}, midx_seq.nextval)
+	values (#{mName}, #{mNickname}, #{mId}, #{mPassword}, #{mEmail}, #{mPhone}, #{mIp}, seq_midx.nextval)
 </insert>
 
 

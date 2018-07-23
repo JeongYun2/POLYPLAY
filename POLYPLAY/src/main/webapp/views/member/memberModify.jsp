@@ -29,8 +29,6 @@ $.nickCheck = function(){
 		
 			$.ajax({
 				type : 'POST',
-				async: true,
-				/* url : "${pageContext.request.contextPath}/MemberNickCheck/"+userNick, */
 				url : "${pageContext.request.contextPath}/MemberNickCheck",
 				data : userNick,
 				dataType : "json",
@@ -40,18 +38,12 @@ $.nickCheck = function(){
 					if(data > 0) {
 						
 						alert("중복된 닉네임입니다. 다른 닉네임를 입력해주세요.");
-						// 성공(파랑)에서 실패(빨강)로 변경
-		              	$("#divNick").removeClass("has-success");
-		                $("#divNick").addClass("has-error");
 		                $("#mNick").focus();
 		                
 		                nickCk = false;
 		            } else {				
 		            	
 		                alert("사용 가능한 닉네임입니다.");
-		             	// 실패(빨강)에서 성공(파랑)로 변경
-						$("#divNick").removeClass("has-error");
-		                $("#divNick").addClass("has-success");
 		                 
 		                nickCk = true;
 		            }
@@ -88,7 +80,7 @@ $.nickCheck = function(){
 				<input type="text" id="mNickname" name="mNickname" value="${mvo.getmNickname() }">
 				<input type="button" id="nickCheck" value="닉네임 중복 체크">
 			</td>
-			<td><input type="text" id="mEmail" name="mEmail" value="${mvo.getmEmail() }" readonly></td>
+			<td><input type="text" id="mEmail" name="mEmail" value="${mvo.getmEmail() }"></td>
 			<td><input type="text" id="mPhone" name="mPhone" value="${mvo.getmPhone() }"></td>	
 		</tr>
 	</table>

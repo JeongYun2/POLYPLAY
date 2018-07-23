@@ -80,7 +80,7 @@ public class MemberController {
 			page = "redirect:/GoToHome";
 			
 		}else {					// 로그인 실패
-			page = "redirect:/views/member/memberLogin";
+			page = "redirect:/MemberLogin";
 		}
 		
 		return page;

@@ -10,28 +10,24 @@
 <script type="text/javascript">
 
 $.check = function(){
-	// idCheck 버튼을 눌렀을 때
-	 $("#login").click(function(){
-		if($("#mId").val() == ""){
-			alert("아이디를 입력하시지 않으셨습니다.");
-			$("#mId").focus();
-			return;
-		} else if($("#mPassword").val() == ""){
-			alert("비밀번호를 입력하시지 않으셨습니다.");
-			$("#mPassword").focus();
-			return;
-		}
-	});
+	
+	if($("#mId").val() == ""){
+		alert("아이디를 입력하시지 않으셨습니다.");
+		$("#mId").focus();
+		return;
+	} else if($("#mPassword").val() == ""){
+		alert("비밀번호를 입력하시지 않으셨습니다.");
+		$("#mPassword").focus();
+		return;
+	}
 	
 	var res; 
-	res = confirm("가입하시겠습니까?");
-	var su  = document.frm;
+	res = confirm("로그인하시겠습니까?");
   
   	if (res == true) {
-  		alert("확인");
-  		su.method ="post";
-  		su.action ="${pageContext.request.contextPath}/MemberLoginAction";
-  		su.submit();
+  		$('#loginForm').attr('method', 'post');
+        $('#loginForm').attr('action', '${pageContext.request.contextPath}/MemberLoginAction');
+        $('#loginForm').submit();
 	}
   	
   	return;
@@ -39,19 +35,16 @@ $.check = function(){
 </script>
 </head>
 <body>
-	<form name="frm">
-	
+	<form id="loginForm">
 			<label>id</label><br>
-			<input type="text" id="mId" name="mId"><br>
+			<input type="text" id="mId" name="mId" placeholder="아이디 입력"><br>
 			<label>password</label><br>
-			<input type="password" id="mPassword" name="mPassword"><br>
-			<!-- <input type="checkbox" name="useCookie" id="useCookie" /><br> -->
+			<input type="password" id="mPassword" name="mPassword" placeholder="비밀번호 입력"><br>
+			<input type="checkbox" name="useCookie" id="useCookie" /><br>
 			<input type="button" value="Login" id="login" onclick="$.check();"><br>
-			<a href="/MemberIdFind">아이디 찾기</a> <br>
-			<a href="/MemberPwFind">비밀번호 찾기</a><br>
-			<a href="/MemberJoin">회원 가입</a><br>
-		
-	
+			<a href="${pageContext.request.contextPath}/MemberIdFind">아이디 찾기</a><br>
+			<a href="${pageContext.request.contextPath}/MemberPwFind">비밀번호 찾기</a><br>
+			<a href="${pageContext.request.contextPath}/MemberJoin">회원 가입</a><br>
 	</form>
 </body>
 </html>
