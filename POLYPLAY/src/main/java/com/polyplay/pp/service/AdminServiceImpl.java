@@ -11,8 +11,6 @@ import com.polyplay.pp.domain.BoardVo;
 import com.polyplay.pp.domain.ContentsVo;
 import com.polyplay.pp.domain.MemberVo;
 import com.polyplay.pp.domain.OrderPayVo;
-import com.polyplay.pp.domain.OrderVo;
-import com.polyplay.pp.domain.PayVo;
 import com.polyplay.pp.domain.ReviewVo;
 import com.polyplay.pp.domain.SearchCriteria;
 import com.polyplay.pp.persistence.AdminService_Mapper;
@@ -83,18 +81,6 @@ public class AdminServiceImpl implements AdminService {
 	public ArrayList<OrderPayVo> selectAdOrder(SearchCriteria scri) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public int deleteAdOrder(OrderVo ov) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateAdPay(PayVo pv) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override

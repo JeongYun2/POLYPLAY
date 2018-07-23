@@ -3,7 +3,6 @@ package com.polyplay.pp.persistence;
 import java.util.ArrayList;
 
 import com.polyplay.pp.domain.BasketListVo;
-import com.polyplay.pp.domain.BasketVo;
 import com.polyplay.pp.domain.ContentsVo;
 import com.polyplay.pp.domain.OrderPayVo;
 import com.polyplay.pp.domain.WishListVo;

@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.polyplay.pp.domain.BasketListVo;
 import com.polyplay.pp.domain.OrderPayVo;
-import com.polyplay.pp.domain.OrderVo;
-import com.polyplay.pp.domain.PayVo;
 import com.polyplay.pp.service.OrderService;
 
 @Controller
@@ -60,14 +58,19 @@ public class OrderController {
 		Date dt = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String orderDate = sdf.format(dt);
+		String orderDateRe = orderDate.replaceAll("/", "");
 		
 		//랜덤함수
 		Random random = new Random();
 		int randomInt = random.nextInt();
 		
-		String randomOid = orderDate+ "-" + randomInt;
+		String randomString = Integer.toString(randomInt);
+		String randomStringRe = randomString.replaceAll("-", "");
+		
+		String randomOid = orderDateRe+ "-" + randomStringRe;
 		System.out.println("randomOid: "+randomOid);
 		opv.setOid(randomOid);
+
 		
 		os.insertJustOrder(opv);
 		

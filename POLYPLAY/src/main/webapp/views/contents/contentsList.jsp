@@ -9,7 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form>
+
+<H1>장르별 컨텐츠 리스트</H1>
+
+
+
+
+<form>
 	<table>
 		<!-- 속성 이름 -->
 		<tr>

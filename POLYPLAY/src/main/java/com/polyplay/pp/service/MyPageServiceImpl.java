@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.polyplay.pp.domain.BasketListVo;
-import com.polyplay.pp.domain.BasketVo;
 import com.polyplay.pp.domain.ContentsVo;
 import com.polyplay.pp.domain.MemberVo;
 import com.polyplay.pp.domain.OrderPayVo;

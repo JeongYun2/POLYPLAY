@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
 	function back(){
@@ -17,7 +17,7 @@
     var formname = document.frm;
 
 	 if(formname.content.value == ""){
-		alert("¿µÈ­ÆòÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+		alert("ì˜í™”í‰ì„ ì…ë ¥í•˜ì„¸ìš”");
 		formname.content.focus();
 		return;
 	
@@ -25,7 +25,7 @@
 		
 
 		var res;
-		res = confirm("È®ÀÎÀ» ´­·¯ÁÖ¼¼¿ä");
+		res = confirm("í™•ì¸ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”");
 		if (res == true){
 			formname.action ="${pageContext.request.contextPath}/ReviewWriteAction";
 			formname.method ="post";
@@ -41,13 +41,13 @@
 <table>
 <tr>
 <td>
-<textarea name="content" cols="200" rows="10" placeholder= "¿µÈ­ ÆòÀ» µî·ÏÇØÁÖ¼¼¿ä(100ÀÚ ÀÌ³»)"></textarea>
+<textarea name="content" cols="200" rows="10" placeholder= "ì˜í™” í‰ì„ ë“±ë¡í•´ì£¼ì„¸ìš”(100ì ì´ë‚´)"></textarea>
 </td>
 </tr>
 <tr>	
 <td>
-<input type="button"name="button" value="µî·ÏÇÏ±â" onclick="javascript:check();" />
-<input type="button"name="button" value="Ãë¼Ò" onclick="javascript:back();" />
+<input type="button"name="button" value="ë“±ë¡í•˜ê¸°" onclick="javascript:check();" />
+<input type="button"name="button" value="ì·¨ì†Œ" onclick="javascript:back();" />
 <td>
 <tr>
 </table>

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.polyplay.pp.domain.ContentsVo;
+import com.polyplay.pp.domain.PageMaker;
 import com.polyplay.pp.domain.SalesListVo;
 import com.polyplay.pp.domain.StarPointListVo;
 import com.polyplay.pp.service.MainService;
@@ -35,6 +36,12 @@ public class MainController {
 		//selectViewCntList
 		//selectStarPointList
 		//selectSalesList
+//		PageMaker pageMaker = new PageMaker();
+		
+//		model.addAttribute("pageMaker", pageMaker);
+		
+//		System.out.println("메인pageMaker: "+pageMaker);
+		
 		
 		ArrayList<ContentsVo> alist1 = null;
 		alist1 = ms.selectRecentList(); 

@@ -7,8 +7,6 @@ import com.polyplay.pp.domain.BoardVo;
 import com.polyplay.pp.domain.ContentsVo;
 import com.polyplay.pp.domain.MemberVo;
 import com.polyplay.pp.domain.OrderPayVo;
-import com.polyplay.pp.domain.OrderVo;
-import com.polyplay.pp.domain.PayVo;
 import com.polyplay.pp.domain.ReviewVo;
 import com.polyplay.pp.domain.SearchCriteria;
 
@@ -29,10 +27,6 @@ public interface AdminService {
 	public int deleteContents(ContentsVo cv);
 	
 	public ArrayList<OrderPayVo> selectAdOrder(SearchCriteria scri);
-	
-	public int deleteAdOrder(OrderVo ov);
-	
-	public int updateAdPay(PayVo pv);
 	
 	public ArrayList<AdReviewListVo> selectAdReview(SearchCriteria scri); 
 	
