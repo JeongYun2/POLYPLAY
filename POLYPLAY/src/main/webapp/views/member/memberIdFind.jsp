@@ -22,14 +22,23 @@ $.idFine = function(){
 		
 		if($("#mName").val() == ""){
 			return;
-		} else if($("#mPassword").val() == ""){
+		} else if($("#mEmail").val() == ""){
 			return;
 		}
 		
+		var Name = $("#mName").val();
+		var Email = $("#mEmail").val();
+		alert("Name: "+Name+"<br>"+"Email: "+Email);
+		
+		
         $.ajax({
 			type : 'POST',
+			async : false,
 			url : "${pageContext.request.contextPath}/MemberIdFindAction",
-			data : userNick,
+			data : {
+				mName :  Name, 
+				mEmail : Email
+			},
 			dataType : "json",
 			contentType: "application/json; charset=UTF-8",
 			success : function(data) {
@@ -55,11 +64,11 @@ $.idFine = function(){
 	<div>
 		<div class="form-group" >
 			<label class="control-label">이름</label>			
-			<input type="text" class="form-control" id="mName" name="mName">	
+			<input type="text" class="form-control infoData" id="mName" name="mName">	
 		</div>
 		<div class="form-group" >
 			<label class="control-label">이메일</label>
-			<input type="text" class="form-control" id="mEmail" name="mEmail">
+			<input type="text" class="form-control infoData" id="mEmail" name="mEmail">
 		</div>
 		<input type="button" id="idFine" value="아이디 찾기">
 	</div>

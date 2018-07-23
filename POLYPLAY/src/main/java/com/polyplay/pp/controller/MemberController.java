@@ -54,13 +54,17 @@ public class MemberController {
 		// 이동할 페이지
 		String page = null;
 		
-		MemberVo loginMvo = ms.selectLogin(mvo);
-		logger.info("loginMvo값은 "+loginMvo+"loginMvo.midx"+loginMvo.getMidx());
+		MemberVo mv = ms.selectLogin(mvo);
+		logger.info("mvo값은 "+mv+"mvo .midx"+mv.getMidx());
 		
-		if(loginMvo != null){			// 로그인 성공
+		if(mv != null){			// 로그인 성공
+			
+			model.addAttribute("sMemberId", mv.getmId());
+			model.addAttribute("sMemberMidx",mv.getMidx());
+			model.addAttribute("sMemberName", mv.getmName());
+			System.out.println("mv.getmName()의 갑은? : "+mv.getmName());
 			
 			System.out.println("useCookie: "+useCookie);
-			model.addAttribute("login", loginMvo);
 			
 			if (useCookie != null) {		// 자동 로그인 체크
 				
@@ -70,13 +74,15 @@ public class MemberController {
 			    DateFormat df = new SimpleDateFormat("yy-MM-dd");   
 			    String sessionLimit = df.format(cal.getTime());
 			    
-			    loginMvo.setmSessionId(session.getId());
-			    loginMvo.setmSessionLimit(sessionLimit);
-			    int updateAuto_res = ms.updateAutoLogin(loginMvo);
+			    mv.setmSessionId(session.getId());
+			    mv.setmSessionLimit(sessionLimit);
+			    int updateAuto_res = ms.updateAutoLogin(mv);
 			    
 			    System.out.println("자동로그인 체크 DB확인:"+updateAuto_res);
 			}
-
+		}
+			
+		if(mv != null) {
 			page = "redirect:/GoToHome";
 			
 		}else {					// 로그인 실패
@@ -98,35 +104,27 @@ public class MemberController {
 	public void delSession(HttpServletRequest request,HttpServletResponse response, HttpSession session){
 		
 		
-		System.out.println("delSession에 들어 왔습니다.");
-//		세션에 담은 midx값을 가져온다.
-		Object login = session.getAttribute("login");
+		int sMemberMidx = (Integer)session.getAttribute("sMemberMidx");
+		
+		MemberVo mvo = new MemberVo();
+		mvo.setMidx(sMemberMidx);
+		mvo.setmSessionId("");
+		mvo.setmSessionLimit("");
+		ms.updateAutoLogin(mvo);
 		
 		
 //		로그인을 하지 않았으면 메인 페이지로 보낸다.
-		if(login != null) {
-			
-			MemberVo mvo = (MemberVo) login;
-			session.removeAttribute("login");
-			session.invalidate();
-			
-			System.out.println(login);
-			
-//			HTTP request에서 loginCookie라는 쿠키를 가져온다.
-			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
-			System.out.println("/MemberLogout의 loginCookie: "+loginCookie);
-			
-			
-			if(loginCookie != null){
-				//쿠키 유효기간을 0으로 설정 후 반환 한다.
-				loginCookie.setPath("/");		
-				loginCookie.setMaxAge(0);				 
-				response.addCookie(loginCookie);
-			}
-
-			mvo.setmSessionId("");
-			mvo.setmSessionLimit("");
-			ms.updateAutoLogin(mvo);
+		session.removeAttribute("sMemberMidx");
+		session.removeAttribute("sMemberId");
+		session.removeAttribute("sMemberName");
+		session.invalidate();
+		
+		// 쿠키 존재 여부
+		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie"); 
+		if (loginCookie != null) {
+			 loginCookie.setPath("/");		
+			 loginCookie.setMaxAge(0);				 
+			 response.addCookie(loginCookie);			
 		}
 	}
 	
@@ -225,9 +223,10 @@ public class MemberController {
 	@RequestMapping(value="/MemberModify")
 	public String memberModifyController(HttpSession session,Model model) {
 		
-		//login세션에서 midx값 갔고 오기
-		MemberVo mvo = (MemberVo)session.getAttribute("login");
-		mvo = ms.selectMyMember(mvo.getMidx());
+		
+		int sMemberMidx = (Integer) session.getAttribute("sMemberMidx");
+		
+		MemberVo mvo = ms.selectMyMember(sMemberMidx);
 		model.addAttribute("mvo",mvo);
 		logger.info("mvo 값: "+mvo);
 		
@@ -267,9 +266,8 @@ public class MemberController {
 	public String memberDeleteActionController(MemberVo mvo,
 			HttpServletRequest request,HttpServletResponse response, HttpSession session) {
 		
-		//세션 login에서 midx값을 뽑아온다.
-		MemberVo loginMvo = (MemberVo)session.getAttribute("login");
-		mvo.setMidx(loginMvo.getMidx());
+		int sMemberMidx = (Integer) session.getAttribute("sMemberMidx");
+		mvo.setMidx(sMemberMidx);
 		
 		logger.info("비밀번호: "+mvo.getmPassword()+", midx:"+mvo.getMidx());
 		
@@ -288,22 +286,4 @@ public class MemberController {
 		
 		return page;
 	}
-	
-	/*
-	@RequestMapping(value="/adminMember")
-	public String adminMemberController(Model model) {
-		
-		
-		
-		return "/views/member/adminMember";
-	}
-	
-
-	@RequestMapping(value="/adminMember")
-	public String adminMemberController() {
-		
-		
-		
-		return "/views/member/adminMember";
-	}*/
 }

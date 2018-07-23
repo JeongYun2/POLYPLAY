@@ -51,8 +51,8 @@ $.idCheck = function(){
 	                idCk = true;
 	            }
 			},
-			error : function(error) {
-				alert("오류가 일어났습니다.");
+			error : function() {
+				$("#idText").html("오류가 일어났습니다.");
 			}
 		});
 	});
@@ -64,8 +64,6 @@ $.nickCheck = function(){
 	$("#nickCheck").click(function() {
 		
 		var userNick = $("#mNickname").val();
-		alert(userNick);
-		
 		
 			$.ajax({
 				type : "POST",
@@ -75,18 +73,18 @@ $.nickCheck = function(){
 				dataType : "json",
 				contentType: "application/json; charset=UTF-8",
 				success : function(data) {
-					alert("ajax return: "+data);
+					
 					if(data > 0) {
-						alert("중복된 닉네임입니다. 다른 닉네임를 입력해주세요.");
-		                $("#mNick").focus();
+						$("#nickText").html("중복된 닉네임입니다. 다른 닉네임를 입력해주세요.");
+		                $("#mNickname").focus();
 		                nickCk = false;
 		            } else {
-		                alert("사용 가능한 닉네임입니다.");
+		            	$("#nickText").html("사용 가능한 닉네임입니다.");
 		                nickCk = true;
 		            }
 				},
-				error : function(error) {
-					alert("오류가 일어났습니다.");
+				error : function() {
+					$("#nickText").html("오류가 일어났습니다.");
 				}
 			});
 		

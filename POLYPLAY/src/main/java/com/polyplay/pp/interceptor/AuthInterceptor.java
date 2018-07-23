@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.util.WebUtils;
 
-import com.polyplay.pp.controller.MemberController;
 import com.polyplay.pp.domain.MemberVo;
 import com.polyplay.pp.service.MemberService;
 
@@ -36,9 +35,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 		logger.info("AuthInterceptor pre로 들어왔습니다.");
 		HttpSession session = request.getSession();		
 		
-		System.out.println(session.getAttribute("login"));
 		
-		if(session.getAttribute("login") == null){	// 로그인 안했을 때
+		if(session.getAttribute("sMemberMidx") == null){	// 로그인 안했을 때
 			
 			saveDest(request);
 			Cookie loginCookie = WebUtils.getCookie(request,"loginCookie"); 
@@ -49,7 +47,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 				
 				if (mv != null) {			//쿠키 값에 유효 할때
 				 
-					session.setAttribute("login", mv);
+					request.getSession().setAttribute("sMemberId", mv.getmId());
+					request.getSession().setAttribute("sMemberMidx", mv.getMidx());
+					request.getSession().setAttribute("sMemberName", mv.getmName());
 					
 					Cookie loginCookie2 = new Cookie("loginCookie",loginCookie.getValue());
 					loginCookie2.setPath("/");
@@ -73,7 +73,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 			}		
 			System.out.println("/MemberLogin");
 			response.sendRedirect(request.getContextPath()+"/MemberLogin");
-			return false; 
+			return false;
 		}
 		System.out.println("session.getAttribute('login') == null");
 		return true;
