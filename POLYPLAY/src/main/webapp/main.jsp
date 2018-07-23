@@ -64,10 +64,10 @@
 <!--배너 파트  -->
 <div class="swiper-container main-slider" id="myCarousel">
   <div class="swiper-wrapper">
-    <div class="swiper-slide slider-bg-position" style="background:url('/resources/image/test1.jpg')" data-hash="slide1">
+    <div class="swiper-slide slider-bg-position" style="background:url('resources/image/test1.jpg')" data-hash="slide1">
       <h2>배너</h2>
     </div>
-    <div class="swiper-slide slider-bg-position" style="background:url('/resources/image/test2.png')" data-hash="slide2">
+    <div class="swiper-slide slider-bg-position" style="background:url('resources/image/test2.png')" data-hash="slide2">
       <h2>배너</h2>
     </div>
   </div>
