@@ -237,20 +237,21 @@ public class MemberController {
 	public String memberModifyActionController(MemberVo mvo, HttpSession session) {
 		
 		System.out.println(mvo);
-		System.out.println(session.getAttribute("login"));
-		MemberVo loginMvo = (MemberVo)session.getAttribute("login");
-		mvo.setMidx(loginMvo.getMidx());
 		System.out.println(mvo.getmId()+", "+mvo.getmNewPassword()+", ");
+		System.out.println(session.getAttribute("sMemberMidx"));
+		int sMemberMidx = (Integer)session.getAttribute("sMemberMidx");
+		
+		mvo.setMidx(sMemberMidx);
 		
 		logger.info("midx: "+mvo.getMidx()+", mPassword: "+mvo.getmPassword());
 		
 		String page = null;
 		int res = ms.updateMember(mvo);
 		
-		if(res >= 1) {
+		if(res == 1) {
 			page = "redirect:/MemberModify";
 		} else {
-			page ="redirect:/GoToHome";
+			page ="redirect:/MainList";
 		}
 		
 		return page;

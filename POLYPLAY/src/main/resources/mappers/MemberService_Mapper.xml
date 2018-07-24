@@ -91,7 +91,7 @@ select count(*)
 <!-- updateMemberCheck : 회원 정보 수정 -->
 <update id="updateMember" parameterType="mvo">
 update POLY_MEMBER 
-	set mNickname=#{mNickname},mPassword=#{mNewPassword},mPhone=#{mPhone},mModifyday=sysdate
+	set mNickname=#{mNickname},mPassword=#{mNewPassword},mEmail=#{mEmail},mPhone=#{mPhone},mModifyday=sysdate
 	where midx=#{midx}
 </update>
 

@@ -44,6 +44,10 @@
 			<beans:ref bean="loginInterceptor" />		
 		</interceptor>
 		<interceptor>
+			<mapping path="/MyBasketList" />
+			<mapping path="/MyWishList" />
+			<mapping path="/MyContentsList" />
+			<mapping path="/MyOrderList" />
 			<mapping path="/MemberModify" />
 			<beans:ref bean="authInterceptor" />
 		</interceptor>

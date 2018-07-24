@@ -76,7 +76,7 @@
                         <a href="${pageContext.request.contextPath}/MyWishList" class="dropdown-item">찜한작품</a>
                         <a href="${pageContext.request.contextPath}/MyContentsList" class="dropdown-item">구입한작품</a>
                         <a href="${pageContext.request.contextPath}/MyOrderList" class="dropdown-item">주문내역</a>
-                        <a href="${pageContext.request.contextPath}/MemberModify5" class="dropdown-item">회원정보수정</a>
+                        <a href="${pageContext.request.contextPath}/MemberModify" class="dropdown-item">회원정보수정</a>
                      
                      
                       </div>
